@@ -884,13 +884,14 @@ const igstalk = async (username) => {
 
 	
             igstalk(username)
-            .then((json) => {
+            .then((data) => {
+            	var result = data;
                 res.json({
              	creator: 'Hafidz Abdillah',
                  status: true,
                  code: 200,
                  message: 'Jangan ditembak bang',
-                 json
+                 result
             })
          })
 } else {
