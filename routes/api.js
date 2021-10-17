@@ -1198,43 +1198,45 @@ router.get('/search/happymod', async (req, res, next) => {
        if(listkey.includes(apikeyInput)){
        
 
-            function trendtw(country) {
+            function hapy(country) {
   return new Promise((resolve, reject) => {
-		axios.get(`https://getdaytrends.com/${country}/`)
+		axios.get(link)
 			.then(({
 				data
 			}) => {
 				const $ = cheerio.load(data)
-				const hastag = [];
-				const tweet = [];
+				const link = [];
+				const jlink = [];
 				const result = [];
-				$('#trends > table.table.table-hover.text-left.clickable.ranking.trends.wider.mb-0 > tbody > tr> td.main > a').each(function(a, b) {
-					deta = $(b).text()
-					hastag.push(deta)
+				const title = $('body > div > div.container-left > section:nth-child(1) > div > h1').text()
+				const info = $('body > div > div.container-left > section:nth-child(1) > div > ul').text()
+				$('body > div.container-row.clearfix.container-wrap.pdt-font-container > div.container-left > section:nth-child(1) > div:nth-child(11) > div:nth-child(3) > div > p > a').each(function(a, b) {
+					deta = $(b).text();
+					jlink.push(deta)
+					if ($(b).attr('href').startsWith('/')) {
+						link.push('https://happymod.com' + $(b).attr('href'))
+					} else {
+						link.push($(b).attr('href'))
+					}
 				})
-				$('#trends > table.table.table-hover.text-left.clickable.ranking.trends.wider.mb-0 > tbody > tr > td.main > div > span').each(function(a, b) {
-					deta = $(b).text()
-					tweet.push(deta)
-				})
-				num = 1
-				for (let i = 0; i < hastag.length; i++) {
+				for (let i = 0; i < link.length; i++) {
 					result.push({
-						rank: num,
-						hastag: hastag[i],
-						tweet: tweet[i]
+						title: jlink[i],
+						dl_link: link[i]
 					})
-					num += 1
 				}
 				resolve({
-					country: country,
-					result: result
+					creator: 'Fajar Ihsana',
+					title: title,
+					info: info.replace(/\t|- /g, ''),
+					download: result
 				})
 			})
 			.catch(reject)
 	})
 }
 
-          trendtw(negara)
+          hapy(query)
         .then((data) => {
         	 var result = data;
              res.json({
