@@ -1224,7 +1224,6 @@ router.get('/download/happymod', async (req, res, next) => {
 					})
 				}
 				const result = {
-					creator: 'Fajar Ihsana',
 					data: format
 				}
 				resolve(result)
