@@ -1187,5 +1187,70 @@ router.get('/search/trendtwit', async (req, res, next) => {
 res.sendFile(invalidKey)
 }
 })
+
+router.get('/search/happymod', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+             negara = req.query.negara
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+    if (!negara) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter negara"})
+
+       if(listkey.includes(apikeyInput)){
+       
+
+            function trendtw(country) {
+  return new Promise((resolve, reject) => {
+		axios.get(`https://getdaytrends.com/${country}/`)
+			.then(({
+				data
+			}) => {
+				const $ = cheerio.load(data)
+				const hastag = [];
+				const tweet = [];
+				const result = [];
+				$('#trends > table.table.table-hover.text-left.clickable.ranking.trends.wider.mb-0 > tbody > tr> td.main > a').each(function(a, b) {
+					deta = $(b).text()
+					hastag.push(deta)
+				})
+				$('#trends > table.table.table-hover.text-left.clickable.ranking.trends.wider.mb-0 > tbody > tr > td.main > div > span').each(function(a, b) {
+					deta = $(b).text()
+					tweet.push(deta)
+				})
+				num = 1
+				for (let i = 0; i < hastag.length; i++) {
+					result.push({
+						rank: num,
+						hastag: hastag[i],
+						tweet: tweet[i]
+					})
+					num += 1
+				}
+				resolve({
+					country: country,
+					result: result
+				})
+			})
+			.catch(reject)
+	})
+}
+
+          trendtw(negara)
+        .then((data) => {
+        	 var result = data;
+             res.json({
+             	creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+} else {
+res.sendFile(invalidKey)
+}
+})
 // End of script
 module.exports = router
