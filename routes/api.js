@@ -1122,5 +1122,58 @@ router.get('/search/wikipedia', async (req, res, next) => {
 res.sendFile(invalidKey)
 }
 })
+
+router.get('/search/trendtwit', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            q = req.query.q
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+    if (!q) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter q"})
+
+       if(listkey.includes(apikeyInput)){
+       
+
+            function wikiPedia(query) {
+  return new Promise((resolve, reject) => {
+    fetch('https://id.m.wikipedia.org/w/index.php?search=' + query, {
+      method: 'GET',
+      headers: {
+        'user-agent': 'Mozilla/5.0 (Linux; Android 9; Redmi 7A) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.99 Mobile Safari/537.36'
+      }
+    })
+    .then(rsp => rsp.text())
+    .then((data) => {
+      const $ = cheerio.load(data)
+      let thumb = $('.thumb.tright > .thumbinner > a').find('img').attr('src')
+      if (thumb === undefined) thumb = '//pngimg.com/uploads/wikipedia/wikipedia_PNG35.png'
+      thumb = 'https:' + thumb
+      resolve({
+        title: $('.pre-content.heading-holder > .page-heading > h1').text(),
+        thumb: thumb,
+        result: $('.mw-parser-output > #mf-section-0 > p').text().trim()
+      })
+    })
+    .catch(reject)
+  })
+}
+
+          wikiPedia(q)
+        .then((data) => {
+        	 var result = data;
+             res.json({
+             	creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+} else {
+res.sendFile(invalidKey)
+}
+})
 // End of script
 module.exports = router
