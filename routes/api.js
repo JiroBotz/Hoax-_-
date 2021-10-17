@@ -1221,14 +1221,13 @@ router.get('/download/happymod', async (req, res, next) => {
 				})
 				for (let i = 0; i < link.length; i++) {
 					result.push({
-						title: jlink[i],
-						dl_link: link[i]
+						title: jlink[i]
 					})
 				}
 				resolve({
 					title: title,
 					info: info.replace(/\t|- /g, ''),
-					download: result.dl_link
+					download: dl_link
 				})
 			})
 			.catch(reject)
