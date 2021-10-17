@@ -15,7 +15,7 @@ var creator = creatorList[Math.floor(Math.random() * creatorList.length)]; // In
 var key = 'EkakeY' // Apikey Lu Ngab
 
 // Required Modules :
-const { JSDOM } = require('jsdom')
+var { JSDOM } = require('jsdom')
 var ffmpeg = require('fluent-ffmpeg');
 var brainly = require('brainly-scraper-v2');
 var imageToBase64 = require('image-to-base64');
