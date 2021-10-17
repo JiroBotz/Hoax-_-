@@ -852,26 +852,20 @@ router.get('/search/wikipedia', async (req, res, next) => {
 
             function wikiPedia(q) {
   return new Promise((resolve, reject) => {
-    fetch('https://id.m.wikipedia.org/w/index.php?search=' + query, {
-      method: 'GET',
-      headers: {
-        'user-agent': 'Mozilla/5.0 (Linux; Android 9; Redmi 7A) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.99 Mobile Safari/537.36'
-      }
-    })
-    .then(rsp => rsp.text())
-    .then((data) => {
-      const $ = cheerio.load(data)
-      let thumb = $('.thumb.tright > .thumbinner > a').find('img').attr('src')
-      if (thumb === undefined) thumb = '//pngimg.com/uploads/wikipedia/wikipedia_PNG35.png'
-      thumb = 'https:' + thumb
-      resolve({
-        title: $('.pre-content.heading-holder > .page-heading > h1').text(),
-        thumb: thumb,
-        result: $('.mw-parser-output > #mf-section-0 > p').text().trim()
-      })
-    })
-    .catch(reject)
-  })
+    const res = await axios.get(`https://id.m.wikipedia.org/w/index.php?search=${query}`)
+	const $ = cheerio.load(res.data)
+	const data = []
+	let wiki = $('#mf-section-0').find('p').text()
+	let thumb = $('#mf-section-0').find('div > div > a > img').attr('src')
+	thumb = thumb ? thumb : '//pngimg.com/uploads/wikipedia/wikipedia_PNG35.png'
+	thumb = 'https:' + thumb
+	let judul = $('h1#section_0').text()
+	data.push({
+		wiki,
+		thumb,
+		judul
+	})
+	return data
 }
 
           wikiPedia(q)
