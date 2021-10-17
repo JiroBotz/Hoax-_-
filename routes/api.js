@@ -839,5 +839,63 @@ res.sendFile(invalidKey)
 }
 })
 
+// STALKING FEATURES
+router.get('/downloader/tiktokdl', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            username = req.query.username
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+    if (!username) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter username"})
+
+        if(listkey.includes(apikeyInput)){
+       	
+const igstalk = async (username) => {
+	return new Promise(async (resolve, reject) => {
+		let {
+			data
+		} = await axios('https://www.instagram.com/' + username + '/?__a=1', {
+			'method': 'GET',
+			'headers': {
+				'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+				'cookie': '_ga=GA1.2.1240046717.1620835673; PHPSESSID=i14curq5t8omcljj1hlle52762; popCookie=1; _gid=GA1.2.1936694796.1623913934'
+			}
+		})
+		let user = data.graphql.user
+		let json = {
+			creator: '"hardianto02_',
+			status: 'ok',
+			code: 200,
+			username: user.username,
+			fullname: user.full_name,
+			verified: user.is_verified,
+			video_count_reel: user.highlight_reel_count,
+			followers: user.edge_followed_by.count,
+			follow: user.edge_follow.count,
+			is_bussines: user.is_business_account,
+			is_professional: user.is_professional_account,
+			category: user.category_name,
+			thumbnail: user.profile_pic_url_hd,
+			bio: user.biography,
+			info_account: data.seo_category_infos
+		}
+		resolve(json)
+	})
+}
+
+	
+            igstalk(username)
+            .then((json) => {
+                res.json({
+             	creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result
+            })
+         })
+} else {
+res.sendFile(invalidKey)
+}
+})
 // End of script
 module.exports = router
