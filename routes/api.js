@@ -839,6 +839,32 @@ res.sendFile(invalidKey)
 }
 })
 
+// ANIME FEATURES
+router.get('/anime/manga', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+                query = req.query.query
+                
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(!query) return res.json(loghandler.notquery)
+	
+       if(listkey.includes(apikeyInput)){
+       fetch(encodeURI(`https://myanimelist.net/search/prefix.json?type=manga&keyword=${query}&v=1`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data;
+             res.json({
+             	 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result
+             })
+         })
+} else {
+res.sendFile(invalidKey)
+}
+})
+
 // SEARCH FEATURES
 router.get('/search/wikipedia', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
