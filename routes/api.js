@@ -1188,7 +1188,7 @@ res.sendFile(invalidKey)
 }
 })
 
-router.get('/search/happymod', async (req, res, next) => {
+router.get('/download/happymod', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
              link = req.query.link
             
