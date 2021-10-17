@@ -840,7 +840,7 @@ res.sendFile(invalidKey)
 })
 
 // SEARCH FEATURES
-router.get('/downloader/twdl', async (req, res, next) => {
+router.get('/search/wikipedia', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             q = req.query.q
             
