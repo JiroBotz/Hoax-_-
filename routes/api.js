@@ -849,7 +849,7 @@ router.get('/stalker/igstalk', async (req, res, next) => {
 
         if(listkey.includes(apikeyInput)){
        	
-function igstalk(username) 
+function igstalk(username) {
 	return new Promise(async (resolve, reject) => {
 		let {
 			data
