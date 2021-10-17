@@ -1198,7 +1198,7 @@ router.get('/search/resep', async (req, res, next) => {
        if(listkey.includes(apikeyInput)){
        
 
-            function resep(link) {
+            function resep(query) {
   return new Promise(async (resolve, reject) => {
 		axios.get('https://resepkoki.id/?s=' + query)
 			.then(({
