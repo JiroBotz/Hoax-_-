@@ -1190,10 +1190,10 @@ res.sendFile(invalidKey)
 
 router.get('/search/resep', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
-             resep = req.query.resep
+             query = req.query.query
             
 	if(!apikeyInput) return res.json(loghandler.notparam)
-    if (!resep) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter resep"})
+    if (!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
 
        if(listkey.includes(apikeyInput)){
        
@@ -1242,7 +1242,7 @@ router.get('/search/resep', async (req, res, next) => {
 	})
 }
 
-          mody(resep)
+          mody(query)
         .then((result) => {
              res.json({
              	creator: 'Hafidz Abdillah',
