@@ -305,6 +305,134 @@ router.get('/removekey', (req, res, next) => {
 
 
 // DATA API DOWNLOADER
+router.get('/downloader/ytmp3', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            url = req.query.url
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+    if (!url) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter url"})
 
+       if(listkey.includes(apikeyInput)){
+       
+
+            async function ytDonlodMp3(url) {
+  return new Promise((resolve, reject) => {
+    try {
+      const id = yt.getVideoID(url)
+      const yutub = yt.getInfo(`https://www.youtube.com/watch?v=${id}`)
+      .then((data) => {
+        let pormat = data.formats
+        let audio = []
+        for (let i = 0; i < pormat.length; i++) {
+          if (pormat[i].mimeType == 'audio/webm; codecs=\"opus\"') {
+            let aud = pormat[i]
+            audio.push(aud.url)
+          }
+        }
+        const title = data.player_response.microformat.playerMicroformatRenderer.title.simpleText
+        const thumb = data.player_response.microformat.playerMicroformatRenderer.thumbnail.thumbnails[0].url
+        const channel = data.player_response.microformat.playerMicroformatRenderer.ownerChannelName
+        const views = data.player_response.microformat.playerMicroformatRenderer.viewCount
+        const published = data.player_response.microformat.playerMicroformatRenderer.publishDate
+        
+        const result = {
+          title: title,
+          thumb: thumb,
+          channel: channel,
+          published: published,
+          views: views,
+          url: audio[1]
+        }
+        return(result)
+      })
+      resolve(yutub)
+    } catch (error) {
+        reject(error);
+      }
+      console.log(error)
+  })
+}
+
+          ytDonlodMp3(url)
+        .then((data) => {
+        	 var result = data;
+             res.json({
+             	creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/downloader/ytmp4', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            url = req.query.url
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+    if (!url) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter url"})
+
+      if(listkey.includes(apikeyInput)){
+             
+         async function ytDonlodMp4(url) {
+  return new Promise((resolve, reject) => {
+    try {
+      const id = yt.getVideoID(url)
+      const yutub = yt.getInfo(`https://www.youtube.com/watch?v=${id}`)
+      .then((data) => {
+        let pormat = data.formats
+        let video = []
+        for (let i = 0; i < pormat.length; i++) {
+          if (pormat[i].container == 'mp4' && pormat[i].hasVideo == true && pormat[i].hasAudio == true) {
+            let vid = pormat[i]
+            video.push(vid.url)
+          }
+        }
+        const title = data.player_response.microformat.playerMicroformatRenderer.title.simpleText
+        const thumb = data.player_response.microformat.playerMicroformatRenderer.thumbnail.thumbnails[0].url
+        const channel = data.player_response.microformat.playerMicroformatRenderer.ownerChannelName
+        const views = data.player_response.microformat.playerMicroformatRenderer.viewCount
+        const published = data.player_response.microformat.playerMicroformatRenderer.publishDate
+        
+        const result = {
+          title: title,
+          thumb: thumb,
+          channel: channel,
+          published: published,
+          views: views,
+          url: video[0]
+        }
+        return(result)
+      })
+      resolve(yutub)
+    } catch (error) {
+        reject(error);
+      }
+      console.log(error)
+  })
+}
+
+          ytDonlodMp4(url)
+        .then((data) => {
+        var result = data;
+             res.json({
+                 	creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result
+             })
+         })
+} else {
+res.sendFile(invalidKey)
+}
+})
 // End of script
 module.exports = router
