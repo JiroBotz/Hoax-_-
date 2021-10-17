@@ -840,17 +840,17 @@ res.sendFile(invalidKey)
 })
 
 // SEARCH FEATURES
-router.get('/search/wikipedia', async (req, res, next) => {
-      var apikeyInput = req.query.apikey,
-              q = req.query.q
-	    
+router.get('/downloader/twdl', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            q = req.query.q
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+    if (!q) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter q"})
 
-if(!apikeyInput) return res.json(loghandler.notparam)
- if(!q) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter q"})
+       if(listkey.includes(apikeyInput)){
+       
 
-   if(listkey.includes(apikeyInput)){
-
-function wikiPedia(query) {
+            function wikiPedia(q) {
   return new Promise((resolve, reject) => {
     fetch('https://id.m.wikipedia.org/w/index.php?search=' + query, {
       method: 'GET',
@@ -873,21 +873,24 @@ function wikiPedia(query) {
     .catch(reject)
   })
 }
-        wikiPedia(q)
+
+          wikiPedia(q)
         .then((data) => {
-        	var result = data;
-         res.json({
-	        creator: 'Hafidz Abdillah',
+        	 var result = data;
+             res.json({
+             	creator: 'Hafidz Abdillah',
                  status: true,
                  code: 200,
                  message: 'Jangan ditembak bang',
                 result
              })
-       })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
 } else {
 res.sendFile(invalidKey)
 }
-})
 })
 // End of script
 module.exports = router
