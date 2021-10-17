@@ -1198,7 +1198,7 @@ router.get('/search/happymod', async (req, res, next) => {
        if(listkey.includes(apikeyInput)){
        
 
-            function hapy(country) {
+            function hapy(link) {
   return new Promise((resolve, reject) => {
 		axios.get(link)
 			.then(({
