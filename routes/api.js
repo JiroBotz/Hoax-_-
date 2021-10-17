@@ -9,6 +9,7 @@ var kuhong = db.get('ojan'); // jan diubah
 	console.log('WELCOME TO GX API!') // boleh diubah
 }
 
+var listkey = ['sayahafiz', 'GRATISAN'];
 var creatorList = ['Eka Gans']; // Nama Lu Ngab
 var creator = creatorList[Math.floor(Math.random() * creatorList.length)]; // Ini jan diubah
 var key = 'EkakeY' // Apikey Lu Ngab
