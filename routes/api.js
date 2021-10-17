@@ -880,11 +880,7 @@ function wikiPedia(query) {
                  status: true,
                  code: 200,
                  message: 'Jangan ditembak bang',
-                result : {
-                	title : data.title,
-                    thumbnail: data.thumb,
-                    hasil: data.result
-                  }
+                result
              })
        })
 } else {
