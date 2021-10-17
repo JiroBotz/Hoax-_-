@@ -1331,7 +1331,7 @@ router.get('/search/palingmurah', async (req, res, next) => {
 
        if(listkey.includes(apikeyInput)){      
        	
-       	function getUrl(query){
+       	function palingmurah(query){
     if (!produk) {
 		return new TypeError("No Querry Input! Bakaaa >\/\/<")
 	}
@@ -1346,6 +1346,8 @@ router.get('/search/palingmurah', async (req, res, next) => {
 			let product_desc = $(b).find('div.description.visible-on-list').text().trim()
 			let price = $(b).find('div.flex-master.card-job-price.text-right.text-vertical-center').text().trim()
 			const result = {
+				status: res.status,
+				creator: "@dehan_j1ng",
 				product: title,
 				product_desc: product_desc,
 				product_image: img,
@@ -1360,14 +1362,14 @@ router.get('/search/palingmurah', async (req, res, next) => {
 	}
 }
 
-      getLirik(query)
-      .then((data) => {
+      palingmurah(query)
+      .then((result) => {
      res.json({
                  creator: 'Hafidz Abdillah',
                  status: true,
                  code: 200,
                  message: 'Jangan ditembak bang',
-                 result: data.result
+                 result
              })
           })
     } else {
