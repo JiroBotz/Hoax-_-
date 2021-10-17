@@ -15,25 +15,31 @@ var creator = creatorList[Math.floor(Math.random() * creatorList.length)]; // In
 var key = 'EkakeY' // Apikey Lu Ngab
 
 // Required Modules :
+var graphql = require('graphql')
+var { JSDOM } = require('jsdom');
+var { fromBuffer } = require('file-type');
 var ffmpeg = require('fluent-ffmpeg');
 var brainly = require('brainly-scraper-v2');
 var imageToBase64 = require('image-to-base64');
 var upload = require(__path + '/lib/upload.js');
+var TikTokScraper = require('tiktok-scraper');
 var axios = require('axios');
+var ip2location = require('ip-to-location');
 var FormData = require('form-data');
-var ytdl = require('ytdl-core');
-var ytpl = require('ytpl');
+var yt = require('ytdl-core');
 var qrcode = require('qrcode');
 var secure = require('ssl-express-www');
 var cors = require('cors');
+var qs = require('qs');
 var scrapeYt = require('scrape-yt');
 var gtts = require('node-gtts');
 var fetch = require('node-fetch');
 var cheerio = require('cheerio');
 var request = require('request');
-var TikTokScraper = require('tiktok-scraper');
 var yts = require('yt-search');
 var fs = require('fs');
+var toMS = require('ms');
+var userInstagram = require("user-instagram");
 var util = require('util');
 var router  = express.Router();
 
@@ -434,5 +440,6 @@ router.get('/downloader/ytmp4', async (req, res, next) => {
 res.sendFile(invalidKey)
 }
 })
+
 // End of script
 module.exports = router
