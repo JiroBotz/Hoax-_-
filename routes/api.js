@@ -1222,7 +1222,7 @@ router.get('/search/happymod', async (req, res, next) => {
 				for (let i = 0; i < link.length; i++) {
 					result.push({
 						title: jlink[i],
-						dl_link: link[i]
+						url: link[i]
 					})
 				}
 				resolve({
