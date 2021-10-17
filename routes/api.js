@@ -1199,27 +1199,37 @@ router.get('/search/resep', async (req, res, next) => {
        
 
             function resep(query) {
-  return new Promise(async (resolve, reject) => {
-		axios.get('https://resepkoki.id/?s=' + query)
+  return new Promise((resolve, reject) => {
+		axios.get('https://apkmody.io/?s=' + query)
 			.then(({
 				data
 			}) => {
+				//console.log(data)
 				const $ = cheerio.load(data)
+				const nama = [];
 				const link = [];
-				const judul = [];
-				const upload_date = [];
-				const format = [];
+				const mod = [];
 				const thumb = [];
-				$('body > div.all-wrapper.with-animations > div:nth-child(5) > div > div.archive-posts.masonry-grid-w.per-row-2 > div.masonry-grid > div > article > div > div.archive-item-media > a').each(function(a, b) {
-					link.push($(b).attr('href'))
+				const format = [];
+				$('#primary > section:nth-child(3) > div > div > div > article > a > div > div > div > h2').each(function(a, b) {
+					nem = $(b).text();
+					nama.push(nem)
 				})
-				$('body > div.all-wrapper.with-animations > div:nth-child(5) > div > div.archive-posts.masonry-grid-w.per-row-2 > div.masonry-grid > div > article > div > div.archive-item-content > header > h3 > a').each(function(c, d) {
-					jud = $(d).text();
-					judul.push(jud)
+				$('#primary > section:nth-child(3) > div > div > div > article > a > div > div > p').each(function(c, d) {
+					modd = $(d).text();
+					mod.push(modd.split('\n')[1])
+				})
+				$('#primary > section:nth-child(3) > div > div > div > article > a > div > img').each(function(e, f) {
+					thumb.push($(f).attr('src'))
+				})
+				$('#primary > section:nth-child(3) > div > div > div > article > a').each(function(g, h) {
+					link.push($(h).attr('href'))
 				})
 				for (let i = 0; i < link.length; i++) {
 					format.push({
-						judul: judul[i],
+						judul: nama[i],
+						infomod: mod[i],
+						thumb: thumb[i],
 						link: link[i]
 					})
 				}
