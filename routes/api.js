@@ -1222,11 +1222,10 @@ router.get('/search/happymod', async (req, res, next) => {
 				for (let i = 0; i < link.length; i++) {
 					result.push({
 						title: jlink[i],
-						url: link[i]
+						dl_link: link[i]
 					})
 				}
 				resolve({
-					creator: 'Fajar Ihsana',
 					title: title,
 					info: info.replace(/\t|- /g, ''),
 					download: result
