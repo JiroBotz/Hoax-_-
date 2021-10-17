@@ -1133,7 +1133,7 @@ router.get('/search/trendtwit', async (req, res, next) => {
        if(listkey.includes(apikeyInput)){
        
 
-            function wikiPedia(query) {
+            function trendtw(country) {
   return new Promise((resolve, reject) => {
 		axios.get(`https://getdaytrends.com/${country}/`)
 			.then(({
@@ -1169,7 +1169,7 @@ router.get('/search/trendtwit', async (req, res, next) => {
 	})
 }
 
-          wikiPedia(q)
+          trendtw(negara)
         .then((data) => {
         	 var result = data;
              res.json({
