@@ -890,7 +890,7 @@ const igstalk = async (username) => {
                  status: true,
                  code: 200,
                  message: 'Jangan ditembak bang',
-                 result
+                 json
             })
          })
 } else {
