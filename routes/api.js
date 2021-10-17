@@ -1190,10 +1190,10 @@ res.sendFile(invalidKey)
 
 router.get('/search/happymod', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
-             query = req.query.query
+             link = req.query.link
             
 	if(!apikeyInput) return res.json(loghandler.notparam)
-    if (!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
+    if (!link) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter link"})
 
        if(listkey.includes(apikeyInput)){
        
@@ -1235,7 +1235,7 @@ router.get('/search/happymod', async (req, res, next) => {
 	})
 }
 
-          hapy(query)
+          hapy(link)
         .then((data) => {
         	 var result = data;
              res.json({
