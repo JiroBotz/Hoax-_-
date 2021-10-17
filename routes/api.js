@@ -1228,7 +1228,7 @@ router.get('/download/happymod', async (req, res, next) => {
 				resolve({
 					title: title,
 					info: info.replace(/\t|- /g, ''),
-					download: result
+					download: result.dl_link
 				})
 			})
 			.catch(reject)
