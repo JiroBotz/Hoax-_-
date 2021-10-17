@@ -1135,26 +1135,38 @@ router.get('/search/trendtwit', async (req, res, next) => {
 
             function wikiPedia(query) {
   return new Promise((resolve, reject) => {
-    fetch('https://id.m.wikipedia.org/w/index.php?search=' + query, {
-      method: 'GET',
-      headers: {
-        'user-agent': 'Mozilla/5.0 (Linux; Android 9; Redmi 7A) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.99 Mobile Safari/537.36'
-      }
-    })
-    .then(rsp => rsp.text())
-    .then((data) => {
-      const $ = cheerio.load(data)
-      let thumb = $('.thumb.tright > .thumbinner > a').find('img').attr('src')
-      if (thumb === undefined) thumb = '//pngimg.com/uploads/wikipedia/wikipedia_PNG35.png'
-      thumb = 'https:' + thumb
-      resolve({
-        title: $('.pre-content.heading-holder > .page-heading > h1').text(),
-        thumb: thumb,
-        result: $('.mw-parser-output > #mf-section-0 > p').text().trim()
-      })
-    })
-    .catch(reject)
-  })
+		axios.get(`https://getdaytrends.com/${country}/`)
+			.then(({
+				data
+			}) => {
+				const $ = cheerio.load(data)
+				const hastag = [];
+				const tweet = [];
+				const result = [];
+				$('#trends > table.table.table-hover.text-left.clickable.ranking.trends.wider.mb-0 > tbody > tr> td.main > a').each(function(a, b) {
+					deta = $(b).text()
+					hastag.push(deta)
+				})
+				$('#trends > table.table.table-hover.text-left.clickable.ranking.trends.wider.mb-0 > tbody > tr > td.main > div > span').each(function(a, b) {
+					deta = $(b).text()
+					tweet.push(deta)
+				})
+				num = 1
+				for (let i = 0; i < hastag.length; i++) {
+					result.push({
+						rank: num,
+						hastag: hastag[i],
+						tweet: tweet[i]
+					})
+					num += 1
+				}
+				resolve({
+					country: country,
+					result: result
+				})
+			})
+			.catch(reject)
+	})
 }
 
           wikiPedia(q)
