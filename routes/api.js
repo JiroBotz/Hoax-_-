@@ -1298,6 +1298,7 @@ router.get('/search/palingmurah', async (req, res, next) => {
 		return new Error("=> Error =>" + error404)
 	}
 }
+}
 
       palingmurah(query)
       .then((result) => {
