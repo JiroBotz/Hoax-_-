@@ -840,7 +840,7 @@ res.sendFile(invalidKey)
 })
 
 // STALKING FEATURES
-router.get('/downloader/tiktokdl', async (req, res, next) => {
+router.get('/stalker/igstalk', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             username = req.query.username
             
