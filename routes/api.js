@@ -875,6 +875,7 @@ function wikiPedia(query) {
 }
         wikiPedia(q)
         .then((data) => {
+        	var result = data;
          res.json({
 	        creator: 'Hafidz Abdillah',
                  status: true,
