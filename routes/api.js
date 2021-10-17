@@ -1346,8 +1346,6 @@ router.get('/search/palingmurah', async (req, res, next) => {
 			let product_desc = $(b).find('div.description.visible-on-list').text().trim()
 			let price = $(b).find('div.flex-master.card-job-price.text-right.text-vertical-center').text().trim()
 			const result = {
-				status: res.status,
-				creator: "@dehan_j1ng",
 				product: title,
 				product_desc: product_desc,
 				product_image: img,
