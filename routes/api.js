@@ -1125,10 +1125,10 @@ res.sendFile(invalidKey)
 
 router.get('/search/trendtwit', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
-            q = req.query.q
+             negara = req.query.negara
             
 	if(!apikeyInput) return res.json(loghandler.notparam)
-    if (!q) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter q"})
+    if (!negara) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter negara"})
 
        if(listkey.includes(apikeyInput)){
        
