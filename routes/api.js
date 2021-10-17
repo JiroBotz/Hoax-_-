@@ -1198,7 +1198,7 @@ router.get('/search/resep', async (req, res, next) => {
        if(listkey.includes(apikeyInput)){
        
 
-            function resep(query) {
+            function mody(query) {
   return new Promise((resolve, reject) => {
 		axios.get('https://apkmody.io/?s=' + query)
 			.then(({
@@ -1242,9 +1242,8 @@ router.get('/search/resep', async (req, res, next) => {
 	})
 }
 
-          resep(resep)
-        .then((data) => {
-        	 var result = data;
+          mody(resep)
+        .then((result) => {
              res.json({
              	creator: 'Hafidz Abdillah',
                  status: true,
