@@ -889,22 +889,5 @@ res.sendFile(invalidKey)
 }
 })
 })
-
-	
-            igstalk(username)
-            .then((data) => {
-            	var result = data;
-                res.json({
-             	creator: 'Hafidz Abdillah',
-                 status: true,
-                 code: 200,
-                 message: 'Jangan ditembak bang',
-                 result
-            })
-         })
-} else {
-res.sendFile(invalidKey)
-}
-})
 // End of script
 module.exports = router
