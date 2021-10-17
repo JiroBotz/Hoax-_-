@@ -711,5 +711,133 @@ res.sendFile(invalidKey)
 }
 })
 
+router.get('/textpro/blackpink', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          text = req.query.text
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottex)
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://api.lolhuman.xyz/api/textprome/blackpink?apikey=YTRAMLANID&text=${text}`)
+       await fs.writeFileSync(__path + '/tmp/blekpink.png', hasil)
+
+         res.sendFile(__path + '/tmp/blekpink.png')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/textpro/neon', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          text = req.query.text
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottex)
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://api.lolhuman.xyz/api/textprome/neon?apikey=YTRAMLANID&text=${text}`)
+       await fs.writeFileSync(__path + '/tmp/neon.png', hasil)
+
+         res.sendFile(__path + '/tmp/neon.png')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/textpro/greenneon', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          text = req.query.text
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottex)
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://api.lolhuman.xyz/api/textprome/greenneon?apikey=YTRAMLANID&text=${text}`)
+       await fs.writeFileSync(__path + '/tmp/greenneon.png', hasil)
+
+         res.sendFile(__path + '/tmp/greenneon.png')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/textpro/blueneon', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          text = req.query.text
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottex)
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://api.zeks.me/api/bneon?apikey=alpin1234567&text=${text}`)
+       await fs.writeFileSync(__path + '/tmp/bneon.png', hasil)
+
+         res.sendFile(__path + '/tmp/bneon.png')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/textpro/matrix', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          text = req.query.text
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottex)
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://api.zeks.me/api/matrix?apikey=alpin1234567&text=${text}`)
+       await fs.writeFileSync(__path + '/tmp/matrix.png', hasil)
+
+         res.sendFile(__path + '/tmp/matrix.png')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/textpro/dropwater', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          text = req.query.text
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottex)
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://api.zeks.me/api/dropwater?apikey=alpin1234567&text=${text}`)
+       await fs.writeFileSync(__path + '/tmp/drop.png', hasil)
+
+         res.sendFile(__path + '/tmp/drop.png')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/textpro/neonlight', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          text = req.query.text
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottex)
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://api.lolhuman.xyz/api/textprome/neonlight?apikey=YTRAMLANID&text=${text}`)
+       await fs.writeFileSync(__path + '/tmp/neonlight.png', hasil)
+
+         res.sendFile(__path + '/tmp/neonlight.png')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/textpro/naruto', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          text = req.query.text
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottex)
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://api.zeks.me/api/naruto?apikey=alpin1234567&text=${text}`)
+       await fs.writeFileSync(__path + '/tmp/naruto.png', hasil)
+
+         res.sendFile(__path + '/tmp/naruto.png')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
 // End of script
 module.exports = router
