@@ -1190,46 +1190,44 @@ res.sendFile(invalidKey)
 
 router.get('/download/happymod', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
-             link = req.query.link
+             resep = req.query.resep
             
 	if(!apikeyInput) return res.json(loghandler.notparam)
-    if (!link) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter link"})
+    if (!resep) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter resep"})
 
        if(listkey.includes(apikeyInput)){
        
 
-            function hapy(link) {
-  return new Promise((resolve, reject) => {
-		axios.get(link)
+            function resep(link) {
+  return new Promise(async (resolve, reject) => {
+		axios.get('https://resepkoki.id/?s=' + query)
 			.then(({
 				data
 			}) => {
 				const $ = cheerio.load(data)
 				const link = [];
-				const jlink = [];
-				const result = [];
-				const title = $('body > div > div.container-left > section:nth-child(1) > div > h1').text()
-				const info = $('body > div > div.container-left > section:nth-child(1) > div > ul').text()
-				$('body > div.container-row.clearfix.container-wrap.pdt-font-container > div.container-left > section:nth-child(1) > div:nth-child(11) > div:nth-child(3) > div > p > a').each(function(a, b) {
-					deta = $(b).text();
-					jlink.push(deta)
-					if ($(b).attr('href').startsWith('/')) {
-						link.push('https://happymod.com' + $(b).attr('href'))
-					} else {
-						link.push($(b).attr('href'))
-					}
+				const judul = [];
+				const upload_date = [];
+				const format = [];
+				const thumb = [];
+				$('body > div.all-wrapper.with-animations > div:nth-child(5) > div > div.archive-posts.masonry-grid-w.per-row-2 > div.masonry-grid > div > article > div > div.archive-item-media > a').each(function(a, b) {
+					link.push($(b).attr('href'))
+				})
+				$('body > div.all-wrapper.with-animations > div:nth-child(5) > div > div.archive-posts.masonry-grid-w.per-row-2 > div.masonry-grid > div > article > div > div.archive-item-content > header > h3 > a').each(function(c, d) {
+					jud = $(d).text();
+					judul.push(jud)
 				})
 				for (let i = 0; i < link.length; i++) {
-					result.push({
-						title: jlink[i],
-						dl_link: link[i]
+					format.push({
+						judul: judul[i],
+						link: link[i]
 					})
 				}
-				resolve({
-					title: title,
-					info: info.replace(/\t|- /g, ''),
-					download: result
-				})
+				const result = {
+					creator: 'Fajar Ihsana',
+					data: format
+				}
+				resolve(result)
 			})
 			.catch(reject)
 	})
