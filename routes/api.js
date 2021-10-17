@@ -461,7 +461,7 @@ router.get('/downloader/igdl', async (req, res, next) => {
       const $ = cheerio.load(data)
       const build_id = $('input[name="build_id"]').attr('value')
       const build_key = $('input[name="build_key"]').attr('value')
-      const bodyForm = new formData()
+      const bodyForm = new FormData()
       bodyForm.append('url', url)
       bodyForm.append('build_id', build_id)
       bodyForm.append('build_key', build_key)
@@ -531,7 +531,7 @@ router.get('/downloader/igstory', async (req, res, next) => {
     .then((data) => {
       const $ = cheerio.load(data)
       const token = $('input[name="token"]').attr('value')
-      const bodyForm = new formData()
+      const bodyForm = new FormData()
       bodyForm.append('url', 'https://www.instagram.com/' + username)
       bodyForm.append('action', 'story')
       bodyForm.append('token', token)
@@ -588,7 +588,7 @@ router.get('/downloader/twdl', async (req, res, next) => {
 
             function twitterDown(url) {
   return new Promise((resolve, reject) => {
-    const bodyForm = new formData()
+    const bodyForm = new FormData()
     bodyForm.append('url', url)
     fetch('https://www.savetweetvid.com/downloader', {
       method: 'POST',
