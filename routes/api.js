@@ -1271,9 +1271,6 @@ router.get('/search/palingmurah', async (req, res, next) => {
        if(listkey.includes(apikeyInput)){      
        	
        	function palingmurah(query){
-       	if (!produk) {
-		return new TypeError("No Querry Input! Bakaaa >\/\/<")
-	}
 	try {
 		const res = await axios.get(`https://palingmurah.net/pencarian-produk/?term=` + produk)
 		const hasil = []
