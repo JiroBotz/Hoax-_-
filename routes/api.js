@@ -1329,43 +1329,41 @@ router.get('/search/growstock', async (req, res, next) => {
 
        if(listkey.includes(apikeyInput)){      
        	
-       	function getUrl(query){
-    return new Promise((resolve, reject) => {
-        axios.get(`https://www.musixmatch.com/search/${query}`)
-        .then(({data}) => {
-            const $ = cheerio.load(data)
-            const res = $('#site').find('div > div > div > div > ul > li:nth-child(1) > div > div > div')
-            //resolve($('#site').find('search-results > div > div > tab-content > div > div > box box-style-plain > box-content > ul'))
-            resolve(`https://www.musixmatch.com` + $(res).find('h2 > a').attr('href'))
-        })
-        .catch(reject)
-    })
-}
+       	const growstockSearch = (query) => new Promise((resolve, reject) => {
+                    fetch(`https://growstocks.xyz/search?item=${query}`, {
+                        "credentials": "include",
+                        "headers": {
+                            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0",
+                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                            "Accept-Language": "en-US,en;q=0.5",
+                            "Upgrade-Insecure-Requests": "1",
+                            "Pragma": "no-cache",
+                            "Cache-Control": "no-cache"
+                        },
+                        "referrer": "https://growstocks.xyz/",
+                        "method": "GET",
+                        "mode": "cors"
+                    }).then((res) => res.text())
+                        .then((text) => {
+                            const $ = cheerio.load(text)
+                            const dataArr = [];
+                            $('div.searchRes').each((i, el) => {
+                                const title = $(el).find('div > div > h2 > a').text().trim();
+                                const price = $(el).find('div > div > p:nth-child(3) > b:nth-child(1)').text().trim();
+                                const editedAt = $(el).find('div > div > p:nth-child(5) > b:nth-child(1)').text().trim();
+                                dataArr.push({
+                                    title: title,
+                                    price: price ? price : 'Data tidak terbaca',
+                                    editedAt: editedAt ? editedAt : 'Data tidak terbaca',
+                                })
+                            })
+                            resolve(dataArr)
+                        })
+                })
 
-function getLirik(query) {
-    return new Promise(async(resolve, reject) => {
-        const link = await getUrl(query)
-        axios.get(link)
-        .then(({data}) => {
-            const $ = cheerio.load(data)
-            const lirik = $('#site').find('.mxm-lyrics__content > .lyrics__content__ok').text()
-            const title = $('div.mxm-track-title > h1').text().replace(/Lyrics/gi, '')
-            const author = $('div.mxm-track-title > h2').text()
-            const thumb = 'https:'+$('div.banner-album-image-desktop > img').attr('src')
-            resolve({
-                    title,
-                    author,
-                    thumb,
-                    lirik
-            })
-        })
-        .catch(reject)
-    })
-}
-
-      getLirik(query)
-      .then((data) => {
-      	var result = data;
+      growstockSearch(query)
+      .then((dataArr) => {
+      	var result = dataArr;
      res.json({
                  creator: 'Hafidz Abdillah',
                  status: true,
