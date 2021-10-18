@@ -1322,7 +1322,7 @@ router.get('/search/palingmurah', async (req, res, next) => {
 	})
  }
 
-      palingmurah(query)
+      bacaresep(query)
       .then((result) => {
      res.json({
                  creator: 'Hafidz Abdillah',
