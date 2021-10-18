@@ -1270,60 +1270,43 @@ router.get('/search/palingmurah', async (req, res, next) => {
 
        if(listkey.includes(apikeyInput)){      
        	
-       	function bacaresep(query){
-	return new Promise(async (resolve, reject) => {
-		axios.get(query)
-			.then(({
-				data
-			}) => {
-				const $ = cheerio.load(data)
-				const abahan = [];
-				const atakaran = [];
-				const atahap = [];
-				$('body > div.all-wrapper.with-animations > div.single-panel.os-container > div.single-panel-details > div > div.single-recipe-ingredients-nutritions > div > table > tbody > tr > td:nth-child(2) > span.ingredient-name').each(function(a, b) {
-					bh = $(b).text();
-					abahan.push(bh)
-				})
-				$('body > div.all-wrapper.with-animations > div.single-panel.os-container > div.single-panel-details > div > div.single-recipe-ingredients-nutritions > div > table > tbody > tr > td:nth-child(2) > span.ingredient-amount').each(function(c, d) {
-					uk = $(d).text();
-					atakaran.push(uk)
-				})
-				$('body > div.all-wrapper.with-animations > div.single-panel.os-container > div.single-panel-main > div.single-content > div.single-steps > table > tbody > tr > td.single-step-description > div > p').each(function(e, f) {
-					th = $(f).text();
-					atahap.push(th)
-				})
-				const judul = $('body > div.all-wrapper.with-animations > div.single-panel.os-container > div.single-title.title-hide-in-desktop > h1').text();
-				const waktu = $('body > div.all-wrapper.with-animations > div.single-panel.os-container > div.single-panel-main > div.single-meta > ul > li.single-meta-cooking-time > span').text();
-				const hasil = $('body > div.all-wrapper.with-animations > div.single-panel.os-container > div.single-panel-main > div.single-meta > ul > li.single-meta-serves > span').text().split(': ')[1]
-				const level = $('body > div.all-wrapper.with-animations > div.single-panel.os-container > div.single-panel-main > div.single-meta > ul > li.single-meta-difficulty > span').text().split(': ')[1]
-				const thumb = $('body > div.all-wrapper.with-animations > div.single-panel.os-container > div.single-panel-details > div > div.single-main-media > img').attr('src')
-				tbahan = 'bahan\n'
-				for (let i = 0; i < abahan.length; i++) {
-					tbahan += abahan[i] + ' ' + atakaran[i] + '\n'
-				}
-				ttahap = 'tahap\n'
-				for (let i = 0; i < atahap.length; i++) {
-					ttahap += atahap[i] + '\n\n'
-				}
-				const tahap = ttahap
-				const bahan = tbahan
-				const result = {
-						judul: judul,
-						waktu_masak: waktu,
-						hasil: hasil,
-						tingkat_kesulitan: level,
-						thumb: thumb,
-						bahan: bahan.split('bahan\n')[1],
-						langkah_langkah: tahap.split('tahap\n')[1]
-				}
-				resolve(result)
-			})
-			.catch(reject)
-	})
- }
+       	function getUrl(query){
+    return new Promise((resolve, reject) => {
+        axios.get(`https://www.musixmatch.com/search/${query}`)
+        .then(({data}) => {
+            const $ = cheerio.load(data)
+            const res = $('#site').find('div > div > div > div > ul > li:nth-child(1) > div > div > div')
+            //resolve($('#site').find('search-results > div > div > tab-content > div > div > box box-style-plain > box-content > ul'))
+            resolve(`https://www.musixmatch.com` + $(res).find('h2 > a').attr('href'))
+        })
+        .catch(reject)
+    })
+}
 
-      bacaresep(query)
-      .then((result) => {
+function getLirik(query) {
+    return new Promise(async(resolve, reject) => {
+        const link = await getUrl(query)
+        axios.get(link)
+        .then(({data}) => {
+            const $ = cheerio.load(data)
+            const lirik = $('#site').find('.mxm-lyrics__content > .lyrics__content__ok').text()
+            const title = $('div.mxm-track-title > h1').text().replace(/Lyrics/gi, '')
+            const author = $('div.mxm-track-title > h2').text()
+            const thumb = 'https:'+$('div.banner-album-image-desktop > img').attr('src')
+            resolve({
+                    title,
+                    author,
+                    thumb,
+                    lirik
+            })
+        })
+        .catch(reject)
+    })
+}
+
+      getLirik(query)
+      .then((data) => {
+      	var result = data;
      res.json({
                  creator: 'Hafidz Abdillah',
                  status: true,
