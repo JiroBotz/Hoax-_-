@@ -1270,30 +1270,56 @@ router.get('/search/palingmurah', async (req, res, next) => {
 
        if(listkey.includes(apikeyInput)){      
        	
-       	function palingmurah(query){
-	try {
-		const res = await axios.get(`https://palingmurah.net/pencarian-produk/?term=` + produk)
-		const hasil = []
-		const $ = cheerio.load(res.data)
-		$('div.ui.card.wpj-card-style-2 ').each(function(a, b) {
-			let url = $(b).find('a.image').attr('href')
-			let img = $(b).find('img.my_image.lazyload').attr('data-src')
-			let title = $(b).find('a.list-header').text().trim()
-			let product_desc = $(b).find('div.description.visible-on-list').text().trim()
-			let price = $(b).find('div.flex-master.card-job-price.text-right.text-vertical-center').text().trim()
-			const result = {
-				status: res.status,
-				creator: "@dehan_j1ng",
-				product: title,
-				product_desc: product_desc,
-				product_image: img,
-				product_url: url,
-				price
-			}
-			hasil.push(result)
-		})
-		return hasil
-	}
+       	function bacaresep(query){
+	return new Promise(async (resolve, reject) => {
+		axios.get(query)
+			.then(({
+				data
+			}) => {
+				const $ = cheerio.load(data)
+				const abahan = [];
+				const atakaran = [];
+				const atahap = [];
+				$('body > div.all-wrapper.with-animations > div.single-panel.os-container > div.single-panel-details > div > div.single-recipe-ingredients-nutritions > div > table > tbody > tr > td:nth-child(2) > span.ingredient-name').each(function(a, b) {
+					bh = $(b).text();
+					abahan.push(bh)
+				})
+				$('body > div.all-wrapper.with-animations > div.single-panel.os-container > div.single-panel-details > div > div.single-recipe-ingredients-nutritions > div > table > tbody > tr > td:nth-child(2) > span.ingredient-amount').each(function(c, d) {
+					uk = $(d).text();
+					atakaran.push(uk)
+				})
+				$('body > div.all-wrapper.with-animations > div.single-panel.os-container > div.single-panel-main > div.single-content > div.single-steps > table > tbody > tr > td.single-step-description > div > p').each(function(e, f) {
+					th = $(f).text();
+					atahap.push(th)
+				})
+				const judul = $('body > div.all-wrapper.with-animations > div.single-panel.os-container > div.single-title.title-hide-in-desktop > h1').text();
+				const waktu = $('body > div.all-wrapper.with-animations > div.single-panel.os-container > div.single-panel-main > div.single-meta > ul > li.single-meta-cooking-time > span').text();
+				const hasil = $('body > div.all-wrapper.with-animations > div.single-panel.os-container > div.single-panel-main > div.single-meta > ul > li.single-meta-serves > span').text().split(': ')[1]
+				const level = $('body > div.all-wrapper.with-animations > div.single-panel.os-container > div.single-panel-main > div.single-meta > ul > li.single-meta-difficulty > span').text().split(': ')[1]
+				const thumb = $('body > div.all-wrapper.with-animations > div.single-panel.os-container > div.single-panel-details > div > div.single-main-media > img').attr('src')
+				tbahan = 'bahan\n'
+				for (let i = 0; i < abahan.length; i++) {
+					tbahan += abahan[i] + ' ' + atakaran[i] + '\n'
+				}
+				ttahap = 'tahap\n'
+				for (let i = 0; i < atahap.length; i++) {
+					ttahap += atahap[i] + '\n\n'
+				}
+				const tahap = ttahap
+				const bahan = tbahan
+				const result = {
+						judul: judul,
+						waktu_masak: waktu,
+						hasil: hasil,
+						tingkat_kesulitan: level,
+						thumb: thumb,
+						bahan: bahan.split('bahan\n')[1],
+						langkah_langkah: tahap.split('tahap\n')[1]
+				}
+				resolve(result)
+			})
+			.catch(reject)
+	})
  }
 
       palingmurah(query)
