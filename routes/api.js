@@ -1261,7 +1261,7 @@ res.sendFile(invalidKey)
 })
 
      
-router.get('/search/palingmurah', async (req, res, next) => {
+router.get('/search/lirik', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             query = req.query.query
             
