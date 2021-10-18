@@ -1293,8 +1293,6 @@ router.get('/search/palingmurah', async (req, res, next) => {
 			hasil.push(result)
 		})
 		return hasil
-	} catch (error404) {
-		return new Error("=> Error =>" + error404)
 	}
  }
 
