@@ -1343,9 +1343,9 @@ router.get('/search/growstock', async (req, res, next) => {
                         "referrer": "https://growstocks.xyz/",
                         "method": "GET",
                         "mode": "cors"
-                    }).then((res) => res.text())
-                        .then((text) => {
-                            const $ = cheerio.load(text)
+                    }).then((res) => res.data())
+                        .then((data) => {
+                            const $ = cheerio.load(data)
                             const dataArr = [];
                             $('div.searchRes').each((i, el) => {
                                 const title = $(el).find('div > div > h2 > a').text().trim();
@@ -1362,8 +1362,8 @@ router.get('/search/growstock', async (req, res, next) => {
                 })
 
       growstockSearch(query)
-      .then((dataArr) => {
-      	var result = dataArr;
+      .then((data) => {
+      	var result = data;
      res.json({
                  creator: 'Hafidz Abdillah',
                  status: true,
