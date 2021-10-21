@@ -874,8 +874,8 @@ router.get('/anime/loli', async (req, res, next) => {
       	
      const neko = () => new Promise((resolve, reject) => {
                     const Arr = ["Loli", "Anime Loli", "Loli Anime"];
-                    const random = Arr[Math.floor(Math.random() * (Arr.length))]
-                    fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${random}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${random}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
+                    const query = Arr[Math.floor(Math.random() * (Arr.length))]
+                    fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${query}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${query}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
                         "headers": {
                             "accept": "application/json, text/javascript, */*, q=0.01",
                             "accept-language": "en-US,en;q=0.9",
@@ -925,8 +925,8 @@ router.get('/anime/neko', async (req, res, next) => {
       	
      const neko = () => new Promise((resolve, reject) => {
                     const Arr = ["nekonime", "neko anime", "anime neko"];
-                    const random = Arr[Math.floor(Math.random() * (Arr.length))]
-                    fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${random}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${random}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
+                    const query = Arr[Math.floor(Math.random() * (Arr.length))]
+                    fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${query}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${query}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
                         "headers": {
                             "accept": "application/json, text/javascript, */*, q=0.01",
                             "accept-language": "en-US,en;q=0.9",
@@ -976,8 +976,8 @@ router.get('/anime/waifu', async (req, res, next) => {
       	
      const neko = () => new Promise((resolve, reject) => {
                     const Arr = ["waifu anime", "waifu", "waifu cecan"];
-                    const random = Arr[Math.floor(Math.random() * (Arr.length))]
-                    fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${random}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${random}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
+                    const query = Arr[Math.floor(Math.random() * (Arr.length))]
+                    fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${query}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${query}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
                         "headers": {
                             "accept": "application/json, text/javascript, */*, q=0.01",
                             "accept-language": "en-US,en;q=0.9",
@@ -1027,8 +1027,8 @@ router.get('/anime/megumin', async (req, res, next) => {
       	
      const neko = () => new Promise((resolve, reject) => {
                     const Arr = ["megumin", "megumin anime", "anime megumin"];
-                    const random = Arr[Math.floor(Math.random() * (Arr.length))]
-                    fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${random}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${random}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
+                    const query = Arr[Math.floor(Math.random() * (Arr.length))]
+                    fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${query}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${query}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
                         "headers": {
                             "accept": "application/json, text/javascript, */*, q=0.01",
                             "accept-language": "en-US,en;q=0.9",
@@ -1503,6 +1503,57 @@ router.get('/search/grupwa', async (req, res, next) => {
              })
           })
     } else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/random/quotesmaker', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+	    
+  if(!apikeyInput) return res.json(loghandler.notparam)
+      
+      if(listkey.includes(apikeyInput)){
+      	
+     const quotes = () => new Promise((resolve, reject) => {
+                    const Arr = ["quotes indonesia", "quotes aesthetic"];
+                    const query = Arr[Math.floor(Math.random() * (Arr.length))]
+                    fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${query}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${query}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
+                        "headers": {
+                            "accept": "application/json, text/javascript, */*, q=0.01",
+                            "accept-language": "en-US,en;q=0.9",
+                            "cache-control": "no-cache",
+                            "pragma": "no-cache",
+                            "sec-fetch-dest": "empty",
+                            "sec-fetch-mode": "cors",
+                            "sec-fetch-site": "same-origin",
+                            "sec-gpc": "1",
+                            "x-app-version": "9a236a4",
+                            "x-pinterest-appstate": "active",
+                            "x-requested-with": "XMLHttpRequest"
+                        },
+                        "referrer": "https://www.pinterest.com/",
+                        "referrerPolicy": "origin",
+                        "body": null,
+                        "method": "GET",
+                        "mode": "cors"
+                    }).then((res) => res.json())
+                        .then((json) => {
+                            const generatepin = json.resource_response.data.results[Math.floor(Math.random() * (json.resource_response.data.results.length))]
+                            resolve({
+                                status: 200,
+                                link: generatepin.images.orig.url
+                            })
+                        })
+                })
+
+        quotes()
+         .then(async (data) => {
+         	var hasil = await getBuffer(`${data.link}`)
+       await fs.writeFileSync(__path + '/tmp/quotes.png', hasil)
+
+         res.sendFile(__path + '/tmp/quotes.png')
+    })
+} else {
 res.sendFile(invalidKey)
 }
 })
@@ -2076,7 +2127,7 @@ router.get('/game/tebakgambar', async (req, res, next) => {
           answer: $(this).find('span').text()
         })
       })
-      const random = result[Math.floor(Math.random() * result.length)]
+      const query = result[Math.floor(Math.random() * result.length)]
       resolve({
         result: random
       })
@@ -5626,8 +5677,8 @@ router.get('/random/quotesmaker', async (req, res, next) => {
       	
      const quotes = () => new Promise((resolve, reject) => {
                     const Arr = ["quotes indonesia", "quotes aesthetic"];
-                    const random = Arr[Math.floor(Math.random() * (Arr.length))]
-                    fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${random}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${random}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
+                    const query = Arr[Math.floor(Math.random() * (Arr.length))]
+                    fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${query}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${query}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
                         "headers": {
                             "accept": "application/json, text/javascript, */*, q=0.01",
                             "accept-language": "en-US,en;q=0.9",
@@ -5890,8 +5941,8 @@ router.get('/others/cogan', async (req, res, next) => {
       	
      const neko = () => new Promise((resolve, reject) => {
                     const Arr = ["pap cowok", "cowo ganteng", "cowok pap"];
-                    const random = Arr[Math.floor(Math.random() * (Arr.length))]
-                    fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${random}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${random}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
+                    const query = Arr[Math.floor(Math.random() * (Arr.length))]
+                    fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${query}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${query}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
                         "headers": {
                             "accept": "application/json, text/javascript, */*, q=0.01",
                             "accept-language": "en-US,en;q=0.9",
@@ -5941,8 +5992,8 @@ router.get('/others/cecan', async (req, res, next) => {
       	
      const neko = () => new Promise((resolve, reject) => {
                     const Arr = ["pap cewek", "cewe cantik", "cewe hijab"];
-                    const random = Arr[Math.floor(Math.random() * (Arr.length))]
-                    fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${random}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${random}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
+                    const query = Arr[Math.floor(Math.random() * (Arr.length))]
+                    fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${query}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${query}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
                         "headers": {
                             "accept": "application/json, text/javascript, */*, q=0.01",
                             "accept-language": "en-US,en;q=0.9",
