@@ -6363,5 +6363,187 @@ router.get('/others/emojiscrape', async (req, res, next) => {
 res.sendFile(invalidKey)
 }
 })
+
+// CREATOR FEATURES
+router.get('/creator/buriq', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          url = req.query.url
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!url) return res.json(loghandler.noturl)
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://nekobot.xyz/api/imagegen?type=jpeg&url=${link}&raw=1`)
+       await fs.writeFileSync(__path + '/tmp/buriq.jpg', hasil)
+
+         res.sendFile(__path + '/tmp/buriq.jpg')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/creator/deep', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          url = req.query.url
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!url) return res.json(loghandler.noturl)
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://nekobot.xyz/api/imagegen?type=deepfry&image=${url}&raw=1`)
+       await fs.writeFileSync(__path + '/tmp/creator.jpg', hasil)
+
+         res.sendFile(__path + '/tmp/creator.jpg')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/creator/magic', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          url = req.query.url
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!url) return res.json(loghandler.noturl)
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://nekobot.xyz/api/imagegen?type=magik&image=${url}&raw=1`)
+       await fs.writeFileSync(__path + '/tmp/creator.jpg', hasil)
+
+         res.sendFile(__path + '/tmp/creator.jpg')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/creator/blurpify', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          url = req.query.url
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!url) return res.json(loghandler.noturl)
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://nekobot.xyz/api/imagegen?type=blurpify&image=${url}&raw=1`)
+       await fs.writeFileSync(__path + '/tmp/creator.jpg', hasil)
+
+         res.sendFile(__path + '/tmp/creator.jpg')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/creator/ytcomment', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          url = req.query.url,
+	         username = req.query.username,
+	        text = req.query.text
+	
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!url) return res.json(loghandler.noturl)
+   if(!username) return res.json(loghandler.notusername)
+   if(!text) return res.json(loghandler.nottext)
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://some-random-api.ml/canvas/youtube-comment?avatar=${url}&username=${username}&comment=${text}`)
+       await fs.writeFileSync(__path + '/tmp/creator.jpg', hasil)
+
+         res.sendFile(__path + '/tmp/creator.jpg')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/creator/twitcomment', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          url = req.query.url,
+	         username = req.query.username,
+	        text = req.query.text,
+	       displayname = req.query.displayname
+	
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!url) return res.json(loghandler.noturl)
+   if(!username) return res.json(loghandler.notusername)
+   if(!text) return res.json(loghandler.nottext)
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://some-random-api.ml/canvas/tweet?avatar=${url}&username=${username}&displayname=${displayname}&comment=${text}`)
+       await fs.writeFileSync(__path + '/tmp/creator.jpg', hasil)
+
+         res.sendFile(__path + '/tmp/creator.jpg')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/creator/blur', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          url = req.query.url
+	         
+	        
+	
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!url) return res.json(loghandler.noturl)
+
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://some-random-api.ml/canvas/blur?avatar=${url}`)
+       await fs.writeFileSync(__path + '/tmp/creator.jpg', hasil)
+
+         res.sendFile(__path + '/tmp/creator.jpg')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/creator/phcomment', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          url = req.query.url,
+	         username = req.query.username,
+	         text = req.query.text
+	
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!url) return res.json(loghandler.noturl)
+  if(!username) return res.json(loghandler.notusername)
+  if(!text) return res.json(loghandler.nottext)
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://nekobot.xyz/api/imagegen?type=phcomment&image=${url}&raw=1&username=${username}&text=${text}`)
+       await fs.writeFileSync(__path + '/tmp/creator.jpg', hasil)
+
+         res.sendFile(__path + '/tmp/creator.jpg')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/creator/glass', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          url = req.query.url
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!url) return res.json(loghandler.noturl)
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://some-random-api.ml/canvas/glass?avatar=${url}`)
+       await fs.writeFileSync(__path + '/tmp/creator.jpg', hasil)
+
+         res.sendFile(__path + '/tmp/creator.jpg')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/creator/greyscale', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          url = req.query.url
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!url) return res.json(loghandler.noturl)
+   
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://some-random-api.ml/canvas/greyscale?avatar=${url}`)
+       await fs.writeFileSync(__path + '/tmp/creator.jpg', hasil)
+
+         res.sendFile(__path + '/tmp/creator.jpg')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
 // End of script
 module.exports = router
