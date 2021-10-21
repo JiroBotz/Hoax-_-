@@ -1507,7 +1507,7 @@ res.sendFile(invalidKey)
 }
 })
 
-router.get('/random/quotesmaker', async (req, res, next) => {
+router.get('/search/pinterestimage', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
 	            query = req.query.query
 	
