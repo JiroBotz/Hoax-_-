@@ -5610,9 +5610,9 @@ router.get('/random/quotesmaker', async (req, res, next) => {
         quotes()
          .then(async (data) => {
          	var hasil = await getBuffer(`${data.link}`)
-       await fs.writeFileSync(__path + '/tmp/neko.png', hasil)
+       await fs.writeFileSync(__path + '/tmp/quotes.png', hasil)
 
-         res.sendFile(__path + '/tmp/neko.png')
+         res.sendFile(__path + '/tmp/quotes.png')
     })
 } else {
 res.sendFile(invalidKey)
