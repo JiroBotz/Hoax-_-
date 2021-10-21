@@ -1373,7 +1373,6 @@ router.get('/search/kodepos', async (req, res, next) => {
                                 })
 
                                 resolve({
-                                    status: 200,
                                     data: results
                                 })
                             } else {
