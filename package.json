@@ -52,8 +52,6 @@
     "request": "^2.88.2",
     "spinnies": "^0.5.1",
     "scrape-yt": "^1.4.8",
-    "url": "0.11.0",
-    "math": "1.2.10",
     "ssl-express-www": "^3.0.7",
     "text-to-mp3": "^1.0.4",
     "tiktok-scraper": "^1.4.12",
