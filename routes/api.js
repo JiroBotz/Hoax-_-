@@ -1320,33 +1320,5 @@ res.sendFile(invalidKey)
 }
 })
 
-router.get('/search/growstock', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            query = req.query.query
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-        if(!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
-
-       if(listkey.includes(apikeyInput)){      
-       	try {
-       	gplay.search({
-                        term: q,
-                        num: 1
-                    })
-          .then(async (data) => {
-      	var result = data;
-     res.json({
-                 creator: 'Hafidz Abdillah',
-                 status: true,
-                 code: 200,
-                 message: 'Jangan ditembak bang',
-                 result
-             })
-          })
-    } else {
-res.sendFile(invalidKey)
-}
-}
-})
 // End of script
 module.exports = router
