@@ -1398,5 +1398,57 @@ router.get('/search/kodepos', async (req, res, next) => {
 res.sendFile(invalidKey)
 }
 })
+
+router.get('/search/grupwa', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            query = req.query.query
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+       	function linkwa(nama){
+	return new Promise((resolve,reject) => {
+		axios.get('http://ngarang.com/link-grup-wa/daftar-link-grup-wa.php?search='+ nama +'&searchby=name')
+		.then(({ data }) => {
+			const $ = cheerio.load(data);
+			const result = [];
+			const lnk = [];
+			const nm = [];
+		$('div.wa-chat-title-container').each(function(a,b){
+			const limk = $(b).find('a').attr('href');
+			lnk.push(limk)
+			})
+		$('div.wa-chat-title-text').each(function(c,d) {
+			const name = $(d).text();
+			nm.push(name)
+			})
+		for( let i = 0; i < lnk.length; i++){
+			result.push({
+				nama: nm[i].split('. ')[1],
+				link: lnk[i].split('?')[0]
+			})
+		}
+		resolve(result)
+		})
+	.catch(reject)
+	})
+}
+
+      linkwa(query)
+      .then((result) => {
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
 // End of script
 module.exports = router
