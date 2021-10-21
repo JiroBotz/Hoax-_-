@@ -309,10 +309,10 @@ router.get('/removekey', (req, res, next) => {
 // DATA API DOWNLOADER
 router.get('/downloader/igstory', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
-            url = req.query.url
+            username = req.query.username
             
 	if(!apikeyInput) return res.json(loghandler.notparam)
-        if(!url) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter url"})
+        if(!username) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter username"})
 
        if(listkey.includes(apikeyInput)){      
        	
@@ -348,8 +348,6 @@ router.get('/downloader/igstory', async (req, res, next) => {
       .then(v => v.json())
       .then((data) => {
         resolve({
-          status: true,
-          message: 'By DappaUhuy',
           result: data.medias[0]
         })
       })
@@ -359,8 +357,9 @@ router.get('/downloader/igstory', async (req, res, next) => {
   })
 }
 
-      zippy(url)
-      .then((result) => {
+      igStory(username)
+      .then((data) => {
+      	var result = data;
      res.json({
                  creator: 'Hafidz Abdillah',
                  status: true,
