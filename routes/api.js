@@ -1234,7 +1234,7 @@ router.get('/search/hapymod', async (req, res, next) => {
 					})
 				}
 				const result = {
-				    format
+					data: format
 				}
 				resolve(result)
 			})
@@ -1249,7 +1249,7 @@ router.get('/search/hapymod', async (req, res, next) => {
                  status: true,
                  code: 200,
                  message: 'Jangan ditembak bang',
-                result
+                result : result.data
              })
          })
          .catch(e => {
