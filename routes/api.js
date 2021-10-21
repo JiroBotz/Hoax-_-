@@ -1516,7 +1516,7 @@ router.get('/search/pinterest', async (req, res, next) => {
 
        if(listkey.includes(apikeyInput)){      
        	
-       	function linkwa(query){
+       	function pinterest(query){
 	return new Promise(async (resolve, reject) => {
 		axios.get('https://id.pinterest.com/search/pins/?autologin=true&q=' + query, {
 			headers: {
@@ -1542,14 +1542,15 @@ router.get('/search/pinterest', async (req, res, next) => {
 	})
 }
 
-      linkwa(query)
+      pinterest(query)
       .then((result) => {
+      	var result = data;
      res.json({
                  creator: 'Hafidz Abdillah',
                  status: true,
                  code: 200,
                  message: 'Jangan ditembak bang',
-                 result
+                 result : result.hasil
              })
           })
     } else {
