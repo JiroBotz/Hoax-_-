@@ -307,7 +307,7 @@ router.get('/removekey', (req, res, next) => {
 
 
 // DATA API DOWNLOADER
-router.get('/downloader/zippydl', async (req, res, next) => {
+router.get('/downloader/igstory', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             url = req.query.url
             
@@ -316,59 +316,47 @@ router.get('/downloader/zippydl', async (req, res, next) => {
 
        if(listkey.includes(apikeyInput)){      
        	
-       	function zippy(link){
-	return new Promise(async (resolve, reject) => {
-		axios.get(link)
-			.then(({
-				data
-			}) => {
-				const $ = cheerio.load(data)
-				const nama = $('#lrbox > div:nth-child(2) > div:nth-child(1) > font:nth-child(4)').text();
-				const size = $('#lrbox > div:nth-child(2) > div:nth-child(1) > font:nth-child(7)').text();
-				const upload = $('#lrbox > div:nth-child(2) > div:nth-child(1) > font:nth-child(10)').text();
-				const getlink = async (u) => {
-					console.log('⏳  ' + `Get Page From : ${u}`)
-					const zippy = await axios({
-						method: 'GET',
-						url: u
-					}).then(res => res.data).catch(err => false)
-					console.log('Done')
-					const $ = cheerio.load(zippy)
-					if (!$('#dlbutton').length) {
-						return {
-							error: true,
-							message: $('#lrbox>div').first().text().trim()
-						}
-					}
-					console.log('⏳  ' + 'Fetch Link Download...')
-					const url = _url.parse($('.flagen').attr('href'), true)
-					const urlori = _url.parse(u)
-					const key = url.query['key']
-					let time;
-					let dlurl;
-					try {
-						time = /var b = ([0-9]+);$/gm.exec($('#dlbutton').next().html())[1]
-						dlurl = urlori.protocol + '//' + urlori.hostname + '/d/' + key + '/' + (2 + 2 * 2 + parseInt(time)) + '3/DOWNLOAD'
-					} catch (error) {
-						time = _math.evaluate(/ \+ \((.*)\) \+ /gm.exec($('#dlbutton').next().html())[1])
-						dlurl = urlori.protocol + '//' + urlori.hostname + '/d/' + key + '/' + (time) + '/DOWNLOAD'
-					}
-					console.log('Done')
-					return dlurl
-				}
-				getlink(link).then(res => {
-					//_(timet) 
-					var result = {
-							Judul: nama,
-							size: size,
-							uploaded: upload,
-							link: res
-					}
-					resolve(result)
-				})
-			})
-			.catch(reject)
-	})
+       	function igStory(username) {
+  return new Promise((resolve, reject) => {
+    const baseUrl = 'https://igmp4.com'
+    fetch(baseUrl + '/download-stories.php', {
+      method: 'GET',
+      headers: {
+        'cookie': 'PHPSESSID=ccb3ar0ul5jiu3knt2rh7pv4g4',
+        'sec-ch-ua': '"Google Chrome";v="93", " Not;A Brand";v="99", "Chromium";v="93"',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36'
+      }
+    })
+    .then(rsp => rsp.text())
+    .then((data) => {
+      const $ = cheerio.load(data)
+      const token = $('input[name="token"]').attr('value')
+      const bodyForm = new formData()
+      bodyForm.append('url', 'https://www.instagram.com/' + username)
+      bodyForm.append('action', 'story')
+      bodyForm.append('token', token)
+      bodyForm.append('json', '')
+      fetch(baseUrl + '/system/action.php', {
+        method: 'POST',
+        body: bodyForm,
+        headers: {
+          'cookie': 'PHPSESSID=ccb3ar0ul5jiu3knt2rh7pv4g4',
+          'sec-ch-ua': '"Google Chrome";v="93", " Not;A Brand";v="99", "Chromium";v="93"',
+          'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36'
+        }
+      })
+      .then(v => v.json())
+      .then((data) => {
+        resolve({
+          status: true,
+          message: 'By DappaUhuy',
+          result: data.medias[0]
+        })
+      })
+      .catch(reject)
+    })
+    .catch(reject)
+  })
 }
 
       zippy(url)
