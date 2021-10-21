@@ -5837,5 +5837,482 @@ router.get('/asupan/bocil', async (req, res, next) => {
 res.sendFile(invalidKey)
 }
 })
+
+// OTHERS FEATURES
+router.get('/others/fakedata', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+	    
+  if(!apikeyInput) return res.json(loghandler.notparam)
+      
+      if(listkey.includes(apikeyInput)){
+      	axios.get('https://randomuser.me/api/?results=50').then(r => {
+          var random_pict = r.data.results[Math.floor(Math.random() * r.data.results.length)];
+          res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result: {
+                 	FirstName: random_pict.name.first,
+                     LastName: random_pict.name.last,
+                     Gender: random_pict.gender,
+                     Location: random_pict.location.street.name,
+                     StreetNumber: random_pict.location.street.number,
+                     City: random_pict.location.city,
+                     State: random_pict.location.state,
+                     Country: random_pict.location.country,
+                     Postcode: random_pict.location.postcode,
+                     Latitude: random_pict.location.coordinates.latitude,
+                     TimeZone: random_pict.location.timezone.offset,
+                     Email: random_pict.email,
+                     Uuid: random_pict.login.uuid,
+                     Username: random_pict.login.username,
+                     Password: random_pict.login.password,
+                     Salt: random_pict.login.salt,
+                     Md5: random_pict.login.md5,
+                     Sha1: random_pict.login.sha1,
+                     Sha256: random_pict.login.sha256,
+                     Phone: random_pict.phone,
+                     Cell: random_pict.cell
+                   }
+             })
+         })           
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/others/cogan', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+	    
+  if(!apikeyInput) return res.json(loghandler.notparam)
+      
+      if(listkey.includes(apikeyInput)){
+      	
+     const neko = () => new Promise((resolve, reject) => {
+                    const Arr = ["pap cowok", "cowo ganteng", "cowok pap"];
+                    const random = Arr[Math.floor(Math.random() * (Arr.length))]
+                    fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${random}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${random}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
+                        "headers": {
+                            "accept": "application/json, text/javascript, */*, q=0.01",
+                            "accept-language": "en-US,en;q=0.9",
+                            "cache-control": "no-cache",
+                            "pragma": "no-cache",
+                            "sec-fetch-dest": "empty",
+                            "sec-fetch-mode": "cors",
+                            "sec-fetch-site": "same-origin",
+                            "sec-gpc": "1",
+                            "x-app-version": "9a236a4",
+                            "x-pinterest-appstate": "active",
+                            "x-requested-with": "XMLHttpRequest"
+                        },
+                        "referrer": "https://www.pinterest.com/",
+                        "referrerPolicy": "origin",
+                        "body": null,
+                        "method": "GET",
+                        "mode": "cors"
+                    }).then((res) => res.json())
+                        .then((json) => {
+                            const generatepin = json.resource_response.data.results[Math.floor(Math.random() * (json.resource_response.data.results.length))]
+                            resolve({
+                                status: 200,
+                                link: generatepin.images.orig.url
+                            })
+                        })
+                })
+
+        neko()
+         .then(async (data) => {
+         	var hasil = await getBuffer(`${data.link}`)
+       await fs.writeFileSync(__path + '/tmp/neko.png', hasil)
+
+         res.sendFile(__path + '/tmp/neko.png')
+    })
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/others/cecan', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+	    
+  if(!apikeyInput) return res.json(loghandler.notparam)
+      
+      if(listkey.includes(apikeyInput)){
+      	
+     const neko = () => new Promise((resolve, reject) => {
+                    const Arr = ["pap cewek", "cewe cantik", "cewe hijab"];
+                    const random = Arr[Math.floor(Math.random() * (Arr.length))]
+                    fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${random}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${random}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
+                        "headers": {
+                            "accept": "application/json, text/javascript, */*, q=0.01",
+                            "accept-language": "en-US,en;q=0.9",
+                            "cache-control": "no-cache",
+                            "pragma": "no-cache",
+                            "sec-fetch-dest": "empty",
+                            "sec-fetch-mode": "cors",
+                            "sec-fetch-site": "same-origin",
+                            "sec-gpc": "1",
+                            "x-app-version": "9a236a4",
+                            "x-pinterest-appstate": "active",
+                            "x-requested-with": "XMLHttpRequest"
+                        },
+                        "referrer": "https://www.pinterest.com/",
+                        "referrerPolicy": "origin",
+                        "body": null,
+                        "method": "GET",
+                        "mode": "cors"
+                    }).then((res) => res.json())
+                        .then((json) => {
+                            const generatepin = json.resource_response.data.results[Math.floor(Math.random() * (json.resource_response.data.results.length))]
+                            resolve({
+                                status: 200,
+                                link: generatepin.images.orig.url
+                            })
+                        })
+                })
+
+        neko()
+         .then(async (data) => {
+         	var hasil = await getBuffer(`${data.link}`)
+       await fs.writeFileSync(__path + '/tmp/neko.png', hasil)
+
+         res.sendFile(__path + '/tmp/neko.png')
+    })
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/others/ucapan', async (req, res) => {
+        timeZone = req.query.timeZone
+    if (!timeZone) return res.json({ status : false, creator : `Hafidz Abdillah`, message : "masukan parameter timeZone"})
+
+    try {
+     WaktuJKt = new Date().toLocaleString("en-US", {timeZone: timeZone});
+
+		function tamHari(WaktuJKt){
+            var date = new Date(WaktuJKt);
+            var waktoo = date.getHours();
+            switch(waktoo){
+                case 0: waktoo = "Tengah Malam🌚"; break;
+                case 1: waktoo = "Tengah Malam🌒"; break;
+                case 2: waktoo = "Dini Hari🌒"; break;
+                case 3: waktoo = "Dini Hari🌓"; break;
+                case 4: waktoo = "Subuh🌔"; break;
+                case 5: waktoo = "Subuh🌔"; break;
+                case 6: waktoo = "Pagi🌝"; break;
+                case 7: waktoo = "Pagi🌝"; break;
+                case 8: waktoo = "Pagi🌝"; break;
+                case 9: waktoo = "Pagi"; break;
+                case 10: waktoo = "Pagi🌞"; break;
+                case 11: waktoo = "Siang🌞"; break;
+                case 12: waktoo = "Siang🌞"; break;
+                case 13: waktoo = "Siang🌞"; break;
+                case 14: waktoo = "Siang🌞"; break;
+                case 15: waktoo = "Sore🌝"; break;
+                case 16: waktoo = "Sore🌝"; break;
+                case 17: waktoo = "Sore🌖"; break;
+                case 18: waktoo = "Magrib🌘"; break;
+                case 19: waktoo = "Magrib🌚"; break;
+                case 20: waktoo = "Malam🌚"; break;
+                case 21: waktoo = "Malam🌚"; break;
+                case 22: waktoo = "Malam🌚"; break;
+                case 23: waktoo = "Tengah Malam🌚"; break;
+            }
+            var tampilHari = "" + waktoo;
+            return `${tampilHari}`
+        }
+
+    res.json({
+        creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result : tamHari(WaktuJKt)
+    })
+    } catch (e) {
+        console.log(e)
+        res.json({ status : false, creator : `Hafidz Abdillah`, message : "Eror Bang, Report Cepat Ke Owner"})
+    }
+
+})
+
+router.get('/others/hitungmundur', async (req, res) => {
+        bulan = req.query.bulan
+        tanggal = req.query.tanggal
+
+    if (!bulan) return res.json({ status : false, creator : `Hafidz Abdillah`, message : "masukan parameter bulan"})
+    if (!tanggal) return res.json({ status : false, creator : `Hafidz Abdillah`, message : "masukan parameter tanggal"})
+
+    try {
+    var countDownDate = new Date(`${bulan} ${tanggal}, 2021 00:00:00`).getTime();
+        var now = new Date().getTime();
+
+		function kurangwaktu(waktunya, waktuskrg){
+			var distance = waktunya - waktuskrg;
+			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+			return days + "Hari " + hours + "Jam " + minutes + "Menit " + seconds + "Detik"
+		}
+
+    res.json({
+         creator: 'Hafidz Abdillah',
+         status: true,
+         code: 200,
+          message: 'Jangan ditembak bang',
+        result : kurangwaktu(countDownDate, now)
+    })
+    } catch (e) {
+        console.log(e)
+        res.json({ status : false, creator : `Hafidz Abdillah`, message : "Eror, Harap Report Ke Owner"})
+    }
+})
+
+router.get('/others/heroml', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+                query = req.query.query
+                
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(!query) return res.json(loghandler.notquery)
+	
+       if(listkey.includes(apikeyInput)){
+       	
+     function herodetails(name) {
+                    return new Promise((resolve, reject) => {
+                        var splitStr = name.toLowerCase().split(' ');
+                        for (let i = 0; i < splitStr.length; i++) {
+                            splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+                        }
+                        var que = splitStr.join(' ')
+                        axios.get('https://mobile-legends.fandom.com/wiki/' + que)
+                            .then(({ data }) => {
+                                var $ = cheerio.load(data)
+                                var mw = []
+                                var attrib = []
+                                var skill = []
+                                var name = $('#mw-content-text > div > div > div > div > div > div > table > tbody > tr > td > table > tbody > tr > td > font > b').text()
+                                $('.mw-headline').get().map((res) => {
+                                    var mwna = $(res).text()
+                                    mw.push(mwna)
+                                })
+                                $('#mw-content-text > div > div > div > div > div > div > table > tbody > tr > td').get().map((rest) => {
+                                    var haz = $(rest).text().replace(/\n/g, '')
+                                    attrib.push(haz)
+                                })
+                                $('#mw-content-text > div > div > div > div > div > div > table > tbody > tr > td > div.progressbar-small.progressbar > div').get().map((rest) => {
+                                    skill.push($(rest).attr('style').replace('width:', ''))
+                                })
+                                axios.get('https://mobile-legends.fandom.com/wiki/' + que + '/Story')
+                                    .then(({ data }) => {
+                                        var $ = cheerio.load(data)
+                                        var pre = []
+                                        $('#mw-content-text > div > p').get().map((rest) => {
+                                            pre.push($(rest).text())
+                                        })
+                                        var story = pre.slice(3).join('\n')
+                                        var items = []
+                                        var character = []
+                                        $('#mw-content-text > div > aside > section > div').get().map((rest) => {
+                                            character.push($(rest).text().replace(/\n\t\n\t\t/g, '').replace(/\n\t\n\t/g, '').replace(/\n/g, ''))
+                                        })
+                                        $('#mw-content-text > div > aside > div').get().map((rest) => {
+                                            items.push($(rest).text().replace(/\n\t\n\t\t/g, '').replace(/\n\t\n\t/g, '').replace(/\n/g, ''))
+                                        })
+                                        var img = $('#mw-content-text > div > aside > figure > a').attr('href')
+                                        var chara = character.slice(0, 2)
+                                        var result = {
+                                            hero_name: name + ` ( ${mw[0].replace('CV:', ' CV:')} )`,
+                                            entrance_quotes: attrib[2].replace('Entrance Quotes', '').replace('\n', ''),
+                                            hero_feature: attrib[attrib.length - 1].replace('Hero Feature', ''),
+                                            image: img,
+                                            items: items,
+                                            character: {
+                                                chara
+                                            },
+                                            attributes: {
+                                                movement_speed: attrib[12].replace('● Movement Speed', ''),
+                                                physical_attack: attrib[13].replace('● Physical Attack', ''),
+                                                magic_power: attrib[14].replace('● Magic Power', ''),
+                                                attack_speed: attrib[15].replace('● Attack Speed', ''),
+                                                physical_defense: attrib[16].replace('● Physical Defense', ''),
+                                                magic_defense: attrib[17].replace('● Magic Defense', ''),
+                                                basic_atk_crit_rate: attrib[18].replace('● Basic ATK Crit Rate', ''),
+                                                hp: attrib[19].replace('● HP', ''),
+                                                mana: attrib[20].replace('● Mana', ''),
+                                                ability_crit_rate: attrib[21].replace('● Ability Crit Rate', ''),
+                                                hp_regen: attrib[22].replace('● HP Regen', ''),
+                                                mana_regen: attrib[23].replace('● Mana Regen', '')
+                                            },
+                                            price: {
+                                                battle_point: mw[1].split('|')[0].replace(/ /g, ''),
+                                                diamond: mw[1].split('|')[1].replace(/ /g, ''),
+                                                hero_fragment: mw[1].split('|')[2] ? mw[1].split('|')[2].replace(/ /g, '') : 'none'
+                                            },
+                                            role: mw[2],
+                                            skill: {
+                                                durability: skill[0],
+                                                offense: skill[1],
+                                                skill_effects: skill[2],
+                                                difficulty: skill[3]
+                                            },
+                                            speciality: mw[3],
+                                            laning_recommendation: mw[4],
+                                            release_date: mw[5],
+                                            background_story: story
+                                        }
+                                        resolve(result)
+                                    }).catch((e) => reject({ status: 404, message: e.message }))
+                            }).catch((e) => reject({ status: 404, message: e.message }))
+                    })
+                }
+
+           
+        herodetails(query)
+       .then(async(data) => {
+        var result = data;
+             res.json({
+             	 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result
+             })
+         })
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/others/qrcode', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	           text = req.query.text
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://api.zeks.me/api/qrencode?apikey=alpin1234567&text=${text}`)
+       await fs.writeFileSync(__path + '/tmp/meme.png', hasil)
+
+         res.sendFile(__path + '/tmp/meme.png')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/others/tts', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+              text = req.query.text
+	    
+  if(!apikeyInput) return res.json(loghandler.notparam)
+      
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://api.zeks.me/api/tts?apikey=alpin1234567&code=id&text=${text}`)
+       await fs.writeFileSync(__path + '/tmp/tts.mp3', hasil)
+
+         res.sendFile(__path + '/tmp/tts.mp3')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/others/hartacustom', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	           text = req.query.text
+	
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://api.zeks.me/api/hartatahta?apikey=alpin1234567&text=${text}`)
+       await fs.writeFileSync(__path + '/tmp/hartacustom.png', hasil)
+
+         res.sendFile(__path + '/tmp/hartacustom.png')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+
+
+router.get('/others/meme', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+	    
+  if(!apikeyInput) return res.json(loghandler.notparam)
+      
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://api.lolhuman.xyz/api/meme/memeindo?apikey=YTRAMLANID`)
+       await fs.writeFileSync(__path + '/tmp/meme.png', hasil)
+
+         res.sendFile(__path + '/tmp/meme.png')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/others/darkjokes', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+	    
+  if(!apikeyInput) return res.json(loghandler.notparam)
+      
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://api.lolhuman.xyz/api/meme/darkjoke?apikey=YTRAMLANID`)
+       await fs.writeFileSync(__path + '/tmp/darkjokes.png', hasil)
+
+         res.sendFile(__path + '/tmp/darkjokes.png')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/others/estetik', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+	    
+  if(!apikeyInput) return res.json(loghandler.notparam)
+      
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://api.lolhuman.xyz/api/random/estetic?apikey=YTRAMLANID`)
+       await fs.writeFileSync(__path + '/tmp/estetik.png', hasil)
+
+         res.sendFile(__path + '/tmp/estetik.png')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/others/attp', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          text = req.query.text
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.notparam)
+  
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`http://zekais-api.herokuapp.com/attg?text=${text}&apikey=pYgYfvYo`)
+       await fs.writeFileSync(__path + '/tmp/attp.gif', hasil)
+
+         res.sendFile(__path + '/tmp/attp.gif')
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/others/ttp', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+	          text = req.query.text
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.notparam)
+  
+      if(listkey.includes(apikeyInput)){
+     var hasil = await getBuffer(`https://api.lolhuman.xyz/api/ttp?apikey=YTRAMLANID&text=${text}`)
+       await fs.writeFileSync(__path + '/tmp/ttp.png', hasil)
+
+         res.sendFile(__path + '/tmp/ttp.png')
+} else {
+res.sendFile(invalidKey)
+}
+})
 // End of script
 module.exports = router
