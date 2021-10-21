@@ -1508,15 +1508,15 @@ res.sendFile(invalidKey)
 })
 
 router.get('/random/quotesmaker', async (req, res, next) => {
-        var apikeyInput = req.query.apikey
-	    
+        var apikeyInput = req.query.apikey,
+	            query = req.query.query
+	
   if(!apikeyInput) return res.json(loghandler.notparam)
-      
+      if(!query) return res.json(loghandler.notquery)
+
       if(listkey.includes(apikeyInput)){
       	
      const quotes = () => new Promise((resolve, reject) => {
-                    const Arr = ["quotes indonesia", "quotes aesthetic"];
-                    const query = Arr[Math.floor(Math.random() * (Arr.length))]
                     fetch(`https://www.pinterest.com/resource/BaseSearchResource/get/?source_url=%2Fsearch%2Fpins%2F%3Fq%3D${query}&data=%7B%22options%22%3A%7B%22isPrefetch%22%3Afalse%2C%22query%22%3A%22${query}%22%2C%22scope%22%3A%22pins%22%2C%22no_fetch_context_on_resource%22%3Afalse%7D%2C%22context%22%3A%7B%7D%7D&_=1619980301559`, {
                         "headers": {
                             "accept": "application/json, text/javascript, */*, q=0.01",
