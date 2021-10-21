@@ -331,7 +331,7 @@ router.get('/downloader/igstory', async (req, res, next) => {
     .then((data) => {
       const $ = cheerio.load(data)
       const token = $('input[name="token"]').attr('value')
-      const bodyForm = new formData()
+      const bodyForm = new FormData()
       bodyForm.append('url', 'https://www.instagram.com/' + username)
       bodyForm.append('action', 'story')
       bodyForm.append('token', token)
