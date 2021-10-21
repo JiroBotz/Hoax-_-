@@ -1508,6 +1508,1007 @@ res.sendFile(invalidKey)
 })
 
 // GAME FEATURES
+router.get('/game/caklontong', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	
+      if(listkey.includes(apikeyInput)){
+       
+       var cak =
+       [
+    {
+        "soal": "Selain mobil, bus, pesawat, orang pergi dari Jakarta ke Surabaya biasanya menggunakan?",
+        "jawaban": "Celana"
+    },
+    {
+        "soal": "Di rumah makan padang, selain pakai sendok kita makan pakai?",
+        "jawaban": "Tenaga"
+    },
+    {
+        "soal": "Biasa digunakan untuk menyalakan atau mematikan TV dan AC?",
+        "jawaban": "Tolong"
+    },
+    {
+        "soal": "Seseorang yang memimpin sebuah desa, biasanya dipanggil pak?",
+        "jawaban": "Noleh"
+    },
+    {
+        "soal": "Senikmat-nikmatnya makan diluar lebih nikmat makan di?",
+        "jawaban": "Telan"
+    },
+    {
+        "soal": "Makan duit rakyat disebut?",
+        "jawaban": "Debus"
+    },
+    {
+        "soal": "Ikan bernafas di air dengan?",
+        "jawaban": "Tenang"
+    },
+    {
+        "soal": "Binatang yang hinggap di makanan?",
+        "jawaban": "Lapar"
+    },
+    {
+        "soal": "Di dalam perpustakaan tidak boleh?",
+        "jawaban": "Keramas"
+    },
+    {
+        "soal": "Saat sukuran biasanya kita menyediakan?",
+        "jawaban": "Ruangan"
+    },
+    {
+        "soal": "Hewan laut yang jalannya miring dan bersembunyi di batu atau pasir biasanya?",
+        "jawaban": "Lagi malu"
+    },
+    {
+        "soal": "Kerbau adalah binatang yang memiliki?",
+        "jawaban": "Huruf k"
+    },
+    {
+        "soal": "Saat naik pesawat kita dilarang membawa..?",
+        "jawaban": "Sendiri"
+    },
+    {
+        "soal": "Seorang istri akan merasa terkejut bila di hari ulang tahun dibelikan?",
+        "jawaban": "Beruang"
+    },
+    {
+        "soal": "Seorang barber mencukur rambut pelanggan dengan?",
+        "jawaban": "Gantian"
+    },
+    {
+        "soal": "Buah yang dipotong-potong, diuleg campur gula jawa dan cabai, jadinya?",
+        "jawaban": "Rusak"
+    },
+    {
+        "soal": "Lorenzo, Marquez, rossi kejar-kejaran, salip menyalip di?",
+        "jawaban": "Biarkan"
+    },
+    {
+        "soal": "Mie ramen adalah makanan khas yang berasal dari?",
+        "jawaban": "Mentah"
+    },
+    {
+        "soal": "Hewan yang sehari-harinya memakan daging, dan hidup di rawa-rawa, namanya?",
+        "jawaban": "Butuh"
+    },
+    {
+        "soal": "Nasi yang enak buat sarapan, biasanya nasi?",
+        "jawaban": "Matang"
+    },
+    {
+        "soal": "Permen apa yang bagian gulanya ada di luar, tapi bungkusnya justru di dalam?",
+        "jawaban": "Permen salah bikin"
+    },
+    {
+        "soal": "Apa yang bulat, kecil, kadang hitam, kadang putih, terus kalau dipencet bisa keluar orangnya?",
+        "jawaban": "Bel rumah"
+    },
+    {
+        "soal": "Pintu apa yang didorong lima orang tetap tidak mau terbuka?",
+        "jawaban": "Pintu yang tulisannya TARIK"
+    },
+    {
+        "soal": "Jauh di mata, tapi dekat di hati, apakah itu?",
+        "jawaban": "Usus"
+    },
+    {
+        "soal": "Gajah naik motor keliatan apanya?",
+        "jawaban": "Bohongnya"
+    },
+    {
+        "soal": "Cermin jika di lap jadi…?",
+        "jawaban": "Cermin"
+    },
+    {
+        "soal": "Pedagang kaki lima bubar karena ada…?",
+        "jawaban": "Macan"
+    },
+    {
+        "soal": "Buah buah apa yang tua?",
+        "jawaban": "Singkong"
+    },
+    {
+        "soal": "Salah satu contoh hewan yang jalannya lambat?",
+        "jawaban": "Serigala",
+        "deskripsi": "Serigala kalau lagi jalan ya pelan-pelan, kalau lari baru cepet"
+    },
+    {
+        "soal": "Lawannya gemuk?",
+        "jawaban": "Takut",
+        "deskripsi": "lah, takut kalau lawannya gemuk"
+    },
+    {
+        "soal": "Koran disebut surat ?",
+        "jawaban": "Salah",
+        "deskripsi": "Masa koran disebut surat, salah dong"
+    },
+    {
+        "soal": "Sebelum jadi katak, anak katak disebut ?",
+        "jawaban": "Remaja",
+        "deskripsi": "Nah proses sebelum menjadi katak dewasa, anak katak harus melalui masa-masa remaja dulu kan..."
+    },
+    {
+        "soal": "Hewan berkaki delapan, yang bergelantungan ke sana kemari dengan jaring, namanya?",
+        "jawaban": "Olahraga"
+    },
+    {
+        "soal": "Burung bisa terbang karena memiliki?",
+        "jawaban": "Bakat"
+    },
+    {
+        "soal": "Kita tidak bisa menelepon, kalau handphonenya ngga ada?",
+        "jawaban": "Angka"
+    },
+    {
+        "soal": "Yang dibeli seorang cowok untuk pasangannya di saat Valentine biasanya?",
+        "jawaban": "Bayar"
+    },
+    {
+        "soal": "Saat ke Jakarta naik kereta, selain Stasiun Jatinegara, Stasiun Juanda, dan Pasar Senen, kita bisa turun di?",
+        "jawaban": "Lantai"
+    },
+    {
+        "soal": "Seorang pejabat akan terkena masalah kalau tersangkut?",
+        "jawaban": "Jemuran"
+    },
+    {
+        "soal": "Hewan yang sering digunakan petani untuk membajak sawah?",
+        "jawaban": "Pasrah"
+    },
+    {
+        "soal": "Neil Amstrong adalah astronot yang pernah menginjakkan kakinya di?",
+        "jawaban": "Rumah"
+    },
+    {
+        "soal": "Cuci piring harus?",
+        "jawaban": "Sadar"
+    },
+    {
+        "soal": "Setelah lulus SMA biasanya lanjut?",
+        "jawaban": "Pulang"
+    },
+    {
+        "soal": "Kalau semut kecil, gajah...?",
+        "jawaban": "hewan"
+    },
+    {
+        "soal": "Bertamu lebih dari 2x24 jam harus?",
+        "jawaban": "Makan"
+    },
+    {
+        "soal": "Yang dilakukan atlet sebelum bertanding?",
+        "jawaban": "Pamitan"
+    },
+    {
+        "soal": "Mulutmu ………..",
+        "jawaban": "Hanyasatu",
+        "deskripsi": "Mulut kan emang cuma satu"
+    },
+    {
+        "soal": "Ada udang di balik…",
+        "jawaban": "Gnadu",
+        "deskripsi": "Itu fakta"
+    },
+    {
+        "soal": "Es es apa yang bisa jalan?",
+        "jawaban": "Eskalator",
+        "deskripsi": "Kalau ga jalan bukan es kalator tapi tangga kalator"
+    },
+    {
+        "soal": "Hati senang walaupun tak punya...",
+        "jawaban": "Kaca",
+        "deskripsi": "Kaca juga gak penting penting amat"
+    },
+    {
+        "soal": "Suami bu camat?",
+        "jawaban": "Laki",
+        "deskripsi": "Karena kalo gak laki lesbi, dosa…"
+    },
+    {
+        "soal": "Yang menyebabkan haus saat romadhon?",
+        "jawaban": "Cuaca",
+        "deskripsi": "Kalo panas pasti bikin haus, kalau puasa laper juga yah…"
+    },
+    {
+        "soal": "Kirimin uang lewat atm?",
+        "jawaban": "Thanksya",
+        "deskripsi": "Thanks ya sudah diterima"
+    },
+    {
+        "soal": "Rizky febian lahir di...",
+        "jawaban": "Gendong",
+        "deskripsi": "Ya di gendong dulu lah masa langsung di mandiin"
+    },
+    {
+        "soal": "Para pejuang melawan penjajah dengan senjata?",
+        "jawaban": "Bikin sendiri",
+        "deskripsi": "Klo gak bikin sendiri lah trus dibikinin siapa?"
+    },
+    {
+        "soal": "Apa yang tidak boleh di bawa ke pesawat?",
+        "jawaban": "Sendiri",
+        "deskripsi": "Karena kalo kita bawa sendiri nanti jatuh"
+    },
+    {
+        "soal": "Tak kenal maka tak...",
+        "jawaban": "Undang",
+        "deskripsi": "Orang tidak kenal masak di undang"
+    },
+    {
+        "soal": "Hewan yang melolong dimalam hari…",
+        "jawaban": "Terinjak",
+        "deskripsi": "Kasian kaki nya keinjak"
+    },
+    {
+        "soal": "Api dipegang terasa?",
+        "jawaban": "Susah",
+        "deskripsi": "Api dipegang susah lah panas lagi"
+    },
+    {
+        "soal": "Di akuarium ada ikan 10 mati 2 tinggal",
+        "jawaban": "Dibuang",
+        "deskripsi": "Kalo tidak dibuang, ikan yang laen jadi ikutan mati"
+    },
+    {
+        "soal": "Tidak masuk kerja karena hari...",
+        "jawaban": "DiPHK",
+        "deskripsi": "Ya kan si hari kalo di phk ga usah masuk kerja lagi..."
+    },
+    {
+        "soal": "Tinky winky...",
+        "jawaban": "Tenar sekali",
+        "deskripsi": "Nama nama tersebut sudah terkenal di semua kalangan"
+    },
+    {
+        "soal": "Cicak jatuh ke…",
+        "jawaban": "Bacok",
+        "deskripsi": "Di bacok mah jatuh"
+    },
+    {
+        "soal": "Dalam permainan bulutangkis",
+        "jawaban": "Iya",
+        "deskripsi": "Coba nonton bulutangkis pasti nama indonesia disingkat"
+    },
+    {
+        "soal": "Ada guling ada…",
+        "jawaban": "Benang",
+        "deskripsi": "Kalo ga ada benang jahitnya pake apa?"
+    },
+    {
+        "soal": "Andi basah kuyup karena?",
+        "jawaban": "Husen",
+        "deskripsi": "Karena diceburin si husen ke kolam, nakal banget yah…"
+    },
+    {
+        "soal": "Matahari terbenam hari mulai",
+        "jawaban": "Pulang",
+        "deskripsi": "Udah malam kalo gak pulang, hari dicariin ibunya"
+    },
+    {
+        "soal": "Hewan pemakan segala?",
+        "jawaban": "Rakus",
+        "deskripsi": "Semuanya dimakan"
+    },
+    {
+        "soal": "Burung terbang menggunakan..",
+        "jawaban": "Semangat",
+        "deskripsi": "Kalau tidak semangat pasti lemes tuh.."
+    },
+    {
+        "soal": "Beli lampu biasanya di...",
+        "jawaban": "Coba",
+        "deskripsi": "Anda kalau beli lampu pasti dicoba dulu"
+    },
+    {
+        "soal": "Jangan berteman dengan orang...",
+        "jawaban": "Hilang",
+        "deskripsi": "Gimana caranya?"
+    },
+    {
+        "soal": "Alpukat",
+        "jawaban": "Bisa",
+        "deskripsi": "Memang bisa disebut"
+    },
+    {
+        "soal": "Bekas pacar disebut...",
+        "jawaban": "Jangan",
+        "deskripsi": "Nanti pacar yang sekarang marah"
+    },
+    {
+        "soal": "Orang sakit minum?",
+        "jawaban": "Oiya",
+        "deskripsi": "Sakit minum yang banyak yah, biar cepet sembuh"
+    },
+    {
+        "soal": "Pelat nomer kendaraan A berasal dari?",
+        "jawaban": "Samsat",
+        "deskripsi": "Karena samsat merupakan institusi yg berhak mengeluarkan plat kendaraan bermotor"
+    },
+    {
+        "soal": "Hujan deres bikin …",
+        "jawaban": "Basah",
+        "deskripsi": "Kalau panas pasti kering"
+    },
+    {
+        "soal": "Makan dianjurkan pakai tangan…",
+        "jawaban": "Benar",
+        "deskripsi": "Kanan atau kiri boleh kok, kanan lebih bagus sih katanya"
+    },
+    {
+        "soal": "Pesawat mendarat di…",
+        "jawaban": "Bantuin",
+        "deskripsi": "Pilot, co-pilot, operator bandara, dan lain-lain.."
+    },
+    {
+        "soal": "Di rumah ada adik",
+        "jawaban": "Masak",
+        "deskripsi": "Hmm kira kira lagi masak apa yah…"
+    },
+    {
+        "soal": "Kakak mengantar adik sekolah sampai",
+        "jawaban": "Capek",
+        "deskripsi": "Nganter nya di gendong"
+    },
+    {
+        "soal": "Galang menyimpan buku di…",
+        "jawaban": "Mas",
+        "deskripsi": "Bukunya dimas dipinjam galang kemarin sore"
+    },
+    {
+        "soal": "Matahari tenggelam di sebelah…",
+        "jawaban": "Gawat",
+        "deskripsi": "Gawat kalau matahari tenggelam di sebelah kita"
+    },
+    {
+        "soal": "Apabila mengendarai mobil wajib bawa",
+        "jawaban": "Satu",
+        "deskripsi": "Kalo bawa 2 gimana mengendarainya"
+    },
+    {
+        "soal": "Mawar melati semuanya…",
+        "jawaban": "Bunga",
+        "deskripsi": "Kalo bukan bunga apa coba, hewan?"
+    },
+    {
+        "soal": "Jangan membuang tisu di…",
+        "jawaban": "Tempatnya",
+        "deskripsi": "Masih di tempatnya kok di buang"
+    },
+    {
+        "soal": "Ketika _____ orang biasanya makan",
+        "jawaban": "Marah",
+        "deskripsi": "Orang marah apa enggak ya pasti makan"
+    },
+    {
+        "soal": "Burung adalah hewan yang bisa..",
+        "jawaban": "Temenan",
+        "deskripsi": "Kan kalo terbang rame-rame kan sama temennya.."
+    },
+    {
+        "soal": "Hewan yang suka buka mulut lebar",
+        "jawaban": "Kenaflu",
+        "deskripsi": "Itu karena ga bisa napas idungnya mampet.."
+    },
+    {
+        "soal": "Hewan yang berubah warna kalau ada musuhnya?",
+        "jawaban": "Bengong",
+        "deskripsi": "Karena, musuhnya bengong lihat hewan berubah warna"
+    },
+    {
+        "soal": "Artis wanita yang punya kumis tipis",
+        "jawaban": "Ihkumisan",
+        "deskripsi": "Ih kok kumisan sih.."
+    },
+    {
+        "soal": "Pintu biasa di….",
+        "jawaban": "Tekan",
+        "deskripsi": "Kalau anda biasa ke atm kan pin ditekan"
+    },
+    {
+        "soal": "Lebak bulus",
+        "jawaban": "Terkenal",
+        "deskripsi": " Karena lebak bulus,cililitan semua orang tau maka nya terkenal"
+    },
+    {
+        "soal": "Seorang matador bisa terluka karena diseruduk..",
+        "jawaban": "Biskota",
+        "deskripsi": "Mau banteng, mau bis kota, tetep aja bisa terluka.."
+    },
+    {
+        "soal": "Cermin jika di lap jadi…",
+        "jawaban": "Cermin",
+        "deskripsi": "Ya masa berubah, yaal tetap cermin"
+    },
+    {
+        "soal": "Batik merupakan produk asli dari…",
+        "jawaban": "Manusia",
+        "deskripsi": "Sejauh ini belum ada mahluk lain yang bisa"
+    },
+    {
+        "soal": "Kendaraan yang suka dipake tukang ojek?",
+        "jawaban": "Mogok",
+        "deskripsi": "Motor emang suka mogok"
+    },
+    {
+        "soal": "Binatang apa yang ga bisa bergerak?",
+        "jawaban": "Paus",
+        "deskripsi": "Kalau game di paus(e) kan berhenti main nya"
+    },
+    {
+        "soal": "Sehabis olahraga",
+        "jawaban": "Air minum",
+        "deskripsi": "Abis olahraga pasti haus kan"
+    },
+    {
+        "soal": "Di tiup angin berkibar di setiap negara",
+        "jawaban": "Jemuran",
+        "deskripsi": "Disetiap negara orang menjemur pakaiannya"
+    },
+    {
+        "soal": "Kalo haus minum",
+        "jawaban": "Aja",
+        "deskripsi": "Minum aja ntar juga ga aus"
+    },
+    {
+        "soal": "Hayam wuruk memerintah kerajaan?",
+        "jawaban": "Jamandulu",
+        "deskripsi": "Ya iyalah… masa jaman sekarang"
+    },
+    {
+        "soal": "Jawab dengan benar. dunia ini terdiri dari lima …",
+        "jawaban": "Benar",
+        "deskripsi": "Kan sudah saya bilang jawab dengan benar"
+    }
+]
+
+           var lontong = cak[Math.floor(Math.random() * cak.length)]
+             res.json({
+             	creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 soal: `${lontong.soal}`,
+                 jawaban: `${lontong.jawaban}`,
+                 keterangan: `${lontong.deskripsi}`
+             })
+         .catch(e => {
+         	res.sendFile(error)
+})
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/game/tebakgambar', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	
+      if(listkey.includes(apikeyInput)){
+       
+       function tebakGambar() {
+  return new Promise((resolve, reject) => {
+    const baseUrl = 'https://jawabantebakgambar.net'
+    fetch(baseUrl + '/all-answers/', {
+      method: 'GET',
+      headers: {
+        'user-agent': 'Mozilla/5.0 (Linux; Android 9; Redmi 7A) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.99 Mobile Safari/537.36'
+      }
+    })
+    .then(rsp => rsp.text())
+    .then((data) => {
+      const $ = cheerio.load(data)
+      const result = []
+      $('ul.images > li > a').each(function() {
+        result.push({
+          image: baseUrl + $(this).find('img').attr('data-src'),
+          answer: $(this).find('span').text()
+        })
+      })
+      const random = result[Math.floor(Math.random() * result.length)]
+      resolve({
+        result: random
+      })
+    })
+    .catch(reject)
+  })
+}
+
+           tebakGambar()
+               .then((data) => {
+               	var result = data;
+             res.json({
+             	creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result: {
+                 	image: result.image,
+                    jawaban: result.answer
+                 }
+             })
+           })
+         .catch(e => {
+         	res.sendFile(error)
+})
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/game/family100', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	
+       if(listkey.includes(apikeyInput)){
+       
+           var fam = [
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "Apa yang menarik dari film india?",
+        "jawaban": "Tarian\nLagu\nCerita\nPakian"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "apa yang membuat pelayan di tempat fotokopi lambat?",
+        "jawaban": "mesin rusak / rusak\nantri\nmati lampu\nkurang orang / kekurangan karyawan\nkertas habis\nmesin sedikit"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "Jenis-jenis cewek yang didemenin para cowok?",
+        "jawaban": "Cantik\nSeksi\nManis\nManja"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "Sampah apa yang sering ditemukan dijalan?",
+        "jawaban": "Kertas\nPlastik\nDaun\nPuntun\nRokok"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "apa yang dilakukan orang kalau kecapean?",
+        "jawaban": "tidur\nmakan\nminum\nistirahat\nspa\nmandi "
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "benda apa didalam rumah yang berwarna putih?",
+        "jawaban": "lantai\ntembok\nlampu\nkulkas\nplastik\ntoples\nsofa / sofa putih"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "sebutkan sesuatu yang memiliki tali?",
+        "jawaban": "sepatu\npakaian dalam\ntas\ncelana\npulpen"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "apa penyebab pinggang menjadi terkilir?",
+        "jawaban": "angkat beban berat\nolahraga\njatuh\nsalah duduk "
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "bagian/part dari komputer umum?",
+        "jawaban": "ram\ncpu\nmouse\nkeyboard\nmonitor\nprinter\nscanner"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "suara yang ditakuti anak2?",
+        "jawaban": "anjing\nhantu\npetir\nharimau"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "Perasaan apa yang ada bila mau kencan pertama?",
+        "jawaban": "\nSenang\nGrogi\nGembira\nDag dig dug"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "selain kacang hijau, sebutkan ragam isi bakpau ?",
+        "jawaban": "kacang hitam\ncoklat / cokelat\ndaging\nkentang "
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "sebutkan sesuatu yang sekali pakai langsung buang?",
+        "jawaban": "pembalut\ntisu\npopok bayi / popok\nkorek api / korek\nteh celup\nkondom"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "apa yang biasa dijadikan kado ulang tahun anak kecil?",
+        "jawaban": "boneka\nsepeda\nkue\nbaju\ncelana\nmainan "
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "sebutkan sesuatu yang kamu beli dari uang jajan sendiri?",
+        "jawaban": "makanan\nmainan\nminuman\nalat tulis "
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "bagian/part dari komputer umum?",
+        "jawaban": "ram\ncpu\nmouse\nkeyboard\nmonitor\nprinter\nscanner"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "alasan apa yang orang katakan untuk menyudahi pembicaran di telepon?",
+        "jawaban": "baterai habis\nmau ke toilet\npulsa habis\nsibuk\ntelepon masuk\nmau istirahat\nada tamu "
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "gaya/ model berenang?",
+        "jawaban": "punggung\ndada\nkupu-kupu\nkatak\nbebas "
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "Bekal makan anak sekolah?",
+        "jawaban": "Mie\nNasi goreng\nRoti\nNasi uduk"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "sebutkan warna-warna bunga mawar?",
+        "jawaban": "merah\nputih\nkuning\njingga\norange\nmaroon\nmerah muda\nungu "
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "apa yang tidak perlu dimiliki orang yang botak?",
+        "jawaban": "sisir\nsampo / shampo\ngel / minyak rambut\npengering rambut "
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "hal yang menakutkan bagi anak-anak?",
+        "jawaban": "petir\nhantu\ngelap\norang marah / marah\nmimpi buruk / mimpi\npolisi"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "Apa yang menyebabkan suara serak?",
+        "jawaban": "Teriak\nBatuk\nNangis\nNgedem"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "apa reaksi kamu jika mainan kamu tiba-tiba hidup?",
+        "jawaban": "main bersama\ntakut\nsenang\nkaget\nbuang\nkasih tahu teman"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "apa penyebab pinggang menjadi terkilir?",
+        "jawaban": "angkat beban berat\nolahraga\njatuh\nsalah duduk "
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "apa yg biasanya sering lupa dibawa ?",
+        "jawaban": "uang\ndompet\nhandphone\nkunci\nkacamata\nrokok\nstnk\nkorek"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "hal yang menakutkan bagi anak-anak?",
+        "jawaban": "petir\nhantu\ngelap\norang marah / marah\nmimpi buruk / mimpi\npolisi"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "Jenis-jenis cewek yang didemenin para cowok?",
+        "jawaban": "Cantik\nSeksi\nManis\nManja"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "Sifat yang dimiliki anak-anak",
+        "jawaban": "Manja\nCengeng\nNakal\nPemalu"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "Apa yang dilakukan jika tersesat dihutan",
+        "jawaban": "Menangis\nTeriak\nBerdoa\nDileme"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "kota di usa?",
+        "jawaban": "new york\nlos angeles\norlando\nlas vegas\ntexas\nseattle\nboston "
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "apa yang identik dengan bajaj?",
+        "jawaban": "berisik / ribut\nroda tiga\noranye\nasap / polusi\nbergetar / getar\njakarta"
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "ditoko apa orang lebih sering  melihat-lihat daripada membeli?",
+        "jawaban": "baju\nperhiasan / emas\nkendaraan\nbuku\nsepatu\nelektronik "
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "hewan tak berkaki?",
+        "jawaban": "ular\ncacing\nbelut\nlintah\nsiput "
+    }
+},
+{
+    "result": {
+        "Author": "zxagung",
+        "soal": "Sifat yang dimiliki anak-anak",
+        "jawaban": "Manja\nCengeng\nNakal\nPemalu"
+    }
+}
+]
+
+           var imly = fam[Math.floor(Math.random() * fam.length)]
+             res.json({
+             	 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 soal : `${imly.result.soal}`,
+                jawaban: `${imly.result.jawaban}`
+             })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/game/tebaklirik', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	
+       if(listkey.includes(apikeyInput)){
+    
+     var tebak =
+       [
+    {
+        "soal": "Kupetik bintang, untuk kau simpan, Cahayanya tenang, berikan kau perlindungan, sebagai pengingat teman, juga sebagai ______ semua tantangan",
+        "jawaban": "Jawaban"
+    },
+    {
+        "soal": "Berada di pelukanmu mengajarkanku apa artinya______ kesempurnaan cinta",
+        "jawaban": "Kenyamanan"
+    },
+    {
+        "soal": "Cinta itu ruang dan waktu, tak sekejap harus mau. Cinta butuh ruang yang sepi, tuk______ hati",
+        "jawaban": "Mengutarakan"
+    },
+    {
+        "soal": "Tak bisa tuk teruskan, Dunia kita_____, Bila memang ini ujungnya",
+        "jawaban": "Berbeda"
+    },
+    {
+        "soal": "Aku lah yang tetap memelukmu erat, saat kau berfikir______ berpaling",
+        "jawaban": "Mungkinkah"
+    },
+    {
+        "soal": "Kau harus bisa berlapang dada. Kau harus bisa ambil______",
+        "jawaban": "Hikmahnya"
+    },
+    {
+        "soal": "Untuk apa? Untuk apa cinta tanpa_____, untuk apa cinta tanpa perbuatan. Tak ada artinya",
+        "jawaban": "Kejujuran"
+    },
+    {
+        "soal": "Ku bisa hadapi_____ terluka, yang pernah kurasa di waktu dulu",
+        "jawaban": "Perihnya"
+    },
+    {
+        "soal": "Ada yang lain, di senyummu, yang_____ lidahku gugup tak bergerak",
+        "jawaban": "Membuat"
+    },
+    {
+        "soal": "Aku sayang padamu, aku cinta padamu, semua kan ku_____ demi kebahagiaanmu",
+        "jawaban": "Lakukan"
+    },
+    {
+        "soal": "Bila rindu ini, masih milkmu, ______ sebuah tanya untukmu, harus berapa lama aku menunggumu",
+        "jawaban": "Kuhadirkan"
+    },
+    {
+        "soal": "Ada ruang hatiku kini kau sentuh, aku bukan jatuh _____ namun aku jatuh hati",
+        "jawaban": "Kau adalah yang terindah, yang membuat hatiku tenang, mencintai kamu takkan pernah takut, sebab kau _____ segala kurangku"
+    },
+    {
+        "soal": "Ku cinta kau, ku cinta kau, hanya kamu di hatiku, takkan pernah kan ______, sampai kau jadi milikku",
+        "jawaban": "Terganti"
+    },
+    {
+        "soal": "Ku suka dirinya, mungkin aku sayang, namun _____ mungkin, kau menjadi milikku",
+        "jawaban": "Apakah"
+    },
+    {
+        "soal": "Dia dia dia cinta yang kutunggu tunggu tunggu, dia dia dia _____ hidupku",
+        "jawaban": "Lengkapi"
+    },
+    {
+        "soal": "Dengar laraku, suara hati ini _____ namamu, karna separuh aku, dirimu",
+        "jawaban": "Memanggil"
+    },
+    {
+        "soal": "Ayo putra bangsa, harumkan negeri ini, ____ kita bangga, Indonesia",
+        "jawaban": "Jadikan"
+    },
+    {
+        "soal": "Cinta jangan pernah kau coba _____ karna disini ku butuh kamu",
+        "jawaban": "Pergi"
+    },
+    {
+        "soal": "Untuk apa? Untuk apa cinta tanpa_____, untuk apa cinta tanpa perbuatan",
+        "jawaban": "Kejujuran"
+    },
+    {
+        "soal": "Bila memang harus berpisah, aku akan tetap ceria, bila memang ini______, kau kan tetap ada dalam jiwa",
+        "jawaban": "Ujungnya"
+    },
+    {
+        "soal": "Kau tau sejak pertama bertemu, terbayang _____ indah di matamu, kau berikan tatapan cinta untukku",
+        "jawaban": "Senyum"
+    },
+    {
+        "soal": "Kau dan aku tercipta oleh waktu, hanya untuk saling mencintai, mungkin di_____ bersama, rajut kasih jalin cinta",
+        "jawaban": "Takdirkan"
+    },
+    {
+        "soal": "Apa yang salah dengan lagu ini, kenapa _____ ku mengingatmu, seperti aku bisa merasakan getaran jantung dan langkah kakimu",
+        "jawaban": "Kembali"
+    },
+    {
+        "soal": "Akulah serpihan kisah masa lalumu, yang ____ ingin tau keadaanmu",
+        "jawaban": "Sekedar"
+    },
+    {
+        "soal": "Mungkin suatu saat nanti, kau _____ bahagia meski tak bersamaku",
+        "jawaban": "Temukan"
+    },
+    {
+        "soal": "Kau yang kuinginkan, meski tak ku____, kau yang kubayangkan, yang slalu kuimpikan",
+        "jawaban": "Ungkapkan"
+    },
+    {
+        "soal": "Terlalu manis untuk dilupakan, kenangan yang indah _____ tinggalah mimpi",
+        "jawaban": "Bersamamu"
+    },
+    {
+        "soal": "Mana mungkin selimut tetangga, hangati _____ dalam kedinginan, malam-malam panjang, setiap tidurku selalu kesepian",
+        "jawaban": "Tubuhku"
+    },
+    {
+        "soal": "Dan terjadi lagi, kisah lama yang _____ kembali, kau terluka lagi, dari cinta yang rumit kau jalani",
+        "jawaban": "Terulang"
+    },
+    {
+        "soal": "Garuda di dadaku, garuda kebanggaanku, ku yakin hari ini pasti menang, kobarkan ______, tunjukkan keinginanmu, ku yakin hari ini pasti menang",
+        "jawaban": "Semangatmu"
+    },
+    {
+        "soal": "Sampai saat ini, rasaku ______ di sini, rasa yang tak akan hilang oleh waktu",
+        "jawaban": "Bertahan"
+    },
+    {
+        "soal": "Aku tak bisa _____, bila kau tak ada di sini, aku tak habis pikirkan, bila kau tak lagi temani aku",
+        "jawaban": "Bayangkan"
+    },
+    {
+        "soal": "Ada pelangi, di bola matamu, dan _____ diri tuk bilang aku sayang padamu",
+        "jawaban": "Memaksa"
+    },
+    {
+        "soal": "Setidaknya diriku pernah berjuang, meski tak pernah ternilai di matamu, setidaknya ku pernah menanti, _____ melawan sepi hatiku",
+        "jawaban": "Terkapar"
+    },
+    {
+        "soal": "Bawalah aku ke dalam, ke dalam hangat dirimu, bawalah aku _____ menari dalam pelukanmu",
+        "jawaban": "Kesana"
+    },
+    {
+        "soal": "Mengapa kau pergi, mengapa kau pergi, di saat aku mulai mencintaimu, berharap engkau jadi ____ hatiku, malah kau pergi jauh dari hidupku",
+        "jawaban": "Kekasih"
+    },
+    {
+        "soal": "Sepenuhnya akuuu, ingin memelukmuuu, _____ penuh harapan, tuk mencintaimu",
+        "jawaban": "Mendekap"
+    },
+    {
+        "soal": "Bila tak selamanya kita bisa bersama, haruskah _____ di sini, dan bila selamanya kita bisa bersama, kusimpan cinta ini",
+        "jawaban": "Menunggumu"
+    }
+]
+
+           var lirik = tebak[Math.floor(Math.random() * tebak.length)]
+             res.json({
+             	 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 soal: `${lirik.soal}`,
+                 jawaban: `${lirik.jawaban}`
+             })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+} else {
+res.sendFile(invalidKey)
+}
+})
 
 // End of script
 module.exports = router
