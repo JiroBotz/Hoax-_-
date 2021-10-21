@@ -307,75 +307,6 @@ router.get('/removekey', (req, res, next) => {
 
 
 // DATA API DOWNLOADER
-router.get('/downloader/igstory', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            username = req.query.username
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-        if(!username) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter username"})
-
-       if(listkey.includes(apikeyInput)){      
-       	
-       	function igStory(username) {
-  return new Promise((resolve, reject) => {
-    const baseUrl = 'https://igmp4.com'
-    fetch(baseUrl + '/download-stories.php', {
-      method: 'GET',
-      headers: {
-        'cookie': 'PHPSESSID=ccb3ar0ul5jiu3knt2rh7pv4g4',
-        'sec-ch-ua': '"Google Chrome";v="93", " Not;A Brand";v="99", "Chromium";v="93"',
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36'
-      }
-    })
-    .then(rsp => rsp.text())
-    .then((data) => {
-      const $ = cheerio.load(data)
-      const token = $('input[name="token"]').attr('value')
-      const bodyForm = new FormData()
-      bodyForm.append('url', 'https://www.instagram.com/' + username)
-      bodyForm.append('action', 'story')
-      bodyForm.append('token', token)
-      bodyForm.append('json', '')
-      fetch(baseUrl + '/system/action.php', {
-        method: 'POST',
-        body: bodyForm,
-        headers: {
-          'cookie': 'PHPSESSID=ccb3ar0ul5jiu3knt2rh7pv4g4',
-          'sec-ch-ua': '"Google Chrome";v="93", " Not;A Brand";v="99", "Chromium";v="93"',
-          'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36'
-        }
-      })
-      .then(v => v.json())
-      .then((data) => {
-        resolve({
-          result: data.medias[0]
-        })
-      })
-      .catch(reject)
-    })
-    .catch(reject)
-  })
-}
-
-      igStory(username)
-      .then((data) => {
-      	var result = data;
-     res.json({
-                 creator: 'Hafidz Abdillah',
-                 status: true,
-                 code: 200,
-                 message: 'Jangan ditembak bang',
-                 result
-             })
-          })
-          .catch(e => {
-         	res.json({ status : false, creator : `${creator}`, message : "Mungkin Username Tersebut Tidak Menggunggah Story"})
-})
-    } else {
-res.sendFile(invalidKey)
-}
-})
-
 router.get('/downloader/ytmp3', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             url = req.query.url
@@ -910,6 +841,68 @@ res.sendFile(invalidKey)
 })
 
 // ANIME FEATURES
+router.get('/downloader/igstory', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            query = req.query.query
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+       	function dewabatch(query) {
+	return new Promise((resolve, reject) => {
+		axios.get('https://dewabatch.com/?s=' + query)
+			.then(({
+				data
+			}) => {
+				const $ = cheerio.load(data)
+				const result = [];
+				const linkk = [];
+				const judull = [];
+				const thumb = [];
+				const rating = [];
+				$('div.thumb > a').each(function(a, b) {
+					linkk.push($(b).attr('href'))
+					judull.push($(b).attr('title'))
+					thumb.push($(b).find('img').attr('src').split('?resize')[0])
+				})
+				$('#content > div.postbody > div > div > ul > li > div.dtl > div.footer-content-post.fotdesktoppost > div.contentleft > span:nth-child(1) > rating > ratingval > ratingvalue').each(function(c, d) {
+					rate = $(d).text();
+					rating.push(rate.split(' ')[0])
+				})
+				for (let i = 0; i < linkk.length; i++) {
+					result.push({
+						judul: judull[i],
+						rating: rating[i],
+						thumb: thumb[i],
+						link: linkk[i]
+					})
+				}
+				resolve(result)
+			})
+			.catch(reject)
+	})
+}
+
+      dewabatch(query)
+      .then((result) => {
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result
+             })
+          })
+          .catch(e => {
+         	res.json({ status : false, creator : `${creator}`, message : "Mungkin Username Tersebut Tidak Menggunggah Story"})
+})
+    } else {
+res.sendFile(invalidKey)
+}
+})
+
 router.get('/anime/manga', async (req, res, next) => {
         var apikeyInput = req.query.apikey
                 query = req.query.query
