@@ -1234,7 +1234,7 @@ router.get('/search/hapymod', async (req, res, next) => {
 					})
 				}
 				const result = {
-					data: format
+				    format
 				}
 				resolve(result)
 			})
