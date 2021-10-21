@@ -1543,7 +1543,7 @@ router.get('/search/pinterest', async (req, res, next) => {
 }
 
       pinterest(query)
-      .then((result) => {
+      .then((data) => {
       	var result = data;
      res.json({
                  creator: 'Hafidz Abdillah',
