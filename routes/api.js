@@ -6314,5 +6314,55 @@ router.get('/others/ttp', async (req, res, next) => {
 res.sendFile(invalidKey)
 }
 })
+
+router.get('/others/emojiscrape', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            text = req.query.text
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+    if (!text) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter Text"})
+
+       if(listkey.includes(apikeyInput)){
+      
+            function emojiScraper(emoji) {
+  return new Promise((resolve, reject) => {
+    if(emoji.match(/[a-z|0-9]/gi)) {
+      resolve('Jangan huruf/angka bjir')
+    }
+    fetch('https://emojipedia.org/search?q=' + encodeURI(emoji), {
+      method: 'GET',
+      headers: {
+        'user-agent': 'Mozilla/5.0 (Linux; Android 9; Redmi 7A) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.99 Mobile Safari/537.36'
+      }
+    })
+    .then(rsp => rsp.text())
+    .then((data) => {
+      const $ = cheerio.load(data)
+      resolve({
+        hasil: $('section.vendor-list > ul > li').find('div.vendor-image > img').eq(0).attr('srcset').replace(/ 2x/gi, '')
+      })
+    })
+    .catch(reject)
+  })
+}
+
+          emojiScraper(text)
+        .then(data => {
+        	 var result = data;
+             res.json({
+             	creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+} else {
+res.sendFile(invalidKey)
+}
+})
 // End of script
 module.exports = router
