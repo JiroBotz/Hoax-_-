@@ -10,7 +10,7 @@ var kuhong = db.get('ojan'); // jan diubah
 }
 
 var listkey = ['sayahafiz', 'GRATISAN'];
-var creatorList = ['Eka Gans']; // Nama Lu Ngab
+var creatorList = ['Hafidz Abdillah']; // Nama Lu Ngab
 var creator = creatorList[Math.floor(Math.random() * creatorList.length)]; // Ini jan diubah
 var key = 'EkakeY' // Apikey Lu Ngab
 
@@ -306,6 +306,88 @@ router.get('/removekey', (req, res, next) => {
 
 
 // DATA API DOWNLOADER
+router.get('/search/pinterest', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            url = req.query.url
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!url) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter url"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+       	function pinterest(link){
+	return new Promise(async (resolve, reject) => {
+		axios.get(link)
+			.then(({
+				data
+			}) => {
+				const $ = cheerio.load(data)
+				const nama = $('#lrbox > div:nth-child(2) > div:nth-child(1) > font:nth-child(4)').text();
+				const size = $('#lrbox > div:nth-child(2) > div:nth-child(1) > font:nth-child(7)').text();
+				const upload = $('#lrbox > div:nth-child(2) > div:nth-child(1) > font:nth-child(10)').text();
+				const getlink = async (u) => {
+					console.log('⏳  ' + `Get Page From : ${u}`)
+					const zippy = await axios({
+						method: 'GET',
+						url: u
+					}).then(res => res.data).catch(err => false)
+					console.log('Done')
+					const $ = cheerio.load(zippy)
+					if (!$('#dlbutton').length) {
+						return {
+							error: true,
+							message: $('#lrbox>div').first().text().trim()
+						}
+					}
+					console.log('⏳  ' + 'Fetch Link Download...')
+					const url = _url.parse($('.flagen').attr('href'), true)
+					const urlori = _url.parse(u)
+					const key = url.query['key']
+					let time;
+					let dlurl;
+					try {
+						time = /var b = ([0-9]+);$/gm.exec($('#dlbutton').next().html())[1]
+						dlurl = urlori.protocol + '//' + urlori.hostname + '/d/' + key + '/' + (2 + 2 * 2 + parseInt(time)) + '3/DOWNLOAD'
+					} catch (error) {
+						time = _math.evaluate(/ \+ \((.*)\) \+ /gm.exec($('#dlbutton').next().html())[1])
+						dlurl = urlori.protocol + '//' + urlori.hostname + '/d/' + key + '/' + (time) + '/DOWNLOAD'
+					}
+					console.log('Done')
+					return dlurl
+				}
+				getlink(link).then(res => {
+					//_(timet) 
+					var result = {
+						creator: 'Hanya Orang Biasa',
+						data: {
+							Judul: nama,
+							size: size,
+							uploaded: upload,
+							link: res
+						}
+					}
+					resolve(result)
+				})
+			})
+			.catch(reject)
+	})
+}
+
+      pinterest(query)
+      .then((result) => {
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
+
 router.get('/downloader/ytmp3', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             url = req.query.url
