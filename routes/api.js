@@ -1069,6 +1069,62 @@ res.sendFile(invalidKey)
 }
 })
 
+router.get('/anime/karakteranime', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            query = req.query.query
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+       	function anime(query) {
+	return new Promise((resolve, reject) => {
+		axios.get(`https://www.anime-planet.com/anime/all?name=${query}`)
+			.then((data) => {
+				const $ = cheerio.load(data.data)
+				const result = [];
+				const judul = [];
+				const link = [];
+				const thumb = [];
+				$('#siteContainer > ul.cardDeck.cardGrid > li > a > h3').each(function(a, b) {
+					deta = $(b).text();
+					judul.push(deta)
+				})
+				$('#siteContainer > ul.cardDeck.cardGrid > li > a').each(function(a, b) {
+					link.push('https://www.anime-planet.com' + $(b).attr('href'))
+				})
+				$('#siteContainer > ul.cardDeck.cardGrid > li > a > div.crop > img').each(function(a, b) {
+					thumb.push('https://www.anime-planet.com' + $(b).attr('src'))
+				})
+				for (let i = 0; i < judul.length; i++) {
+					result.push({
+						judul: judul[i],
+						thumb: thumb[i],
+						link: link[i]
+					})
+				}
+				resolve(result)
+			})
+			.catch(reject)
+	})
+}
+
+      anime(query)
+      .then((result) => {
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
+
 // SEARCH FEATURES
 router.get('/search/wikipedia', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
@@ -1450,5 +1506,7 @@ router.get('/search/grupwa', async (req, res, next) => {
 res.sendFile(invalidKey)
 }
 })
+
+
 // End of script
 module.exports = router
