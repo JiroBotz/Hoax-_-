@@ -368,6 +368,9 @@ router.get('/downloader/igstory', async (req, res, next) => {
                  result
              })
           })
+          .catch(e => {
+         	res.json({ status : false, creator : `${creator}`, message : "Mungkin Username Tersebut Tidak Menggunggah Story"})
+})
     } else {
 res.sendFile(invalidKey)
 }
