@@ -1069,7 +1069,7 @@ res.sendFile(invalidKey)
 }
 })
 
-router.get('/anime/karakteranime', async (req, res, next) => {
+router.get('/anime/planetanime', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             query = req.query.query
             
