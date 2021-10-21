@@ -315,7 +315,7 @@ router.get('/search/pinterest', async (req, res, next) => {
 
        if(listkey.includes(apikeyInput)){      
        	
-       	function pinterest(link){
+       	function zippy(link){
 	return new Promise(async (resolve, reject) => {
 		axios.get(link)
 			.then(({
@@ -358,13 +358,10 @@ router.get('/search/pinterest', async (req, res, next) => {
 				getlink(link).then(res => {
 					//_(timet) 
 					var result = {
-						creator: 'Hanya Orang Biasa',
-						data: {
 							Judul: nama,
 							size: size,
 							uploaded: upload,
 							link: res
-						}
 					}
 					resolve(result)
 				})
@@ -373,7 +370,7 @@ router.get('/search/pinterest', async (req, res, next) => {
 	})
 }
 
-      pinterest(query)
+      zippy(url)
       .then((result) => {
      res.json({
                  creator: 'Hafidz Abdillah',
