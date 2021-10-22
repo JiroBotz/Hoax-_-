@@ -7066,7 +7066,7 @@ router.get('/nulis', async (req, res, next) => {
                     '-annotate',
                     '+128+129',
                     fixHeight,
-                    '/lib/setelahkanan.jpg'
+                    outputPath
                 ])
          .on('error', () => console.log('Error Nulis'))
          .on('exit', () =>
