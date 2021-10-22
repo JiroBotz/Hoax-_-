@@ -6936,6 +6936,43 @@ res.sendFile(invalidKey)
 }
 })
 
+router.get('/primbon/ramaljodoh', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            nama = req.query.nama,
+	    pasangan = req.query.pasangan;
+
+if(listkey.includes(apikeyInput)){
+  if(!apikeyInput) return res.json(loghandler.notparam)
+  if (!nama) return res.json(loghandler.notnama)
+  if (!pasangan) return res.json({ message : `Masukan nama pacarmu,, ehh pasangan :v` })
+
+ request.get({
+        headers: {'content-type' : 'application/x-www-form-urlencoded'},
+        url: 'http://www.primbon.com/kecocokan_nama_pasangan.php?nama1=' + nama + '&nama2='+ pasangan +'&proses=+Submit%21+',
+
+    }, function(error, response, body){
+        let $ = cheerio.load(body);
+      var y = $.html().split('<b>KECOCOKAN JODOH BERDASARKAN NAMA PASANGAN</b><br><br>')[1];
+        var t = y.split('.<br><br>')[1];
+        var f = y.replace(t ," ");
+        var x = f.replace(/<br\s*[\/]?>/gi, "\n");
+        var h  = x.replace(/<[^>]*>?/gm, '');
+        var d = h.replace("&amp;", '&')
+
+var result = `Kecocokan Berdasarkan Nama :\n\n${d}`
+         res.json({
+	        creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                result : result
+             })
+   })
+
+} else {
+res.sendFile(invalidKey)
+}
+})
 
 // End of script
 module.exports = router
