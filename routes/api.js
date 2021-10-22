@@ -6947,7 +6947,7 @@ router.get('/search/ramaljodoh', async (req, res, next) => {
 
        if(listkey.includes(apikeyInput)){      
        	
-       	axios.get(`https://www.primbon.com/kecocokan_nama_pasangan.php?nama1=${namayouu}&nama2=${namashee}&proses=+Submit%21+`)
+       	axios.get(`https://www.primbon.com/kecocokan_nama_pasangan.php?nama1=${nama1}&nama2=${nama2}&proses=+Submit%21+`)
                     .then(({ data }) => {
                         var $ = cheerio.load(data)
                         var progress = 'https://www.primbon.com/' + $('#body > img').attr('src')
