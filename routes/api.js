@@ -7048,10 +7048,10 @@ router.get('/nulis', async (req, res, next) => {
     if (!text) return res.json(loghandler.nottext)
 
   if(listkey.includes(apikeyInput)){
-   try {
 	   var fontPath = __path + '/lib/font/Zahraaa.ttf'
            var inputPath = __path + '/lib/sebelumkanan.jpg'
            var outputPath = __path + '/tmp/hasil.jpg'
+           var splitText = text.replace(/(\S+\s*){1,13}/g, '$&\n')
            var fixHeight = splitText.split('\n').slice(0, 31).join('\n')
       spawn('convert', [
                     inputPath,
@@ -7077,7 +7077,6 @@ router.get('/nulis', async (req, res, next) => {
       console.log(e);
 	 res.json(loghandler.erorr)
    }
- }
 })
 // End of script
 module.exports = router
