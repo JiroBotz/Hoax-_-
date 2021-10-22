@@ -6911,7 +6911,6 @@ router.get('/primbon/artimimpi', async (req, res, next) => {
                                     resolve(res)
                                 } else {
                                     var res = {
-                                        status: false,
                                         result: `Data tidak ditemukan! Gunakan kata kunci.`
                                     }
                                     resolve(res)
