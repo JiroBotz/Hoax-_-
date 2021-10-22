@@ -6843,6 +6843,64 @@ res.sendFile(invalidKey)
 })
 
 //PRIMBON FEATURES
+router.get('/primbon/artinama', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            query = req.query.query
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+       	function getUrl(query){
+    return new Promise((resolve, reject) => {
+        axios.get(`https://www.musixmatch.com/search/${query}`)
+        .then(({data}) => {
+            const $ = cheerio.load(data)
+            const res = $('#site').find('div > div > div > div > ul > li:nth-child(1) > div > div > div')
+            //resolve($('#site').find('search-results > div > div > tab-content > div > div > box box-style-plain > box-content > ul'))
+            resolve(`https://www.musixmatch.com` + $(res).find('h2 > a').attr('href'))
+        })
+        .catch(reject)
+    })
+}
+
+function getLirik(query) {
+    return new Promise(async(resolve, reject) => {
+        const link = await getUrl(query)
+        axios.get(link)
+        .then(({data}) => {
+            const $ = cheerio.load(data)
+            const lirik = $('#site').find('.mxm-lyrics__content > .lyrics__content__ok').text()
+            const title = $('div.mxm-track-title > h1').text().replace(/Lyrics/gi, '')
+            const author = $('div.mxm-track-title > h2').text()
+            const thumb = 'https:'+$('div.banner-album-image-desktop > img').attr('src')
+            resolve({
+                    title,
+                    author,
+                    thumb,
+                    lirik
+            })
+        })
+        .catch(reject)
+    })
+}
+
+      getLirik(query)
+      .then((data) => {
+      	var result = data;
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
 
 // End of script
 module.exports = router
