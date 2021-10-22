@@ -6852,41 +6852,26 @@ router.get('/primbon/artinama', async (req, res, next) => {
 
        if(listkey.includes(apikeyInput)){      
        	
-       	function getUrl(query){
-    return new Promise((resolve, reject) => {
-        axios.get(`https://www.musixmatch.com/search/${query}`)
-        .then(({data}) => {
-            const $ = cheerio.load(data)
-            const res = $('#site').find('div > div > div > div > ul > li:nth-child(1) > div > div > div')
-            //resolve($('#site').find('search-results > div > div > tab-content > div > div > box box-style-plain > box-content > ul'))
-            resolve(`https://www.musixmatch.com` + $(res).find('h2 > a').attr('href'))
-        })
-        .catch(reject)
-    })
+       	function artinama(query){
+	return new Promise((resolve, reject) => {
+		queryy = query.replace(/ /g, '+')
+		axios.get('https://www.primbon.com/arti_nama.php?nama1=' + query + '&proses=+Submit%21+')
+			.then(({
+				data
+			}) => {
+				const $ = cheerio.load(data)
+				const result = $('#body').text();
+				const result2 = result.split('\n      \n        \n        \n')[0]
+				const result4 = result2.split('ARTI NAMA')[1]
+				const result5 = result4.split('.\n\n')
+				const result6 = result5[0] + '\n\n' + result5[1]
+				resolve(result6)
+			})
+			.catch(reject)
+	})
 }
 
-function getLirik(query) {
-    return new Promise(async(resolve, reject) => {
-        const link = await getUrl(query)
-        axios.get(link)
-        .then(({data}) => {
-            const $ = cheerio.load(data)
-            const lirik = $('#site').find('.mxm-lyrics__content > .lyrics__content__ok').text()
-            const title = $('div.mxm-track-title > h1').text().replace(/Lyrics/gi, '')
-            const author = $('div.mxm-track-title > h2').text()
-            const thumb = 'https:'+$('div.banner-album-image-desktop > img').attr('src')
-            resolve({
-                    title,
-                    author,
-                    thumb,
-                    lirik
-            })
-        })
-        .catch(reject)
-    })
-}
-
-      getLirik(query)
+      artinama(query)
       .then((data) => {
       	var result = data;
      res.json({
