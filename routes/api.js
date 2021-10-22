@@ -7052,21 +7052,22 @@ router.get('/nulis', async (req, res, next) => {
 	   var fontPath = __path + '/lib/font/Zahraaa.ttf'
            var inputPath = __path + '/lib/sebelumkanan.jpg'
            var outputPath = __path + '/tmp/hasil.jpg'
+           var fixHeight = splitText.split('\n').slice(0, 31).join('\n')
       spawn('convert', [
-            inputPath,
-            '-font',
-            fontPath,
-            '-size',
-            '700x960',
-            '-pointsize',
-            '30',
-            '-interline-spacing',
-            '-7',
-            '-annotate',
-            '+170+222',
-            text,
-            outputPath
-         ])
+                    inputPath,
+                    '-font',
+                    fontPath,
+                    '-size',
+                    '960x1280',
+                    '-pointsize',
+                    '23',
+                    '-interline-spacing',
+                    '2',
+                    '-annotate',
+                    '+128+129',
+                    fixHeight,
+                    '/lib/setelahkanan.jpg'
+                ])
          .on('error', () => console.log('Error Nulis'))
          .on('exit', () =>
          {
