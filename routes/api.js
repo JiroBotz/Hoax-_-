@@ -307,7 +307,7 @@ router.get('/removekey', (req, res, next) => {
 
 
 // DATA API DOWNLOADER
-router.get('/downloader/ytmp3', async (req, res, next) => {
+router.get('/downloader/mediafire', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             url = req.query.url
             
