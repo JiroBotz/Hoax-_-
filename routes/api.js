@@ -6938,14 +6938,15 @@ res.sendFile(invalidKey)
 
 router.get('/search/ramaljodoh', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
-            query = req.query.query
+            nama1 = req.query.nama1,
+            nama2 = req.query.nama2
             
 	if(!apikeyInput) return res.json(loghandler.notparam)
-        if(!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
+        if(!nama1) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter nama1"})
+        if(!nama2) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter nama2"})
 
        if(listkey.includes(apikeyInput)){      
        	
-       	function ramaljodoh(katakunci) {
        	axios.get(`https://www.primbon.com/kecocokan_nama_pasangan.php?nama1=${namayouu}&nama2=${namashee}&proses=+Submit%21+`)
                     .then(({ data }) => {
                         var $ = cheerio.load(data)
@@ -6955,17 +6956,14 @@ router.get('/search/ramaljodoh', async (req, res, next) => {
                         var nega = isi.split('Sisi Negatif Anda: ')[1]
                         var res = {
                             result: {
-                                nama1: namayouu,
-                                nama2: namashee,
+                                nama1: nama1,
+                                nama2: nama2,
                                 thumb: progress,
                                 positif: posi,
                                 negatif: nega
                             }
                         }
       })
-}
-
-      ramaljodoh(query)
       .then((data) => {
       	var result = data;
      res.json({
