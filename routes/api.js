@@ -7050,7 +7050,7 @@ router.get('/nulis', async (req, res, next) => {
 
    try {
 	   var fontPath = __path + '/lib/font/Zahraaa.ttf'
-           var inputPath = __path + '/lib/kertas/nulis.jpg'
+           var inputPath = __path + '/lib/sebelumkanan.jpg'
            var outputPath = __path + '/tmp/hasil.jpg'
       spawn('convert', [
             inputPath,
