@@ -1296,7 +1296,8 @@ router.get('/search/trendtwit', async (req, res, next) => {
                  status: true,
                  code: 200,
                  message: 'Jangan ditembak bang',
-                result
+                 country : result.country,
+                result : result.result
              })
          })
          .catch(e => {
