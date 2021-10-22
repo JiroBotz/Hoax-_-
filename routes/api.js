@@ -7039,5 +7039,43 @@ router.get('/primbon/nomorhoki', async (req, res, next) => {
 res.sendFile(invalidKey)
 }
 })
+
+router.get('/nulis', async (req, res, next) => {
+	var apikeyInput = req.query.apikey,
+            text = req.query.text
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+    if (!text) return res.json(loghandler.nottext)
+
+   try {
+	   var fontPath = __path + '/lib/font/Zahraaa.ttf'
+           var inputPath = __path + '/lib/kertas/nulis.jpg'
+           var outputPath = __path + '/tmp/hasil.jpg'
+      spawn('convert', [
+            inputPath,
+            '-font',
+            fontPath,
+            '-size',
+            '700x960',
+            '-pointsize',
+            '30',
+            '-interline-spacing',
+            '-7',
+            '-annotate',
+            '+170+222',
+            text,
+            outputPath
+         ])
+         .on('error', () => console.log('Error Nulis'))
+         .on('exit', () =>
+         {
+	         res.sendFile(outputPath)
+        })
+   } catch (e) {
+      console.log(e);
+	 res.json(loghandler.erorr)
+   }
+})
 // End of script
 module.exports = router
