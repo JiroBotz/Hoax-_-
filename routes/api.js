@@ -317,6 +317,59 @@ router.get('/downloader/ytmp3', async (req, res, next) => {
        if(listkey.includes(apikeyInput)){
        
 
+            function mediafire(query) {
+	return new Promise((resolve, reject) => {
+		axios.get(query)
+			.then(({
+				data
+			}) => {
+				const $ = cheerio.load(data)
+				const judul = $('body > div.mf-dlr.page.ads-alternate > div.content > div.center > div > div.dl-btn-cont > div.dl-btn-labelWrap > div.promoDownloadName.notranslate > div').text();
+				const size = $('body > div.mf-dlr.page.ads-alternate > div.content > div.center > div > div.dl-info > ul > li:nth-child(1) > span').text();
+				const upload_date = $('body > div.mf-dlr.page.ads-alternate > div.content > div.center > div > div.dl-info > ul > li:nth-child(2) > span').text();
+				const link = $('#downloadButton').attr('href')
+				const hsil = {
+					judul: link.split('/')[5],
+					upload_date: upload_date,
+					size: size,
+					mime: link.split('/')[5].split('.')[1],
+					link: link
+				}
+				resolve(hsil)
+			})
+			.catch(reject)
+	})
+}
+
+          mediafire(url)
+        .then((data) => {
+        	 var result = data;
+             res.json({
+             	creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+} else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/downloader/ytmp3', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            url = req.query.url
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+    if (!url) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter url"})
+
+       if(listkey.includes(apikeyInput)){
+       
+
             async function ytDonlodMp3(url) {
   return new Promise((resolve, reject) => {
     try {
