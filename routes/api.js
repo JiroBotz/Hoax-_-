@@ -6887,5 +6887,55 @@ res.sendFile(invalidKey)
 }
 })
 
+router.get('/primbon/artimimpi', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            query = req.query.query
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+       function artimimpi(katakunci) {
+                    return new Promise((resolve, reject) => {
+                        axios.get('https://www.primbon.com/tafsir_mimpi.php?mimpi=' + katakunci + '&submit=+Submit+')
+                            .then(({ data }) => {
+                                var $ = cheerio.load(data)
+                                var detect = $('#body > font > i').text()
+                                var isAva = /Tidak ditemukan/g.test(detect) ? false : true
+                                if (isAva) {
+                                    var isi = $('#body').text().split(`Hasil pencarian untuk kata kunci: ${katakunci}`)[1].replace(/\n\n\n\n\n\n\n\n\n/gi, '\n')
+                                    var res = {
+                                        status: true,
+                                        result: isi
+                                    }
+                                    resolve(res)
+                                } else {
+                                    var res = {
+                                        status: false,
+                                        result: `Data tidak ditemukan! Gunakan kata kunci.`
+                                    }
+                                    resolve(res)
+                                }
+                            })
+                            .catch(reject)
+                    })
+                }
+
+      artimimpi(query)
+      .then((data) => {
+      	var result = data;
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
 // End of script
 module.exports = router
