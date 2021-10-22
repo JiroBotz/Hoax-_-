@@ -6906,7 +6906,6 @@ router.get('/primbon/artimimpi', async (req, res, next) => {
                                 if (isAva) {
                                     var isi = $('#body').text().split(`Hasil pencarian untuk kata kunci: ${katakunci}`)[1].replace(/\n\n\n\n\n\n\n\n\n/gi, '\n')
                                     var res = {
-                                        status: true,
                                         result: isi
                                     }
                                     resolve(res)
