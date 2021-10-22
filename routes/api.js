@@ -6937,5 +6937,51 @@ router.get('/primbon/artimimpi', async (req, res, next) => {
 res.sendFile(invalidKey)
 }
 })
+
+router.get('/search/ramaljodoh', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            query = req.query.query
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+       	function ramaljodoh(katakunci) {
+       	axios.get(`https://www.primbon.com/kecocokan_nama_pasangan.php?nama1=${namayouu}&nama2=${namashee}&proses=+Submit%21+`)
+                    .then(({ data }) => {
+                        var $ = cheerio.load(data)
+                        var progress = 'https://www.primbon.com/' + $('#body > img').attr('src')
+                        var isi = $('#body').text().split(namashee)[1].replace('< Hitung Kembali', '').split('\n')[0]
+                        var posi = isi.split('Sisi Negatif Anda: ')[0].replace('Sisi Positif Anda: ', '')
+                        var nega = isi.split('Sisi Negatif Anda: ')[1]
+                        var res = {
+                            result: {
+                                nama1: namayouu,
+                                nama2: namashee,
+                                thumb: progress,
+                                positif: posi,
+                                negatif: nega
+                            }
+                        }
+      })
+}
+
+      ramaljodoh(query)
+      .then((data) => {
+      	var result = data;
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
+
 // End of script
 module.exports = router
