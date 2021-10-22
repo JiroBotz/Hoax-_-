@@ -7045,9 +7045,9 @@ router.get('/nulis', async (req, res, next) => {
             text = req.query.text
             
 	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
     if (!text) return res.json(loghandler.nottext)
 
+  if(listkey.includes(apikeyInput)){
    try {
 	   var fontPath = __path + '/lib/font/Zahraaa.ttf'
            var inputPath = __path + '/lib/sebelumkanan.jpg'
@@ -7077,6 +7077,7 @@ router.get('/nulis', async (req, res, next) => {
       console.log(e);
 	 res.json(loghandler.erorr)
    }
+ }
 })
 // End of script
 module.exports = router
