@@ -332,7 +332,7 @@ router.get('/downloader/mediafiredl', async (req, res, next) => {
 					judul: link.split('/')[5],
 					upload_date: upload_date,
 					size: size,
-					mime: link.split('/')[5].split('.')[1],
+					type: link.split('/')[5].split('.')[1],
 					link: link
 				}
 				resolve(hsil)
