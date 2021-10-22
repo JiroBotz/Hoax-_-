@@ -7039,44 +7039,5 @@ router.get('/primbon/nomorhoki', async (req, res, next) => {
 res.sendFile(invalidKey)
 }
 })
-
-router.get('/nulis', async (req, res, next) => {
-	var apikeyInput = req.query.apikey,
-            text = req.query.text
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-    if (!text) return res.json(loghandler.nottext)
-
-  if(listkey.includes(apikeyInput)){
-	   var fontPath = __path + '/lib/font/Zahraaa.ttf'
-           var inputPath = __path + '/lib/sebelumkanan.jpg'
-           var outputPath = __path + '/tmp/hasil.jpg'
-           var splitText = text.replace(/(\S+\s*){1,13}/g, '$&\n')
-           var fixHeight = splitText.split('\n').slice(0, 31).join('\n')
-      spawn('convert', [
-                    inputPath,
-                    '-font',
-                    fontPath,
-                    '-size',
-                    '960x1280',
-                    '-pointsize',
-                    '23',
-                    '-interline-spacing',
-                    '2',
-                    '-annotate',
-                    '+128+129',
-                    fixHeight,
-                    outputPath
-                ])
-         .on('error', () => console.log('Error Nulis'))
-         .on('exit', () =>
-         {
-	         res.sendFile(outputPath)
-        })
-   } catch (e) {
-      console.log(e);
-	 res.json(loghandler.erorr)
-   }
-})
 // End of script
 module.exports = router
