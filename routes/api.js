@@ -6964,7 +6964,6 @@ router.get('/search/ramaljodoh', async (req, res, next) => {
                             }
                         }
       })
-      .then((data) => {
       	var result = data;
      res.json({
                  creator: 'Hafidz Abdillah',
