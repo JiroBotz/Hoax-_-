@@ -765,6 +765,7 @@ res.sendFile(invalidKey)
 }
 })
 
+// TEXTPRO FEATURES
 router.get('/textpro/blackpink', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
 	          text = req.query.text
