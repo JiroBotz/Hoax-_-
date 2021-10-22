@@ -1242,6 +1242,63 @@ res.sendFile(invalidKey)
 })
 
 // SEARCH FEATURES
+router.get('/search/palingmurah', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            query = req.query.query
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+    if (!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
+
+       if(listkey.includes(apikeyInput)){
+       
+
+         async function palingmurah(produk) {
+	if (!produk) {
+		return new TypeError("No Querry Input! Bakaaa >\/\/<")
+	}
+	try {
+		const res = await axios.get(`https://palingmurah.net/pencarian-produk/?term=` + produk)
+		const hasil = []
+		const $ = cheerio.load(res.data)
+		$('div.ui.card.wpj-card-style-2 ').each(function(a, b) {
+			let url = $(b).find('a.image').attr('href')
+			let img = $(b).find('img.my_image.lazyload').attr('data-src')
+			let title = $(b).find('a.list-header').text().trim()
+			let product_desc = $(b).find('div.description.visible-on-list').text().trim()
+			let price = $(b).find('div.flex-master.card-job-price.text-right.text-vertical-center').text().trim()
+			const result = {
+				product: title,
+				product_desc: product_desc,
+				product_image: img,
+				product_url: url,
+				price
+			}
+			hasil.push(result)
+		})
+		return hasil
+	} catch (error404) {
+		return new Error("=> Error =>" + error404)
+	}
+}
+
+          palingmurah(query)
+        .then((result) => {
+             res.json({
+             	creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+} else {
+res.sendFile(invalidKey)
+}
+})
+
 router.get('/search/wikipedia', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             q = req.query.q
