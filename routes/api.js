@@ -7071,7 +7071,7 @@ router.get('/search/bokep', async (req, res, next) => {
     })
 }
 
-      pornvid(query)
+      pornvid()
       .then(async(data) => {
       	var result = data;
      res.json({
