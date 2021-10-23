@@ -7066,7 +7066,7 @@ router.get('/search/bokep', async (req, res, next) => {
             hasil.views = $('article > div.single-pre-meta.ws.clearfix > div > span:nth-child(4) > span').text()
             hasil.tags = $('article > div.post-tags').text()
             hasil.video = $('article > div.video-wrapper.vxplayer > div.vx_el').attr('src') || $('article > div.video-wrapper.vxplayer > div.vx_el').attr('data-src') || 'https://4.bp.blogspot.com/-hyMqjmQQq4o/W6al-Rk4IpI/AAAAAAAADJ4/m-lVBA_GC9Q5d4BIQg8ZO3fYmQQC3LqSACLcBGAs/s1600/404_not_found.png'
-            resolve({ status: res.status, creator: 'Rapa Ganteng', hasil: hasil })
+            resolve({ hasil: hasil })
         })
     })
 }
