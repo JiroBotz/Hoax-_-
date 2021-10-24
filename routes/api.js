@@ -949,13 +949,13 @@ router.get('/anime/searchkomiku', async (req, res, next) => {
 }
 
       searchkomiku(query)
-      .then((soup) => {
+      .then(async(res) => {
      res.json({
                  creator: 'Hafidz Abdillah',
                  status: true,
                  code: 200,
                  message: 'Jangan ditembak bang',
-                 soup
+                 result : res.data
              })
           })
     } else {
