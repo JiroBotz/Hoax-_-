@@ -351,7 +351,7 @@ router.get('/downloader/mediafiredl', async (req, res, next) => {
              })
          })
          .catch(e => {
-         	res.sendFile(error)
+         	res.json(loghandler.error)
 })
 } else {
 res.sendFile(invalidKey)
@@ -418,7 +418,7 @@ router.get('/downloader/ytmp3', async (req, res, next) => {
              })
          })
          .catch(e => {
-         	res.sendFile(error)
+         	res.json(loghandler.error)
 })
 } else {
 res.sendFile(invalidKey)
@@ -483,6 +483,9 @@ router.get('/downloader/ytmp4', async (req, res, next) => {
                  result
              })
          })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
 } else {
 res.sendFile(invalidKey)
 }
@@ -621,7 +624,7 @@ router.get('/downloader/igstory', async (req, res, next) => {
              })
          })
          .catch(e => {
-         	res.sendFile(error)
+         	res.json(loghandler.error)
 })
 } else {
 res.sendFile(invalidKey)
@@ -675,7 +678,7 @@ router.get('/downloader/twdl', async (req, res, next) => {
              })
          })
          .catch(e => {
-         	res.sendFile(error)
+         	res.json(loghandler.error)
 })
 } else {
 res.sendFile(invalidKey)
@@ -758,6 +761,9 @@ async function TiktokDownloader (Url) {
                  result
             })
          })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
 } else {
 res.sendFile(invalidKey)
 }
@@ -775,6 +781,9 @@ router.get('/textpro/blackpink', async (req, res, next) => {
        await fs.writeFileSync(__path + '/tmp/blekpink.png', hasil)
 
          res.sendFile(__path + '/tmp/blekpink.png')
+         .catch(e => {
+         	res.json(loghandler.error)
+})
 } else {
 res.sendFile(invalidKey)
 }
