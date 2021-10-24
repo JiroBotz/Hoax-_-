@@ -7156,7 +7156,7 @@ router.get('/stalk/tiktok', async (req, res, next) => {
 
        if(listkey.includes(apikeyInput)){      
 
-TikTokScraper.getUserProfileInfo(username)
+TikTokScraper.getUserProfileInfo(username, options)
         .then(user => {
      res.json({
                  creator: 'Hafidz Abdillah',
