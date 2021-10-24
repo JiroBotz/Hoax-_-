@@ -895,6 +895,74 @@ res.sendFile(invalidKey)
 })
 
 // ANIME FEATURES
+router.get('/anime/searchkomiku', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            query = req.query.query
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+       	function searchkomiku(QUERY) { 
+     return new Promise((resolve, reject) => { 
+          fetch('https://komiku.id/cari/?post_type=manga&s='+ encodeURIComponent(QUERY) , { 
+              method: 'get',
+              headers: {
+                "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,/;q=0.8,application/signed-exchange;v=b3;q=0.9",
+                "accept-language": "en-US,en;q=0.9,id;q=0.8",
+                "sec-ch-ua": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"90\", \"Google Chrome\";v=\"90\"",
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36'
+            } 
+            }) 
+          .then(res => res.text()) 
+          .then(res => { 
+               const soup = cheerio.load(res) 
+               const IndTitle = [];
+               const keterangan = []; 
+               const thumb = []; 
+               const link = [];
+               const hasil = []; 
+               soup('div.daftar').each(function(a, b) { 
+                    soup(b).find('span.judul2').each(function(c, d) { 
+                         IndTitle.push(soup(d).text()) 
+                    }) 
+                    soup(b).find('p').each(function(c, d) { 
+                         keterangan.push(soup(d).text().trim()) 
+                    }) 
+                    soup('div.bgei').each(function(c, d) { 
+                         soup(d).find('a').each(function(e, f) { 
+                            link.push("https://data1.komiku.id" + soup(f).attr('href')) 
+                              soup(f).find('img').each(function(g, h) { 
+                                   thumb.push(soup(h).attr('data-src')) 
+                              }) 
+                         }) 
+                    }) 
+               }) 
+               for (let i = 0; i < IndTitle.length; i++) { 
+                    hasil.push({ Judul: IndTitle[i], Gambar: thumb[i], Keterangan: keterangan[i], Link: link[i] }) 
+               } 
+               resolve(hasil) 
+          }) 
+          .catch(reject) 
+     }) 
+}
+
+      searchkomiku(query)
+      .then((soup) => {
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 soup
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
+
 router.get('/downloader/igstory', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             query = req.query.query
