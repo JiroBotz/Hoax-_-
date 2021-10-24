@@ -7163,9 +7163,7 @@ TikTokScraper.getUserProfileInfo(username, options)
                  status: true,
                  code: 200,
                  message: 'Jangan ditembak bang',
-                 result : [
-                      user : user
-                 ]
+                 user
              })
           })
     } else {
