@@ -1560,6 +1560,33 @@ res.sendFile(invalidKey)
 }
 })
 
+router.get('/search/chord', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            query = req.query.query
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+       fetch(encodeURI(`https://python-api-zhirrr.herokuapp.com/api/chord?q=${query}`))
+       .then(response => response.json())
+      .then((data) => {
+      	var result = data;
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result : {
+                 	chord : result.result
+                 }
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
      
 router.get('/search/lirik', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
