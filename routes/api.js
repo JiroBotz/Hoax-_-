@@ -213,9 +213,7 @@ loghandler = {
         message: 'Teks harus berupa angka!'
     },
     error: {
-        status: false,
-        creator: `${creator}`,
-        message: 'Erorr! Mungkin Sedang dalam perbaikan'
+        result: 'This feature is in error, or the URL is invalid, please report to the owner https://abdillah-api.herokuapp.com'
     }
 }
 
@@ -1583,6 +1581,9 @@ router.get('/search/chord', async (req, res, next) => {
                  }
              })
           })
+          .catch(e => {
+         	res.json(loghandler.error)
+})
     } else {
 res.sendFile(invalidKey)
 }
