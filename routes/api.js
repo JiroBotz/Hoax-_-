@@ -922,7 +922,7 @@ router.get('/anime/searchkomiku', async (req, res, next) => {
                const keterangan = []; 
                const thumb = []; 
                const link = [];
-               const hasil = []; 
+               const result = []; 
                soup('div.daftar').each(function(a, b) { 
                     soup(b).find('span.judul2').each(function(c, d) { 
                          IndTitle.push(soup(d).text()) 
@@ -940,9 +940,9 @@ router.get('/anime/searchkomiku', async (req, res, next) => {
                     }) 
                }) 
                for (let i = 0; i < IndTitle.length; i++) { 
-                    hasil.push({ Judul: IndTitle[i], Gambar: thumb[i], Keterangan: keterangan[i], Link: link[i] }) 
+                    result.push({ Judul: IndTitle[i], Gambar: thumb[i], Keterangan: keterangan[i], Link: link[i] }) 
                } 
-               resolve(hasil) 
+               resolve(result) 
           }) 
           .catch(reject) 
      }) 
