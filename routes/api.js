@@ -6776,7 +6776,7 @@ router.get('/creator/buriq', async (req, res, next) => {
   if(!url) return res.json(loghandler.noturl)
    
       if(listkey.includes(apikeyInput)){
-     var hasil = await getBuffer(`https://nekobot.xyz/api/imagegen?type=jpeg&url=${link}&raw=1`)
+     var hasil = await getBuffer(`https://nekobot.xyz/api/imagegen?type=jpeg&url=${url}&raw=1`)
        await fs.writeFileSync(__path + '/tmp/buriq.jpg', hasil)
 
          res.sendFile(__path + '/tmp/buriq.jpg')
