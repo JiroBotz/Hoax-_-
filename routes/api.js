@@ -916,8 +916,8 @@ router.get('/anime/searchkomiku', async (req, res, next) => {
             } 
             }) 
           .then(res => res.text()) 
-          .then(res => { 
-               const soup = cheerio.load(res) 
+          .then(data => { 
+               const soup = cheerio.load(data) 
                const IndTitle = [];
                const keterangan = []; 
                const thumb = []; 
@@ -949,7 +949,8 @@ router.get('/anime/searchkomiku', async (req, res, next) => {
 }
 
       searchkomiku(query)
-      .then((result) => {
+      .then((data) => {
+      var result = data;
      res.json({
                  creator: 'Hafidz Abdillah',
                  status: true,
