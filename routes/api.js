@@ -6276,11 +6276,10 @@ router.get('/others/tinyurl', async (req, res, next) => {
 	if(!apikeyInput) return res.json(loghandler.notparam)
         if(!url) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter url"})
 
-       if(listkey.includes(apikeyInput)){      
-       	
+       if(listkey.includes(apikeyInput)){          	
        	fetch(encodeURI(`https://tinyurl.com/api-create.php?url=${url}`))
            .then(response => response.json())
-          .then(data => {
+          .then((data) => {
       	var result = data;
      res.json({
                  creator: 'Hafidz Abdillah',
