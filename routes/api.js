@@ -1457,7 +1457,8 @@ console.log(result)
 }
 
       playstore(query)
-      .then((result) => {
+      .then((data) => {
+      	var result = data;
      res.json({
                  creator: 'Hafidz Abdillah',
                  status: true,
