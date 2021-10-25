@@ -21,6 +21,7 @@ var brainly = require('brainly-scraper-v2');
 var imageToBase64 = require('image-to-base64');
 var upload = require(__path + '/lib/upload.js');
 var axios = require('axios');
+var fakeUa = require('fake-useragent');
 var FormData = require('form-data');
 var yt = require('ytdl-core');
 var ytpl = require('ytpl');
