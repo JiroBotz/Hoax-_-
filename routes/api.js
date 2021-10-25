@@ -6294,6 +6294,35 @@ res.sendFile(invalidKey)
 }
 })
 
+router.get('/search/lirik', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            url = req.query.url
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!url) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+fetch(encodeURI(`https://cutt.ly/api/api.php?key=5478841e629aa30e7cb65bd1428df6938d102&short=${url}`))
+           .then(response => response.json())
+          .then(data => {
+      	var result = data;
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result : {
+                 	title : result.result.title,
+                 	shortLink : result.result.shortLink
+                 }
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
+
 router.get('/others/fakedata', async (req, res, next) => {
         var apikeyInput = req.query.apikey
 	    
