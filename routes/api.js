@@ -7146,30 +7146,5 @@ res.sendFile(invalidKey)
 }
 })
 
-// STALKER FEATURES
-router.get('/stalk/tiktok', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            username = req.query.username
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-        if(!username) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter username"})
-
-       if(listkey.includes(apikeyInput)){      
-
-TikTokScraper.getUserProfileInfo(username, options)
-        .then(userEvent => {
-     res.json({
-                 creator: 'Hafidz Abdillah',
-                 status: true,
-                 code: 200,
-                 message: 'Jangan ditembak bang',
-                 result : userEvent
-             })
-          })
-    } else {
-res.sendFile(invalidKey)
-}
-})
-
 // End of script
 module.exports = router
