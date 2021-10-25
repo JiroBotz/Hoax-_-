@@ -7146,7 +7146,7 @@ res.sendFile(invalidKey)
 }
 })
 
-router.get('/primbon/telegraph', async (req, res, next) => {
+router.get('/primbon/imgbb', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             url = req.query.url
             
@@ -7155,22 +7155,16 @@ router.get('/primbon/telegraph', async (req, res, next) => {
 
        if(listkey.includes(apikeyInput)){      
        	
-       	async function uptotele(path){
-            let form = new FormData();
-            form.append('photo', fs.createReadStream(path))
-            let data = await axios({ method: "POST", url: "https://telegra.ph/upload",data: form, headers: { 'Content-Type': `multipart/form-data; boundary=${form._boundary}`}})
-            return 'https://telegra.ph' + data.data[0].src
-         }
-
-      uptotele(url)
-      .then((data) => {
+       	fetch(encodeURI(`https://api.imgbb.com/1/upload?expiration=120&key=761ea2d5575581057a799d14e9c78e28&image=${url}&name=Abdillah-Api`))
+          .then(response => response.json())
+          .then(data => {
       	var result = data;
      res.json({
                  creator: 'Hafidz Abdillah',
                  status: true,
                  code: 200,
                  message: 'Jangan ditembak bang',
-                 result : result
+                 result : result.result.url
              })
           })
     } else {
