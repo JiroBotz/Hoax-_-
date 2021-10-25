@@ -7146,7 +7146,7 @@ res.sendFile(invalidKey)
 }
 })
 
-router.get('/search/lirik', async (req, res, next) => {
+router.get('/primbon/telegraph', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             url = req.query.url
             
