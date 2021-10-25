@@ -6242,6 +6242,58 @@ res.sendFile(invalidKey)
 })
 
 // OTHERS FEATURES
+router.get('/others/imgbb', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            url = req.query.url
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!url) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter url"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+       	fetch(encodeURI(`https://api.imgbb.com/1/upload?expiration=120&key=761ea2d5575581057a799d14e9c78e28&image=${url}&name=Abdillah-Api`))
+          .then(response => response.json())
+          .then(data => {
+      	var result = data;
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result : result.result.url
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
+
+router.get('/others/tinyurl', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            url = req.query.url
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!url) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter url"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+       	fetch(encodeURI(`https://tinyurl.com/api-create.php?url=${url}`))
+           .then(response => response.json())
+          .then(data => {
+      	var result = data;
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
+
 router.get('/others/fakedata', async (req, res, next) => {
         var apikeyInput = req.query.apikey
 	    
@@ -7142,58 +7194,6 @@ router.get('/primbon/nomorhoki', async (req, res, next) => {
              })
         })
 } else {
-res.sendFile(invalidKey)
-}
-})
-
-router.get('/primbon/imgbb', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            url = req.query.url
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-        if(!url) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter url"})
-
-       if(listkey.includes(apikeyInput)){      
-       	
-       	fetch(encodeURI(`https://api.imgbb.com/1/upload?expiration=120&key=761ea2d5575581057a799d14e9c78e28&image=${url}&name=Abdillah-Api`))
-          .then(response => response.json())
-          .then(data => {
-      	var result = data;
-     res.json({
-                 creator: 'Hafidz Abdillah',
-                 status: true,
-                 code: 200,
-                 message: 'Jangan ditembak bang',
-                 result : result.result.url
-             })
-          })
-    } else {
-res.sendFile(invalidKey)
-}
-})
-
-router.get('/primbon/tinyurl', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            url = req.query.url
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-        if(!url) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter url"})
-
-       if(listkey.includes(apikeyInput)){      
-       	
-       	fetch(encodeURI(`https://tinyurl.com/api-create.php?url=${url}`))
-           .then(response => response.json())
-          .then(data => {
-      	var result = data;
-     res.json({
-                 creator: 'Hafidz Abdillah',
-                 status: true,
-                 code: 200,
-                 message: 'Jangan ditembak bang',
-                 result
-             })
-          })
-    } else {
 res.sendFile(invalidKey)
 }
 })
