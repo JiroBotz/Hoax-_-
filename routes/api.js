@@ -7146,5 +7146,37 @@ res.sendFile(invalidKey)
 }
 })
 
+router.get('/search/lirik', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            url = req.query.url
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!url) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter url"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+       	async function uptotele(path){
+            let form = new FormData();
+            form.append('photo', fs.createReadStream(path))
+            let data = await axios({ method: "POST", url: "https://telegra.ph/upload",data: form, headers: { 'Content-Type': `multipart/form-data; boundary=${form._boundary}`}})
+            return 'https://telegra.ph' + data.data[0].src
+         }
+
+      uptotele(url)
+      .then((data) => {
+      	var result = data;
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result : result
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
+
 // End of script
 module.exports = router
