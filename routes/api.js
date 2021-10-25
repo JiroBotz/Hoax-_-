@@ -6339,17 +6339,13 @@ console.log(result)
 }
 
    igstalk(username)
-   .then((data) => {
-    var result = data;
+   .then((result) => {
      res.json({
                  creator: 'Hafidz Abdillah',
                  status: true,
                  code: 200,
                  message: 'Jangan ditembak bang',
-                 result : {
-                 	title : result.result.title,
-                 	shortLink : result.result.shortLink
-                 }
+                 result
              })
           })
     } else {
