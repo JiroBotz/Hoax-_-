@@ -6303,9 +6303,7 @@ router.get('/others/cuttly', async (req, res, next) => {
 
        if(listkey.includes(apikeyInput)){      
        	
-fetch(encodeURI(`https://cutt.ly/api/api.php?key=5478841e629aa30e7cb65bd1428df6938d102&short=${url}`))
-           .then(response => response.json())
-          .then(data => {
+axios.get(`https://cutt.ly/api/api.php?key=5478841e629aa30e7cb65bd1428df6938d102&short=${url}`).then(({data}) => {
       	var result = data;
      res.json({
                  creator: 'Hafidz Abdillah',
