@@ -7172,5 +7172,31 @@ res.sendFile(invalidKey)
 }
 })
 
+router.get('/primbon/tinyurl', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            url = req.query.url
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!url) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter url"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+       	fetch(encodeURI(`https://tinyurl.com/api-create.php?url=${url}`))
+           .then(response => response.json())
+          .then(data => {
+      	var result = data;
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
+
 // End of script
 module.exports = router
