@@ -4399,7 +4399,7 @@ res.sendFile(invalidKey)
 }
 })
 
-router.get('/random/quotesdila ', async (req, res, next) => {
+router.get('/random/quotesdilan ', async (req, res, next) => {
         var apikeyInput = req.query.apikey
             
             
