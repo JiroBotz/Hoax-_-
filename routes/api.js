@@ -4399,6 +4399,31 @@ res.sendFile(invalidKey)
 }
 })
 
+router.get('/search/lirik', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            query = req.query.query
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+      
+        axios.get('https://raw.githubusercontent.com/Rizxyu/FEATURE-BOT/main/random/dilan.json').then(({data}) => {
+      	var result = data;
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
+
 router.get('/game/dare', async (req, res, next) => {
         var apikeyInput = req.query.apikey
             
