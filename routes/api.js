@@ -4399,12 +4399,12 @@ res.sendFile(invalidKey)
 }
 })
 
-router.get('/search/lirik', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            query = req.query.query
+router.get('/random/quotesdila ', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+            
             
 	if(!apikeyInput) return res.json(loghandler.notparam)
-        if(!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
+        
 
        if(listkey.includes(apikeyInput)){      
        	
