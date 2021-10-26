@@ -4411,12 +4411,13 @@ router.get('/random/quotesdila ', async (req, res, next) => {
       
         axios.get('https://raw.githubusercontent.com/Rizxyu/FEATURE-BOT/main/random/dilan.json').then(({data}) => {
       	var result = data;
+           var dilan = result[Math.floor(Math.random() * result.length)]
      res.json({
                  creator: 'Hafidz Abdillah',
                  status: true,
                  code: 200,
                  message: 'Jangan ditembak bang',
-                 result
+                quote : `${dilan}`
              })
           })
     } else {
