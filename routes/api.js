@@ -320,7 +320,7 @@ let config = {
 'url': link,
 'submit': ''
 }
-axios('https://downloadgram.org/video-downloader.php',{
+axios.get('https://downloadgram.org/video-downloader.php',{
 method: 'POST',
 data : new URLSearchParams(Object.entries(config)),
 headers: {
