@@ -305,51 +305,6 @@ router.get('/removekey', (req, res, next) => {
 
 
 // DATA API DOWNLOADER
-router.get('/downloader/fbdl', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            url = req.query.url
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-        if(!url) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter url"})
-
-       if(listkey.includes(apikeyInput)){      
-       	
-       	function post(url, FormData) {
-    return fetch(url, {
-        method: 'POST',
-        headers: {
-            accept: "*/*",
-            'X-Requested-With': "XMLHttpRequest",
-            'content-type': "application/x-www-form-urlencoded; charset=UTF-8"
-        },
-        body: new URLSearchParams(Object.entries(FormData))
-    })l
-
-function fbdl(url) => {
-    let resu = await post('https://saveas.co/system/action.php', {
-        url: url, 
-        token: ''
-    })
-    let res = await resu.json()
-    let result = { result : res }
-    return result
-}
-
-      fbdl(url)
-      .then((result) => {
-     res.json({
-                 creator: 'Hafidz Abdillah',
-                 status: true,
-                 code: 200,
-                 message: 'Jangan ditembak bang',
-                 result
-             })
-          })
-    } else {
-res.sendFile(invalidKey)
-}
-})
-
 router.get('/downloader/mediafiredl', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             url = req.query.url
