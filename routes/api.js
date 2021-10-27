@@ -305,6 +305,55 @@ router.get('/removekey', (req, res, next) => {
 
 
 // DATA API DOWNLOADER
+router.get('/downloader/igvideo', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            url = req.query.url
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!url) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter url"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+       	function igvideo(link) {
+return new Promise(async(resolve, reject) => {
+let config = {
+'url': link,
+'submit': ''
+}
+axios('https://downloadgram.org/video-downloader.php',{
+method: 'POST',
+data : new URLSearchParams(Object.entries(config)),
+headers: {
+"cookie": "_ga=GA1.2.623704211.1625264926; __gads=ID=a078e4fc2781b47b-22330cd520ca006e:T=1625264920:RT=1625264920:S=ALNI_MYS-jyPCjNa94DU8n-sX4aNF-ODOg; __atssc=google%3B3; _gid=GA1.2.1953813019.1625397379; __atuvc=4%7C26%2C6%7C27; __atuvs=60e2ab6d67a322ec003",
+"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+}
+})
+.then(data => {
+const $ = cheerio.load(data)
+resolve({
+link: $('#downloadBox > a').attr('href')
+})
+})
+})
+} 
+
+      getLirik(query)
+      .then((data) => {
+      	var result = data;
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
+
 router.get('/downloader/mediafiredl', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             url = req.query.url
