@@ -1911,8 +1911,7 @@ router.get('/game/asahotak', async (req, res, next) => {
                  status: true,
                  code: 200,
                  message: 'Jangan ditembak bang',
-                 pertanyaan : result.result.pertanyaan,
-                 jawaban : result.result.jawaban
+                 result
              })
           })
     } else {
