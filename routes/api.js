@@ -338,7 +338,7 @@ link: $('#downloadBox > a').attr('href')
 })
 } 
 
-      getLirik(query)
+      igvideo(url)
       .then((data) => {
       	var result = data;
      res.json({
