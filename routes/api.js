@@ -324,7 +324,7 @@ router.get('/downloader/fbdl', async (req, res, next) => {
             'content-type': "application/x-www-form-urlencoded; charset=UTF-8"
         },
         body: new URLSearchParams(Object.entries(FormData))
-    })
+    })l
 
 function fbdl(url) => {
     let resu = await post('https://saveas.co/system/action.php', {
@@ -1448,71 +1448,6 @@ router.get('/search/trendtwit', async (req, res, next) => {
          	res.sendFile(error)
 })
 } else {
-res.sendFile(invalidKey)
-}
-})
-
-router.get('/search/playstore', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            query = req.query.query
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-        if(!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
-
-       if(listkey.includes(apikeyInput)){      
-       	
-       	function playstore(name){
-	return new Promise((resolve, reject) => {
-axios.get('https://play.google.com/store/search?q='+ name +'&c=apps')
-.then(({ data }) => {
-	const $ = cheerio.load(data)
-	let ln = [];
-	let nm = [];
-	let dv = [];
-	let lm = [];
-	const result = [];
-	$('div.wXUyZd > a').each(function(a,b){
-const link = 'https://play.google.com' + $(b).attr('href')
-ln.push(link);
-	})
-	$('div.b8cIId.ReQCgd.Q9MA7b > a > div').each(function(d,e){
-const name = $(e).text().trim()
-nm.push(name);
-	})
-	$('div.b8cIId.ReQCgd.KoLSrc > a > div').each(function(f,g){
-const dev = $(g).text().trim();
-dv.push(dev)
-	})
-	$('div.b8cIId.ReQCgd.KoLSrc > a').each(function(h,i){
-const limk = 'https://play.google.com' + $(i).attr('href');
-lm.push(limk);
-	})	
-for (let i = 0; i < ln.length; i++){
-	result.push({
-name: nm[i],
-link: ln[i],
-developer: dv[i]
-	})
-	}
-resolve(result)
-})
-console.log(result)
-	.catch(reject)
-	})
-}
-
-      playstore(query)
-      .then((data) => {
-      	var result = data;
-     res.json({
-                 creator: 'Hafidz Abdillah',
-                 status: true,
-                 code: 200,
-                 message: 'Jangan ditembak bang',
-                 result
-             })
-          })
-    } else {
 res.sendFile(invalidKey)
 }
 })
