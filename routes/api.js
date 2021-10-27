@@ -1872,6 +1872,53 @@ res.sendFile(invalidKey)
 })
 
 // GAME FEATURES
+router.get('/search/lirik', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            query = req.query.query
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+       	function asahotak() {
+    return new Promise((resolve, reject) => {
+        fetch('https://www.cademedia.com/jawaban-tebak-tebakan-asah-otak')
+            .then(res => res.text())
+            .then(res => {
+                const $ = cheerio.load(res)
+                data = []
+                go = $('body').find('div.entry-content').text().split('P:')
+                for (let i = 2; i < go.length; i++) {
+                    x = (go[i].split('J:')[0]).trim()
+                    switch (i) {
+                        case 229: y = (go[i].split('J:')[1].split('Level')[0].split('Demikian')[0]).trim()
+                            break; default: y = (go[i].split('J:')[1].split('Level')[0]).trim()
+                    } data.push({ pertanyaan: x, jawaban: y })
+                }
+                // save json
+                // fs.writeFileSync('./asahotak.json', JSON.stringify(data))
+                resolve(data)
+            }).catch(reject)
+    })
+}
+
+      asahotak()
+      .then((data) => {
+      	var result = data;
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
+
 router.get('/game/caklontong', async (req, res, next) => {
         var apikeyInput = req.query.apikey
             
