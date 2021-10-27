@@ -325,7 +325,6 @@ router.get('/downloader/fbdl', async (req, res, next) => {
         },
         body: new URLSearchParams(Object.entries(FormData))
     })
-}
 
 function fbdl(url) => {
     let resu = await post('https://saveas.co/system/action.php', {
