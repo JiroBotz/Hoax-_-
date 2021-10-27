@@ -2507,9 +2507,9 @@ router.get('/game/family100', async (req, res, next) => {
                  status: true,
                  code: 200,
                  message: 'Jangan ditembak bang',
-                 soal : `${imly.result.soal}`,
-                jawaban: `${imly.result.jawaban}`
+                 result
              })
+          })
          .catch(e => {
          	res.json(loghandler.error)
 })
