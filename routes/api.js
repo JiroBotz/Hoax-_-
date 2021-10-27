@@ -333,7 +333,7 @@ function fbdl(url) => {
         token: ''
     })
     let res = await resu.json()
-    let result = res
+    let result = { result : res }
     return result
 }
 
