@@ -1,563 +1,265 @@
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <!--<base href="https://mhankbarbar.herokuapp.com">-->
-  <link href="https://indrijunanda.github.io/RuangAdmin/img/logo.png" rel="icon">
-  <link href="/static/img/favicon.png" rel="shortcut icon" type="image/png">
-  <title>Abdillah-Api'S</title>
-  <link href="https://indrijunanda.github.io/RuangAdmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://indrijunanda.github.io/RuangAdmin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="https://indrijunanda.github.io/RuangAdmin/css/ruang-admin.min.css" rel="stylesheet">
-  <meta name="description" content="Online Website API" />
-    <meta property="og:image" content="https://i.pinimg.com/originals/28/83/d8/2883d8811942a344bcfeb26d7e8c463f.jpg" />
-    <link rel="shortcut icon" href="https://i.pinimg.com/originals/a3/74/79/a37479805506c421457ef5e002762def.jpg" />
-    <link rel="icon" href="https://i.pinimg.com/originals/a3/74/79/a37479805506c421457ef5e002762def.jpg" />
-
-   <audio hidden autoplay loop>
-    <source src="https://c.top4top.io/m_2121ddq1j1.mp3" type="audio/mpeg">
-  </audio>
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/androidstudio.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-  <script>hljs.initHighlightingOnLoad();</script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="REST API GRATIS">
+    <meta name="robots" content="archive, follow, imageindex, index, odp, snippet, translate">
+    <meta name="author" content="Rizxyu">
+    <title>Riz - API</title>
+    <meta property="og:site_name" name="og:site_name" content="Riz APIs">
+    <meta property="og:title" name="og:title" content="Riz - REST APIs">
+    <meta property="og:url" name="og:url" content="https://rizapi.herokuapp.com/">
+    <meta property="og:image" name="og:image" content="../images/logo.jpeg">
+    <meta property="og:description" name="og:description" content="REST API GRATIS UNTUKMU">
+    <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="../images/logo.jpeg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+    <iframe src="../audio/audio.mp3" hidden="hidden" allow="autoplay"; encrypt-media></iframe>
+    </head>
   
-</head>
-
-<body id="page-top">
-  <div id="wrapper" >
-    <!-- Sidebar -->
-    <ul class="navbar-nav sidebar sidebar-light accordion bg-info" id="accordionSidebar" style="color:black;">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center bg-info" style="color:white;">
-        <div class="sidebar-brand-icon">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTFfXPfgyMY1an5GY9ATkE5l8n92CFwZFVdFw&usqp=CAU">
+  <body>
+  <body id="page-top" onload="getvisitor();">
+    <div class="container-scroller">
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         </div>
-        <div class="sidebar-brand-text mx-3">Abdillah API's</div>  
-      </a>
-      <hr class="sidebar-divider my-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="/api/status">
-          <i class="fas fa-fw fa-code"></i>
-          <span>Documentation</span></a>
-      </li>
-      <hr class="sidebar-divider">
-      <div class="sidebar-heading">
-        Features
-      </div>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
-          aria-expanded="true" aria-controls="collapseBootstrap">
-          <i class="bi bi-capslock-fill"></i>
-          <span color="black">Downloader API</span>
-        </a>
-        <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Downloader Features</h6>
-            <a class="collapse-item" href="/api/downloader/ytmp3?apikey=YOUR_APIKEY&url=https://youtu.be/QDAs64VxM0Y">YouTube [ mp3 ]</a>
-            <a class="collapse-item" href="/api/downloader/ytmp4?apikey=YOUR_APIKEY&url=https://youtu.be/QDAs64VxM0Y">YouTube [ mp4 ]</a>
-            <a class="collapse-item" href="/api/downloader/igfoto?apikey=YOUR_APIKEY&url=https://www.instagram.com/p/CUpntooJG2M/?utm_medium=copy_link">Instagram Foto</a>
-            <a class="collapse-item" href="/api/downloader/igvideo?apikey=YOUR_APIKEY&url=https://www.instagram.com/p/CVcNg_AgwSt/?utm_medium=copy_link">Instagram Video</a>
-            <a class="collapse-item" href="/api/downloader/igvideo?apikey=YOUR_APIKEY&url=https://www.instagram.com/tv/CViIXseI60i/?utm_medium=copy_link">Instagram Tv</a>
-            <a class="collapse-item" href="/api/downloader/mediafiredl?apikey=YOUR_APIKEY&url=https://www.mediafire.com/file/yq0a3dexav3rum8/BOT-21.zip/file">Mediafire Downloader</a>
-            <a class="collapse-item" href="/api/downloader/twdl?apikey=YOUR_APIKEY&url=https://twitter.com/futurism/status/882987478541533189">Twitter Downloader</a>
-            <a class="collapse-item" href="/api/downloader/tiktokdl?apikey=YOUR_APIKEY&url=https://vm.tiktok.com/ZSJ3K8BV4">Tiktok Downloader</a>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
-          aria-controls="collapseForm">
-          <i class="fas fa-fw fa-table"></i>
-          <span>TextPro API</span>
-        </a>
-        <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">TextPro Features</h6>
-            <a class="collapse-item" href="/api/textpro/blackpink?apikey=YOUR_APIKEY&text=Hafidz">Black Pink</a>
-            <a class="collapse-item" href="/api/textpro/neon?apikey=YOUR_APIKEY&text=Hafidz">Neon Text</a>
-            <a class="collapse-item" href="/api/textpro/greenneon?apikey=YOUR_APIKEY&text=Hafidz">Green Neon</a>
-            <a class="collapse-item" href="/api/textpro/blueneon?apikey=YOUR_APIKEY&text=Hafidz">Blue Neon</a>
-            <a class="collapse-item" href="/api/textpro/matrix?apikey=YOUR_APIKEY&text=Hafidz">Matrix Text</a>
-            <a class="collapse-item" href="/api/textpro/dropwater?apikey=YOUR_APIKEY&text=Hafidz">Drop Water</a>
-            <a class="collapse-item" href="/api/textpro/neonlight?apikey=YOUR_APIKEY&text=Hafidz">Neon Light</a>
-            <a class="collapse-item" href="/api/textpro/naruto?apikey=YOUR_APIKEY&text=Hafidz">Naruto Text</a>
-            <a class="collapse-item" href="/api/textpro/glitch?apikey=YOUR_APIKEY&text=Hafidz&text2=Abdillah">Glitch Text</a>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnime" aria-expanded="true"
-          aria-controls="collapseAnime">
-          <i class="fas fa-paw"></i>
-          <span>Anime API</span>
-        </a>
-        <div id="collapseAnime" class="collapse" aria-labelledby="headingAnime" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Anime/Manga Features</h6>
-           <a class="collapse-item" href="/api/anime/loli?apikey=YOUR_APIKEY">Anime Loli</a>
-             <a class="collapse-item" href="/api/anime/neko?apikey=YOUR_APIKEY">Anime Neko</a>
-             <a class="collapse-item" href="/api/anime/waifu?apikey=YOUR_APIKEY">Anime Waifu</a>
-             <a class="collapse-item" href="/api/anime/megumin?apikey=YOUR_APIKEY">Anime Megumin</a>
-             <a class="collapse-item" href="/api/anime/manga?apikey=YOUR_APIKEY&query=Tokyo Revengers">Manga</a>
-             <a class="collapse-item" href="/api/anime/planetanime?apikey=YOUR_APIKEY&query=naruto">Planet Anime</a>
-             <a class="collapse-item" href="/api/anime/doujindesu?apikey=YOUR_APIKEY&query=Naruto">DoujinDesu</a>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRandom" aria-expanded="true"
-          aria-controls="collapseRandom">
-          <i class="fas fa-smile"></i>
-          <span>Game API</span>
-        </a>
-        <div id="collapseRandom" class="collapse" aria-labelledby="headingRandom" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Game Features</h6>
-            <a class="collapse-item" href="/api/game/caklontong?apikey=YOUR_APIKEY">Cak Lontong</a>
-            <a class="collapse-item" href="/api/game/family100?apikey=YOUR_APIKEY">Family100</a>
-            <a class="collapse-item" href="/api/game/tebakgambar?apikey=YOUR_APIKEY">Tebak Gambar</a>
-            <a class="collapse-item" href="/api/game/tebaklirik?apikey=YOUR_APIKEY">Tebak Lirik</a>
-            <a class="collapse-item" href="/api/game/susunkata?apikey=YOUR_APIKEY">Susun Kata</a>
-            <a class="collapse-item" href="/api/game/asahotak?apikey=YOUR_APIKEY">Asah Otak</a>
-            <a class="collapse-item" href="/api/game/truth?apikey=YOUR_APIKEY">Truth</a>
-            <a class="collapse-item" href="/api/game/dare?apikey=YOUR_APIKEY">Dare</a>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item">
-      	<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNulis" aria-expanded="true"
-      	  aria-controls="collapseNulis">
-      	  <i class="fas fa-fw fa-bullseye"></i>
-      	  <span>Random API</span>
-      	</a>
-      <div id="collapseNulis" class="collapse" aria-labelledby="headingNulis" data-parent="#accordionSidebar">
-      	<div class="bg-white py-2 collapse-inner rounded">
-      	  <h6 class="collapse-header">Random Feature</h6>
-            <a class="collapse-item" href="/api/random/quotes?apikey=YOUR_APIKEY">Quotes</a>
-            <a class="collapse-item" href="/api/random/quotesad?apikey=YOUR_APIKEY">Quotes Sadboy</a>
-            <a class="collapse-item" href="/api/random/quotesanime?apikey=YOUR_APIKEY">Quotes Anime</a>
-            <a class="collapse-item" href="/api/random/quotesmaker?apikey=YOUR_APIKEY">Quotes Maker</a>
-      	</div>
-      </div>
-      </li>
-      <li class="nav-item">
-      	<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePrimbon" aria-expanded="true"
-      	  aria-controls="collapsePrimbon">
-      	  <i class="bi bi-box"></i>
-      	  <span>Primbon API</span>
-      	</a>
-      <div id="collapsePrimbon" class="collapse" aria-labelledby="headingPrimbon" data-parent="#accordionSidebar">
-      	<div class="bg-white py-2 collapse-inner rounded">
-      	  <h6 class="collapse-header">Primbon Feature</h6>
-            <a class="collapse-item" href="/api/primbon/artinama?apikey=YOUR_APIKEY&query=Hafidz">Arti Nama</a>
-            <a class="collapse-item" href="/api/primbon/artimimpi?apikey=YOUR_APIKEY&query=Dikejar">Arti Mimpi</a>
-            <a class="collapse-item" href="/api/primbon/ramaljodoh?apikey=YOUR_APIKEY&nama=Hafidz&pasangan=Amel">Ramal Jodoh</a>
-            <a class="collapse-item" href="/api/primbon/nomorhoki?apikey=YOUR_APIKEY&query=08895656884">Nomor Hoki</a>
-      	</div>
-      </div>
-      </li>
-      <li class="nav-item">
-      	<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAsupan" aria-expanded="true"
-      	  aria-controls="collapseAsupan">
-      	  <i class="bi bi-emoji-laughing"></i>
-      	  <span>Asupan API</span>
-      	</a>
-      <div id="collapseAsupan" class="collapse" aria-labelledby="headingAsupan" data-parent="#accordionSidebar">
-      	<div class="bg-white py-2 collapse-inner rounded">
-      	  <h6 class="collapse-header">Penyegar Time Line:v</h6>
-      	  <a class="collapse-item" href="/api/asupan/asupan?apikey=YOUR_APIKEY">Asupan</a>
-            <a class="collapse-item" href="/api/asupan/santuy?apikey=YOUR_APIKEY">Asupan Santuy</a>
-            <a class="collapse-item" href="/api/asupan/ukhty?apikey=YOUR_APIKEY">Asupan Ukhty</a>
-            <a class="collapse-item" href="/api/asupan/bocil?apikey=YOUR_APIKEY">Asupan Bocil</a>
-      	</div>
-      </div>
-      </li>
-      <li class="nav-item">
-      	<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSearch" aria-expanded="true"
-      	  aria-controls="collapseSearch">
-      	  <i class="fas fa-search"></i>
-      	  <span>Search API</span>
-      	</a>
-      	<div id="collapseSearch" class="collapse" aria-labelledby="headingSearch" data-parent="#accordionSidebar">
-      	  <div class="bg-white py-2 collapse-inner rounded">
-      	    <h6 class="collapse-header">Search Features</h6>
-             <a class="collapse-item" href="/api/search/palingmurah?apikey=YOUR_APIKEY&query=Rdp">Paling Murah</a>
-             <a class="collapse-item" href="/api/search/infoloker?apikey=YOUR_APIKEY&query=sales">Info Loker</a>
-      	    <a class="collapse-item" href="/api/search/trendtwit?apikey=YOUR_APIKEY&negara=Indonesia">Trending Twitter</a>
-      	  <a class="collapse-item" href="/api/search/hapymod?apikey=YOUR_APIKEY&query=Whatsapp">Happy Mod</a>
-           <a class="collapse-item" href="/api/search/playstore?apikey=YOUR_APIKEY&query=Whatsapp">Play Store</a>
-            <a class="collapse-item" href="/api/search/wikipedia?apikey=YOUR_APIKEY&q=Lawang Sewu">Wikipedia</a>
-      	  <a class="collapse-item" href="/api/search/lirik?apikey=YOUR_APIKEY&query=Menepi">Lirik Lagu</a>
-           <a class="collapse-item" href="/api/search/chord?apikey=YOUR_APIKEY&query=Menepi">Chord Lagu</a>
-            <a class="collapse-item" href="/api/search/grupwa?apikey=YOUR_APIKEY&query=gamers">Group Wa</a>
-      	  <a class="collapse-item" href="/api/search/kodepos?apikey=YOUR_APIKEY&query=Semarang">Kode Pos</a>
-           <a class="collapse-item" href="/api/search/pinterest?apikey=YOUR_APIKEY&query=Cewe">Pinterest</a>
-           <a class="collapse-item" href="/api/search/pinterestimage?apikey=YOUR_APIKEY&query=Cewe">Pinterest Image</a>
-      	  </div>
-      	</div>
-      </li>
-      <li class="nav-item">
-      	<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOthers" aria-expanded="true"
-      	  aria-controls="collapseOthers">
-      	  <i class="fas fa-fw fa-leaf"></i>
-      	  <span>Others API</span>
-      	</a>
-      	<div id="collapseOthers" class="collapse" aria-labelledby="headingOthers" data-parent="#accordionSidebar">
-      	  <div class="bg-white py-2 collapse-inner rounded">
-      	    <h6 class="collapse-header">Others Features</h6>
-         <a class="collapse-item" href="/api/others/cecan?apikey=YOUR_APIKEY">Gacha Cewe</a>
-         <a class="collapse-item" href="/api/others/cogan?apikey=YOUR_APIKEY">Gacha Cowo</a>
-      	<a class="collapse-item" href="/api/others/estetik?apikey=YOUR_APIKEY">Aesthetic Image</a>
-          <a class="collapse-item" href="/api/others/meme?apikey=YOUR_APIKEY">Meme</a>
-           <a class="collapse-item" href="/api/others/darkjokes?apikey=YOUR_APIKEY">DarkJokes</a>
-           <a class="collapse-item" href="/api/others/fakedata?apikey=YOUR_APIKEY">Fake Data</a>
-           <a class="collapse-item" href="/api/others/heroml?apikey=YOUR_APIKEY&query=balmond">Hero ML Detail</a>
-           <a class="collapse-item" href="/api/others/qrcode?apikey=YOUR_APIKEY&text=Hafidz">Qr Creator</a>
-          <a class="collapse-item" href="/api/others/hartacustom?apikey=YOUR_APIKEY&text=Hafidz">Harta Tahta Custom</a>
-          <a class="collapse-item" href="/api/others/ttp?apikey=YOUR_APIKEY&text=Hafidz">Text To Png</a>
-          <a class="collapse-item" href="/api/others/tts?apikey=YOUR_APIKEY&text=Hafidz">Text To Speech</a>
-          <a class="collapse-item" href="/api/others/emojiscrape?apikey=YOUR_APIKEY&text=🔱">Emoji To Png</a>
-          <a class="collapse-item" href="/api/others/tts?apikey=YOUR_APIKEY&text=Hafidz">Text To Speech</a>
-          <a class="collapse-item" href="/api/others/ucapan?timeZone=Asia/Jakarta">Ucapan [ Time Zone ]</a>
-          <a class="collapse-item" href="/api/others/hitungmundur?tanggal=07&bulan=11">Hitung Mundur [ Waktu ]</a>
-      	  </div>
-      	</div>
-      </li>
-      <li class="nav-item">
-      	<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCreator" aria-expanded="true"
-      	  aria-controls="collapseCreator">
-      	  <i class="bi bi-card-image"></i>
-      	  <span>Creator API</span>
-      	</a>
-      	<div id="collapseCreator" class="collapse" aria-labelledby="headingCreator" data-parent="#accordionSidebar">
-      	  <div class="bg-white py-2 collapse-inner rounded">
-      	    <h6 class="collapse-header">Image Creator Features</h6>
-      	<a class="collapse-item" href="/api/creator/buriq?apikey=YOUR_APIKEY&url=https://i.ibb.co/NpVcyR5/e1d691301d73.jpg">Buriq</a>
-          <a class="collapse-item" href="/api/creator/deep?apikey=YOUR_APIKEY&url=https://i.ibb.co/NpVcyR5/e1d691301d73.jpg">Deep</a>
-           <a class="collapse-item" href="/api/creator/magic?apikey=YOUR_APIKEY&url=https://i.ibb.co/VxyR0TL/0646f374dfba6e4707029289772e6697.jpg">Magic</a>
-           <a class="collapse-item" href="/api/creator/blurpify?apikey=YOUR_APIKEY&url=https://i.ibb.co/VxyR0TL/0646f374dfba6e4707029289772e6697.jpg">Blurpify</a>
-          <a class="collapse-item" href="/api/creator/blur?apikey=YOUR_APIKEY&url=https://i.ibb.co/VxyR0TL/0646f374dfba6e4707029289772e6697.jpg">Blur</a>
-          <a class="collapse-item" href="/api/creator/ytcomment?apikey=YOUR_APIKEY&text=Jangan Ditembak Bang:(&username=Hafidz&url=https://i.ibb.co/VxyR0TL/0646f374dfba6e4707029289772e6697.jpg">Yt Comments</a>
-          <a class="collapse-item" href="/api/creator/twitcomment?apikey=YOUR_APIKEY&text=Jangan Ditembak Bang:(&username=Hafidz&displayname=Mas Hafidz&url=https://i.ibb.co/VxyR0TL/0646f374dfba6e4707029289772e6697.jpg">Twitter Comments</a>
-          <a class="collapse-item" href="/api/creator/phcomment?apikey=YOUR_APIKEY&text=Jangan Ditembak Bang:(&username=Hafidz&url=https://i.ibb.co/NpVcyR5/e1d691301d73.jpg">Ph Comments</a>
-      	  </div>
-      	</div>
-      </li>
-          <li class="nav-item">
-      	<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAboutMe" aria-expanded="true"
-      	  aria-controls="collapseAboutMe">
-      	  <i class="bi bi-emoji-sunglasses-fill"></i>
-      	  <span>My About</span>
-      	</a>
-      	<div id="collapseAboutMe" class="collapse" aria-labelledby="headingAboutMe" data-parent="#accordionSidebar">
-      	  <div class="bg-white py-2 collapse-inner rounded">
-      	    <h6 class="collapse-header">About Me</h6>
-      	<a class="collapse-item" href="https://wa.me/628895656884">Whatsapp</a>
-          <a class="collapse-item" href="https://instagram.com/hafidzabdillh_">Instagram</a>
-           <a class="collapse-item" href="https://saweria.co/AmelBotzz">Donation</a>
-      	  </div>
-      	</div>
-      </li>
-      <hr class="sidebar-divider">
-    </ul>
-    <!-- Sidebar -->
-    <div id="content-wrapper" class="d-flex flex-column">
-      <div id="content">
-        <!-- TopBar -->
-        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top bg-info">
-          <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
           </button>
-          <ul class="navbar-nav ml-auto">
-            <!--<li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" id="ApiKeyDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-check fa-fw"></i>
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item nav-profile dropdown">
+              <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                <div class="nav-profile-img">
+                  <img src="../images/logo.jpeg" alt="image">
+                  <span class="availability-status online"></span>
+                </div>
+                <div class="nav-profile-text">
+                  <p class="mb-1 text-black">Rizxyu</p>
+                </div>
               </a>
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                aria-labelledby="ApiKeyDropdown">
-                <form action="/checklimit">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-1 small" placeholder="Your Apikey"
-                      aria-label="ApiKey" aria-describedby="basic-addon2" style="border-color: #3f51b5;" name="apiKey" required>
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">Check
-                        <i class="fas fa-check fa-sm"></i>
-                      </button>
+              <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+                <a class="dropdown-item" href="/about">
+                  <i class="mdi mdi-creation menu-icon"></i> About </a>
+              </div>
+            </li>
+            <li class="nav-item d-none d-lg-block full-screen-link">
+              <a class="nav-link">
+                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                <i class="mdi mdi-bell-outline"></i>
+                <span class="count-symbol bg-danger"></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                <h6 class="p-3 mb-0">Notifications</h6>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-success">
+                      <i class="mdi mdi-calendar"></i>
                     </div>
                   </div>
-                </form>
-              </div>
-            </li>-->
-            <div class="topbar-divider d-none d-sm-block"></div>
-<li class="nav-item dropdown no-arrow mx-1">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="alertsDropdown" role="button">
-<i class="fas fa-bell fa-fw"></i>
-<span class="badge badge-info badge-counter">4</span>
-</a>
-<div aria-labelledby="alertsDropdown" class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in">
-<h6 class="dropdown-header">
-                  Alerts Center
-                </h6>
-<a class="dropdown-item d-flex align-items-center">
-<div class="mr-3">
-<div class="icon-circle bg-warning">
-<i class="fas fa-file-alt text-white"></i>
-</div>
-</div>
-<div>
-<div class="small text-gray-500">October 25, 2020</div>
-Online APi's Tools is finishing
-</div>
-</a>
-<a class="dropdown-item d-flex align-items-center">
-<div class="mr-3">
-<div class="icon-circle bg-warning">
-<i class="fas fa-exclamation-triangle text-white"></i>
-</div>
-</div>
-<div>
-<div class="small text-gray-500">October 25, 2020</div>
-Report if there are errors on this website to Admin
-</div>
-</a>
-<a class="dropdown-item d-flex align-items-center">
-<div class="mr-3">
-<div class="icon-circle bg-warning">
-<i class="fas fa-podcast text-white"></i>
-</div>
-</div>
-<div>
-<div class="small text-gray-500">October 27, 2020</div>
-Apikey was make a limit, Unlimited
-</div>
-</a>
-<a class="dropdown-item d-flex align-items-center" href="/covid">
-<div class="mr-3">
-<div class="icon-circle bg-warning">
-<i class="fas fa-podcast text-white"></i>
-</div>
-</div>
-<div>
-<div class="small text-gray-500">Oktober 07, 2021</div>
-Primbon, Image Editor, To Update
-</div>
-</a>
-<!-- <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a> -->
-</div>
-</li>
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <img class="img-profile rounded-circle" src="https://i.ibb.co/3MFJT4v/images-15.jpg" style="max-width: 100px">
-                <span class="ml-2 d-none d-lg-inline text-white small">.....</span>
+                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="preview-subject font-weight-normal mb-1">Welcome To Riz API</h6>
+                   </div>
+                </a>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <div class="container-fluid page-body-wrapper">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item nav-profile">
+              <a class="nav-link">
+                <div class="nav-profile-image">
+                  <img src="../images/logo.jpeg" alt="profile">
+                  <span class="login-status online"></span>
+                </div>
+                <div class="nav-profile-text d-flex flex-column">
+                  <span class="font-weight-bold mb-2">Rizxyu</span>
+                </div>
               </a>
-              <!--<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-              </div>-->
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <span class="menu-title">Dashboard</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+           <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-sosmed" aria-expanded="false" aria-controls="ui-sosmed">
+              <span class="menu-title">Social Media API</span>
+              <i class="menu-arrow"></i>
+              <i class="mdi mdi-laptop menu-icon"></i>
+            </a>
+            <div class="collapse" id="ui-sosmed">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/tiktok?url=https://vt.tiktok.com/ZSe8Xfwd1">Tiktok Download</a></li>
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/igdl?url=https://www.instagram.com/p/CTMnneTl8YJ/?utm_medium=copy_link">Instagram Download</a></li>
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/youtube?url=https://youtu.be/5C8yvJUVB-0">Youtube Download</a></li>
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/twitter?url=https://twitter.com/PassengersMovie/status/821025484150423557">Twitter Download</a></li>
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/pindl?url=https://id.pinterest.com/pin/361906520063070744">Pinterest Download</a></li>
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/mediafire?url=https://www.mediafire.com/file/pwxob70rpgma9lz/GBWhatsApp_v8.75%2528Tutorial_Yud%2529.apk/file">MediaFire Download</a></li>
+              </ul>
+            </div>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-animanga" aria-expanded="false" aria-controls="ui-animanga">
+              <span class="menu-title">Anime & Manga API</span>
+              <i class="menu-arrow"></i>
+              <i class="mdi mdi-cat menu-icon"></i>
+            </a>
+            <div class="collapse" id="ui-animanga">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/nhentai?code=298547">Nhentai</a></li>
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/nHentaiSearch?query=gotoubun">Nhentai Search</a></li>
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/doujindesuSearch?query=gotoubun">Doujindesu Search</a></li>
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="api/anime/kusonime?search=boruto">Kusonime Search</a></li>
+              </ul>
+            </div>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-search" aria-expanded="false" aria-controls="ui-search">
+              <span class="menu-title">Searching API</span>
+              <i class="menu-arrow"></i>
+              <i class="mdi mdi-book-search menu-icon"></i>
+            </a>
+            <div class="collapse" id="ui-search">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/google?query=kapan+indonesia+merdeka">Google Search</a></li>
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/pinterest?query=itsuki+nakano">Pinterest Search</a></li>
+              </ul>
+            </div>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-image" aria-expanded="false" aria-controls="ui-image">
+              <span class="menu-title">Random Image API</span>
+              <i class="menu-arrow"></i>
+              <i class="mdi mdi-image menu-icon"></i>
+            </a>
+            <div class="collapse" id="ui-image">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/randomimage/waifu">Ramdom Waifu</a></li>
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/randomimage/neko">Random Neko</a></li>
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/randomimage/husbu">Random Husbu</a></li>
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/randomimage/loli">Random Loli</a></li>
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/randomimage/milf">Random Milf</a></li>
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/randomimage/cosplay">Random Cosplay</a></li>
+              </ul>
+            </div>
+          </li>
+          
+          <li class="nav-item sidebar-actions">
+              <span class="nav-link">
+                <div class="border-bottom">
+                  <h6 class="font-weight-normal mb-3">Made With Rizxyu</h6>
+                </div>
+                <div class="mt-4">
+                <span class="menu-icon">
+                     <i class="mdi mdi-whatsapp"></i>
+                   </span>
+                 <a class="menu-title" href="https://wa.me/6282328303332">WhatsApp</a>
+                </div>
+                <div class="mt-4">
+                <span class="menu-icon">
+                     <i class="mdi mdi-instagram"></i>
+                   </span>
+                 <a class="menu-title" href="https://instagram.com/">Instagram</a>
+                </div>
+                <div class="mt-4">
+                <span class="menu-icon">
+                     <i class="mdi mdi-github-circle"></i>
+                   </span>
+                 <a class="menu-title" href="https://github.com/Rizxyu">GitHub</a>
+                </div>
+              </span>
             </li>
           </ul>
         </nav>
-        	        <!-- Topbar -->
-			
-		<section class="section">
-	        <div class="container">
-	            <div class="columns">
-	                <div class="column is-offset-4 is-4">
-	                    
-	                </div>
-	            </div>
-	        </div>
-	    </section>
-        <!-- Container Fluid-->
-        <!-- Container Fluid-->
-        <div class="container-fluid" id="container-wrapper">
-          <!-- Attention -->
-          <div id="demo" class="alert alert-info alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span id="demo" aria-hidden="true"></span>
-            </button>
-        <script>
-arrBulan = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
-var txt = "";
-txt += "<p><b>Browser CodeName</b>: " + navigator.appCodeName + "</p>";
-txt += "<p><b>Browser Name</b>: " + navigator.appName + "</p>";
-txt += "<p><b>Cookies Enabled</b>: " + navigator.cookieEnabled + "</p>";
-txt += "<p><b>Browser Online</b>: " + navigator.onLine + "</p>";
-txt += "<p><b>Platform</b>: " + navigator.platform + "</p>";
-txt += "<p><b>User-Agent</b>: " + navigator.userAgent + "</p>";
-var d = new Date();
-const jam = d.getHours();
-const menit = d.getMinutes();
-const detik = d.getSeconds();
-const tgl = d.getDate();
-const bln = d.getMonth();
-const thn = d.getFullYear();
-const bulan = arrBulan[bln]
-/* if (jam > 1 && jam < 11) {
-*	view.innerHTML = 'Selamat pagi :)';
-* } else if (jam > 11 && < 15) {
-*	view.innerHTML = 'Selamat siang :)';
-* } else if (jam > 15 && < 18) {
-*	view.innerHTML = 'Selamat sore :)';
-* } else if (jam > 18 && < 24) {
-*	view.innerHTML = 'Selamat malam'
-* } else {
-*	view.innerHTML = 'Selamat datang:)'
-* }
-*/
-document.write(txt)
-document.write("Date : "+ jam +":"+ menit +":"+ detik +"~"+ tgl +"-"+ bulan +"-"+ thn +"<br>")</script>
-</div>
-<style>
-.animated {
-	background: #fff;
-	color: #F00;
-	-webkit-text-fill-color: transparent;
-	-webkit-background-clip: text;
-	font-size: 25px;
-	font-family: Arial Black, Gadget, sans-serif;
-	-webkit-text-stroke-width: 1px;
-	-webkit-text-stroke-color: #FF0000;
-	-webkit-animation: animatedBackground_c 2s infinite alternate;
-}
-
-@keyframes animatedBackground_c {
-	0% {-webkit-text-stroke-color: #ff8b00}
-	10% {-webkit-text-stroke-color: #e8ff00}
-	20% {-webkit-text-stroke-color: #5dff00}
-	30% {-webkit-text-stroke-color: #00ff2e}
-	40% {-webkit-text-stroke-color: #00ffb9}
-	50% {-webkit-text-stroke-color: #00b9ff}
-	60% {-webkit-text-stroke-color: #002eff}
-	70% {-webkit-text-stroke-color: #5d00ff}
-	80% {-webkit-text-stroke-color: #e800ff}
-	90% {-webkit-text-stroke-color: #ff008b}
-	100% {-webkit-text-stroke-color: #ff0000}
-}
-</style>
-<style>
-.mengetik
-{
-	font-size: 15px;
-	width: 250px;
-	white-space:nowrap;
-	overflow:hidden;
-	-webkit-animation: ketik 5s steps(50, end);
-	animation: ketik 5s steps(50, end);
-}
-
-@keyframes ketik{
-		from { width: 0; }
-}
-
-@-webkit-keyframes ketik{
-		from { width: 0; }
-}
-</style>
-    
-          <!-- Attention -->
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="card mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-info">
-                  <h1 class="animated">Thanks To By</h1>
-                </div>
-                <div class="card-body">
-                  <li class="mengetik"> Hafidz Abdillah < Creator > </li>
-                  <li class="mengetik"> Indrijunanda < Template ></li>
-                  <li class="mengetik"> Team ProviderXploit < Team ></li>
-                  <li class="mengetik"> And Kalian Semua ~</li>
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title">
+                <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                  <i class="mdi mdi-home"></i>
+                </span> Dashboard
+              </h3>
+              <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item active" aria-current="page">
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card ngentod-merah card-img-holder text-white">
+                  <div class="card-body">
+                    <h4 class="font-weight-normal mb-3">IP Address <i class="mdi mdi-access-point-network mdi-24px float-right"></i>
+                    </h4>
+                    <h2 class="mb-5" id="ip">Tunggu...</h2>
+                    <h6 class="card-text">IP Address Kamu</h6>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <!--Row-->
-          	
-          	<!-- Attention -->
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="card mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-info">
-                  <h1 class="animated">Information</h1>
-                </div>
-                <div class="card-body">
-                  <li class="mengetik"> Rest Fire It's Free For Everyone </li>
-                  <li class="mengetik"> Don't Spam Features</li>
-                  <li class="mengetik"> Just Donate, It Has Helped Me :)</li>
-                  <li class="mengetik"> Help Share, Have a Great Day!</li>
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card ngentod-biru card-img-holder text-white">
+                  <div class="card-body">
+                    <h4 class="font-weight-normal mb-3">Pengunjung <i class="mdi mdi-eye mdi-24px float-right"></i>
+                    </h4>
+                    <h2 class="mb-5" id="visitor">Tunggu...</h2>
+                    <h6 class="card-text">Pengunjung Website ini</h6>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <!-- Modal Logout -->
-          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>Are you sure you want to logout?</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-                  <a href="login.html" class="btn btn-primary">Logout</a>
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card ngentod-ungu card-img-holder text-white">
+                  <div class="card-body">
+                    <h4 class="font-weight-normal mb-3">Tanggal <i class="mdi mdi-calendar mdi-24px float-right"></i>
+                    </h4>
+                    <h2 class="mb-5" id="datetime">Tunggu...</h2>
+                    <h6 class="card-text">Sekarang Tanggal</h6>
+                  </div>
                 </div>
               </div>
+          <footer class="footer">
+            <div class="container-fluid clearfix">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Rizxyu 2021</span>
             </div>
-          </div>
-          
+          </footer>
         </div>
-        <!---Container Fluid-->
       </div>
-      <!-- Footer -->
-      <footer class="sticky-footer bg-info">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>copyright &copy; <script> 
-
-document.write(new Date().getFullYear()); 
-</script> -
-              <b><a href="https://instagram.com/hafidzabdillh_" target="_blank">Hafidz Abdillah</a></b>
-            </span>
-          </div>
-        </div>
-      </footer>
-      <!-- Footer -->
     </div>
-  </div>
+    
+    <script src="../vendors/js/vendor.bundle.base.js"></script>
+    <script src="../vendors/chart.js/Chart.min.js"></script>
+    <script src="../js/off-canvas.js"></script>
+    <script src="../js/hoverable-collapse.js"></script>
+    <script src="../js/misc.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/todolist.js"></script>
+    <script src="../js/ipanda.js"></script>
+    <script src="../js/waktu.js"></script>
+    <script src="../js/visitor.js"></script>
+  </body> 
 
-  <!-- Scroll to top -->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
 
-  <script src="https://indrijunanda.github.io/RuangAdmin/vendor/jquery/jquery.min.js"></script>
-  <script src="https://indrijunanda.github.io/RuangAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://indrijunanda.github.io/RuangAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="https://indrijunanda.github.io/RuangAdmin/js/ruang-admin.min.js"></script>
-<script> 
-	
-</body>
+ 
 
+ 
 </html>
