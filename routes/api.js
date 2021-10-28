@@ -1451,7 +1451,7 @@ router.get('/search/google', async (req, res, next) => {
                  status: true,
                  code: 200,
                  message: 'Jangan ditembak bang',
-                 result : result
+                 result
              })
           })
     } else {
