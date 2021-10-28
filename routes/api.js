@@ -332,7 +332,7 @@ headers: {
 .then(result => {
 const $ = cheerio.load(result.data)
 resolve({
-link: $('#downloadBox > a').attr('href')
+url: $('#downloadBox > a').attr('href')
 })
 })
 })
@@ -566,7 +566,7 @@ headers: {
 .then(result => {
 const $ = cheerio.load(result.data)
 resolve({
-link: $('#downloadBox > a').attr('href')
+url: $('#downloadBox > a').attr('href')
 })
 })
 })
