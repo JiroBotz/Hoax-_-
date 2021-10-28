@@ -1434,7 +1434,7 @@ res.sendFile(invalidKey)
 }
 })
 
-router.get('/search/wallpaper', async (req, res, next) => {
+router.get('/search/google', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             query = req.query.query
             
@@ -1443,21 +1443,8 @@ router.get('/search/wallpaper', async (req, res, next) => {
 
        if(listkey.includes(apikeyInput)){      
        	
-       	function wallpapper(query) {
-return new Promise((resolve, reject) => {
-axios.get(`https://www.wallpaperflare.com/search?wallpaper=${query}`).then(async tod => {
-const $ = cheerio.load(tod.data)
-hasil = []
-$("#gallery > li > figure> a").each(function(i, cuk) {
-const img = $(cuk).find("img").attr('data-src');
-result.push(img)
-})
-resolve(result)
-}).catch(reject);
-});
-}
-
-      wallpapper(query)
+       	
+      google({'query': query})
       .then((result) => {
      res.json({
                  creator: 'Hafidz Abdillah',
