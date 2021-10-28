@@ -539,7 +539,7 @@ res.sendFile(invalidKey)
 }
 })
 
-router.get('/downloader/igdl', async (req, res, next) => {
+router.get('/downloader/igfoto', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
                   url = req.query.url
             
