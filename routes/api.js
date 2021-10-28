@@ -317,7 +317,8 @@ router.get('/downloader/fbdl', async (req, res, next) => {
        	function fb(link){
 	return new Promise((resolve,reject) => {
 	let config = {
-'url': link
+'url': link,
+'submit': ''
 }
 	axios('https://www.getfvid.com/downloader',{
 	method: 'POST',
