@@ -320,7 +320,7 @@ let config = {
 'url': link,
 'submit': ''
 }
-axios.get('https://downloadgram.org/video-downloader.php',{
+axios('https://downloadgram.org/video-downloader.php',{
 method: 'POST',
 data : new URLSearchParams(Object.entries(config)),
 headers: {
@@ -329,8 +329,8 @@ headers: {
 "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
 })
-.then(data => {
-const $ = cheerio.load(data)
+.then(result => {
+const $ = cheerio.load(result.data)
 resolve({
 link: $('#downloadBox > a').attr('href')
 })
@@ -339,8 +339,7 @@ link: $('#downloadBox > a').attr('href')
 } 
 
       igvideo(url)
-      .then((data) => {
-      	var result = data;
+      .then((result) => {
      res.json({
                  creator: 'Hafidz Abdillah',
                  status: true,
