@@ -341,8 +341,7 @@ resolve({
 }
 
       fb(url)
-      .then((data) => {
-      	var result = data;
+      .then((result) => {
      res.json({
                  creator: 'Hafidz Abdillah',
                  status: true,
