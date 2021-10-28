@@ -1433,6 +1433,44 @@ res.sendFile(invalidKey)
 }
 })
 
+router.get('/search/wallpaper', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            query = req.query.query
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        if(!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
+
+       if(listkey.includes(apikeyInput)){      
+       	
+       	function wallpapper(query) {
+return new Promise((resolve, reject) => {
+axios.get(`https://www.wallpaperflare.com/search?wallpaper=${query}`).then(async tod => {
+const $ = cheerio.load(tod.data)
+hasil = []
+$("#gallery > li > figure> a").each(function(i, cuk) {
+const img = $(cuk).find("img").attr('data-src');
+result.push(img)
+})
+resolve(result)
+}).catch(reject);
+});
+}
+
+      wallpapper(query)
+      .then((result) => {
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 result : result
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
+
 router.get('/search/wikipedia', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             q = req.query.q
