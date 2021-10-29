@@ -6010,7 +6010,6 @@ router.get('/random/katailham', async (req, res, next) => {
                  message: 'Jangan ditembak bang',
                  quote: `${ham}`
              })
-          })
     } else {
 res.sendFile(invalidKey)
 }
@@ -6054,7 +6053,6 @@ router.get('/random/bacotandilan', async (req, res, next) => {
                  message: 'Jangan ditembak bang',
                  quote: `${lan}`
              })
-          })
     } else {
 res.sendFile(invalidKey)
 }
