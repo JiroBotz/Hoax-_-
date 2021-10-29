@@ -5977,6 +5977,45 @@ res.sendFile(invalidKey)
 }
 })
 
+router.get('/random/katailham', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+            
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+        
+
+       if(listkey.includes(apikeyInput)){      
+       	
+       	var il =
+       [
+  "” Nggak ada yang peduli denganmu di sosmed kecuali kamu cakep” - Kata ilham.",
+  "” Sesimpel ini deh, sibuk itu palsu, semua tergantung prioritas” – kata ilham.",
+  "” Dia hanya menghargaimu, bukan mencintaimu” – kata ilham.",
+  "” Keadilan sosial hanya berlaku bagi warna negara yang good looking ” – kata ilham.",
+  "” Jangan jadi pelangi untuk orang yang buta warna ” – kata ilham.",
+  "” Dia yang tertidur nyenyak setelah mematahkan hatimu tidak pantas untuk kamu ingat ” – kata ilham.",
+  "” Dia cuman bercanda, harusnya kamu ketawa, bukan malah jatuh cinta ” – kata ilham.",
+  "” Mencintaimu adalah seni menyakiti diri ‘ – kata ilham.",
+  "” Jika tidak bisa mewarnai hidup seseorang, maka jangan pudarkan warna aslinya ” – kata ilham.",
+  "” Cukup tahu namaku, jangan rupaku” – kata ilham.",
+  "” Sesuatu akan terasa berharga jika sudah kehilangan ” – kata ilham.",
+  "” Jangan pernah mengeluh ketika kopimu dingin, ia pernah hangat, namun kau diamkan ” – kata ilham."
+]
+
+    var ham = il[Math.floor(Math.random() * il.length)]
+     res.json({
+                 creator: 'Hafidz Abdillah',
+                 status: true,
+                 code: 200,
+                 message: 'Jangan ditembak bang',
+                 quote: `${ham}`
+             })
+          })
+    } else {
+res.sendFile(invalidKey)
+}
+})
+
 router.get('/random/quotesanime', async (req, res, next) => {
         var apikeyInput = req.query.apikey
             
