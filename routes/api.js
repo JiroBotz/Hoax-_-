@@ -6101,7 +6101,6 @@ router.get('/random/quotesislami', async (req, res, next) => {
                  message: 'Jangan ditembak bang',
                  quote: `${lami}`
              })
-          })
     } else {
 res.sendFile(invalidKey)
 }
