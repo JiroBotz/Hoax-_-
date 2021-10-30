@@ -10348,14 +10348,15 @@ input:focus {
 /* Typography */
 body {
   font-size: 1rem;
-  font-family: "ubuntu-regular", sans-serif;
+  font-weight: normal;
   font-weight: initial;
-  line-height: normal;
+  line-height: 1.5;
+  font-family: "Rubik", sans-serif;
   -webkit-font-smoothing: antialiased; }
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: 'Inconsolata', monospace; }
+  font-weight: 500; }
 
 p {
   font-size: 0.875rem; }
@@ -10364,23 +10365,22 @@ h1, .h1 {
   font-size: 2.19rem; }
 
 h2, .h2 {
-  font-size: 1.88rem; }
+  font-size: 1.875rem; }
 
 h3, .h3 {
-  font-size: 1.56rem; }
+  font-size: 1.5rem; }
 
 h4, .h4 {
-  font-size: 1.13rem; }
+  font-size: 1.125rem; }
 
 h5, .h5 {
   font-size: 1rem; }
 
 h6, .h6 {
-  font-size: .9375rem; }
+  font-size: 0.9375rem; }
 
 p {
-  font-size: .9375rem;
-  line-height: 1.5; }
+  font-size: 0.875rem; }
 
 .display-1 {
   font-size: 3.75rem; }
@@ -10414,50 +10414,50 @@ p {
 
 .blockquote {
   padding: 1.25rem;
-  border: 1px solid #ebedf2; }
+  border: 1px solid #2c2e33; }
 
 address p {
   margin-bottom: 0; }
 
 .blockquote-primary {
-  border-color: #b66dff; }
+  border-color: #0090e7; }
   .blockquote-primary .blockquote-footer {
-    color: #b66dff; }
+    color: #0090e7; }
 
 .blockquote-secondary {
-  border-color: #c3bdbd; }
+  border-color: #e4eaec; }
   .blockquote-secondary .blockquote-footer {
-    color: #c3bdbd; }
+    color: #e4eaec; }
 
 .blockquote-success {
-  border-color: #1bcfb4; }
+  border-color: #00d25b; }
   .blockquote-success .blockquote-footer {
-    color: #1bcfb4; }
+    color: #00d25b; }
 
 .blockquote-info {
-  border-color: #198ae3; }
+  border-color: #8f5fe8; }
   .blockquote-info .blockquote-footer {
-    color: #198ae3; }
+    color: #8f5fe8; }
 
 .blockquote-warning {
-  border-color: #fed713; }
+  border-color: #ffab00; }
   .blockquote-warning .blockquote-footer {
-    color: #fed713; }
+    color: #ffab00; }
 
 .blockquote-danger {
-  border-color: #fe7c96; }
+  border-color: #fc424a; }
   .blockquote-danger .blockquote-footer {
-    color: #fe7c96; }
+    color: #fc424a; }
 
 .blockquote-light {
-  border-color: #f8f9fa; }
+  border-color: #ffffff; }
   .blockquote-light .blockquote-footer {
-    color: #f8f9fa; }
+    color: #ffffff; }
 
 .blockquote-dark {
-  border-color: #3e4b5b; }
+  border-color: #0d0d0d; }
   .blockquote-dark .blockquote-footer {
-    color: #3e4b5b; }
+    color: #0d0d0d; }
 
 .error-page h1 {
   font-size: 12rem; }
@@ -10466,7 +10466,7 @@ address p {
       font-size: 8rem; } }
 
 .icon-lg {
-  font-size: 2.5rem; }
+  font-size: 3.75rem; }
 
 .icon-md {
   font-size: 1.875rem; }
