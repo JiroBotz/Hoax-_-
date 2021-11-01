@@ -1389,7 +1389,7 @@ router.get('/search/lirik', async (req, res, next) => {
 const base = `https://www.dafont.com`
 const res = await axios.get(`${base}/search.php?q=${query}`)
 const $ = cheerio.load(res.data)
-const hasil = []
+const result = []
 const total = $('div.dffont2').text().replace(` fonts on DaFont for ${query}`, '') 
 $('div').find('div.container > div > div.preview').each(function(a, b) {
 $('div').find('div.container > div > div.lv1left.dfbg').each(function(c, d) { 
@@ -1397,14 +1397,14 @@ $('div').find('div.container > div > div.lv1right.dfbg').each(function(e, f) {
 let link = `${base}/` + $(b).find('a').attr('href')
 let judul = $(d).text() 
 let style = $(f).text() 
-hasil.push({ judul, style, link, total}) 
+result.push({ judul, style, link, total}) 
 }) 
 }) 
 }) 
-return hasil
+return result
 }
 
-      getLirik(query)
+      dafontSearch(query)
       .then((data) => {
       	var result = data;
      res.json({
