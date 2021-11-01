@@ -1385,7 +1385,7 @@ router.get('/search/dafont', async (req, res, next) => {
 
        if(listkey.includes(apikeyInput)){      
        	
-       	function dafontSearch(query) => {
+       	function dafontSearch(query) {
 const base = `https://www.dafont.com`
 const res = await axios.get(`${base}/search.php?q=${query}`)
 const $ = cheerio.load(res.data)
