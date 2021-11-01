@@ -1376,49 +1376,6 @@ res.sendFile(invalidKey)
 })
 
 // SEARCH FEATURES
-router.get('/search/dafont', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            query = req.query.query
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-        if(!query) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter query"})
-
-       if(listkey.includes(apikeyInput)){      
-       	
-       	function dafontSearch(query) {
-const base = `https://www.dafont.com`
-const res = await axios.get(`${base}/search.php?q=${query}`)
-const $ = cheerio.load(res.data)
-const result = []
-const total = $('div.dffont2').text().replace(` fonts on DaFont for ${query}`, '') 
-$('div').find('div.container > div > div.preview').each(function(a, b) {
-$('div').find('div.container > div > div.lv1left.dfbg').each(function(c, d) { 
-$('div').find('div.container > div > div.lv1right.dfbg').each(function(e, f) { 
-let link = `${base}/` + $(b).find('a').attr('href')
-let judul = $(d).text() 
-let style = $(f).text() 
-result.push({ judul, style, link, total}) 
-}) 
-}) 
-}) 
-return result
-}
-
-      dafontSearch(query)
-      .then((result) => {
-     res.json({
-                 creator: 'Hafidz Abdillah',
-                 status: true,
-                 code: 200,
-                 message: 'Jangan ditembak bang',
-                 result
-             })
-          })
-    } else {
-res.sendFile(invalidKey)
-}
-})
-
 router.get('/search/palingmurah', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             query = req.query.query
