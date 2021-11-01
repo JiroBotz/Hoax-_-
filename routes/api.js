@@ -1376,7 +1376,7 @@ res.sendFile(invalidKey)
 })
 
 // SEARCH FEATURES
-router.get('/search/lirik', async (req, res, next) => {
+router.get('/search/dafont', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             query = req.query.query
             
