@@ -1376,7 +1376,7 @@ res.sendFile(invalidKey)
 })
 
 // SEARCH FEATURES
-router.get('/search/lirik', async (req, res, next) => {
+router.get('/search/dafont', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             query = req.query.query
             
@@ -1404,9 +1404,8 @@ result.push({ judul, style, link, total})
 return hasil
 }
 
-      getLirik(query)
-      .then((data) => {
-      	var result = data;
+      dafontSearch(query)
+      .then((result) => {
      res.json({
                  creator: 'Hafidz Abdillah',
                  status: true,
