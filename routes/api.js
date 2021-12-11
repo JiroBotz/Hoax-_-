@@ -6,7 +6,7 @@ var db = require(__path + '/database/db');
 try {
 var kuhong = db.get('ojan'); // jan diubah
 } catch (e) {
-	console.log('WELCOME TO GX API!') // boleh diubah
+	console.log('WELCOME TO JIRO API!') // boleh diubah
 }
 
 var listkey = ['sayahafiz', 'GRATISAN'];
