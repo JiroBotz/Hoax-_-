@@ -9,10 +9,10 @@ var kuhong = db.get('ojan'); // jan diubah
 	console.log('WELCOME TO JIRO API!') // boleh diubah
 }
 
-var listkey = ['sayahafiz', 'GRATISAN'];
+var listkey = ['jiro', 'ANJAYALOK'];
 var creatorList = ['Jiro']; // Nama Lu Ngab
 var creator = creatorList[Math.floor(Math.random() * creatorList.length)]; // Ini jan diubah
-var key = 'sayahafiz' // Apikey Lu Ngab
+var key = 'jiro' // Apikey Lu Ngab
 
 // Required Modules :
 var ffmpeg = require('fluent-ffmpeg');
