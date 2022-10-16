@@ -1,1 +1,1 @@
-# Seng penting yakin sek :D
+# podo ae
